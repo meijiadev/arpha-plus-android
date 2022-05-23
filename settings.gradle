@@ -1,0 +1,18 @@
+// Android Gradle 7.0以上 此处不注释会导致依赖添加不成功
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//        jcenter() // Warning: this repository is going to shut down soon
+//        // Android Gradle 7.0以上 此处不设置会导致依赖添加不成功
+//        maven { url 'https://jitpack.io' }
+//        maven {
+//            url "https://mvn.mob.com/android"
+//        }
+//    }
+//
+//}
+rootProject.name = "arpha-plus-android"
+include ':app'
+include ':architecture'
