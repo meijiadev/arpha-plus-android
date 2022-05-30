@@ -1,11 +1,34 @@
 package com.blackview.arphaplus
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import androidx.lifecycle.Observer
+import com.blackview.arphaplus.databinding.ActivityMainBinding
+import com.blackview.base.base.BaseMVVMActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseMVVMActivity<ActivityMainBinding, MainModel>() {
+
+
+    override fun layoutId(): Int {
+        return R.layout.activity_main
     }
+
+    override fun initVariableId(): Int {
+        return BR.mainModel
+    }
+
+
+    override fun initView() {
+        super.initView()
+        binding.btnClick.setOnClickListener { 
+            viewModel.getData()
+            
+        }
+    }
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        viewModel.heartbeat.observe(this, Observer {
+            viewModel.string.set("sdfsdf")
+        })
+    }
+
 }

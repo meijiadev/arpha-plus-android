@@ -1,18 +1,23 @@
-// Android Gradle 7.0以上 此处不注释会导致依赖添加不成功
-//dependencyResolutionManagement {
-//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-//    repositories {
-//        google()
-//        mavenCentral()
-//        jcenter() // Warning: this repository is going to shut down soon
-//        // Android Gradle 7.0以上 此处不设置会导致依赖添加不成功
-//        maven { url 'https://jitpack.io' }
-//        maven {
-//            url "https://mvn.mob.com/android"
-//        }
-//    }
-//
-//}
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
 rootProject.name = "arpha-plus-android"
 include ':app'
-include ':architecture'
+include ':common:common-base'
+include ':common:common-util'
+include ':common:common-widget'
