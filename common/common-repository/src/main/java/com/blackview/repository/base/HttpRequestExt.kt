@@ -5,11 +5,6 @@ import androidx.lifecycle.LiveData
 import com.blackview.base.request.BaseResponse
 import com.blackview.repository.base.IStateObserver
 
-/**
- * @author Lin
- * @date 2021/10/15
- * @function
- */
 
 /**
  * 监听 LiveData 的值的变化，回调为 DSL 的形式
