@@ -16,7 +16,7 @@ class CacheInterceptor(var day: Int = 7) : Interceptor {
                 .build()
         }
         val response = chain.proceed(request)
-        if (!NetworkUtils.isAvailable()) {
+        if (NetworkUtils.isAvailable()) {
             val maxAge = 60 * 60
             response.newBuilder()
                 .removeHeader("Pragma")
@@ -27,6 +27,7 @@ class CacheInterceptor(var day: Int = 7) : Interceptor {
             response.newBuilder()
                 .removeHeader("Pragma")
                 .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
+                //.header("Cache-Control", "max-age=2000000, no-cache")
                 .build()
         }
         return response

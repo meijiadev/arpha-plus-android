@@ -1,7 +1,6 @@
-package com.blackview.base.http
+package com.blackview.repository.api
 
 import com.blackview.base.request.BaseResponse
-import com.franmontiel.persistentcookiejar.BuildConfig
 import okhttp3.ResponseBody
 import retrofit2.http.*
 

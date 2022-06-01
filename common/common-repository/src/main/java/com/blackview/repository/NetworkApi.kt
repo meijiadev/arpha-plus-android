@@ -1,6 +1,11 @@
-package com.blackview.base.http
+package com.blackview.repository
 
 import com.blackview.base.BaseApplication
+import com.blackview.base.http.BaseNetworkApi
+import com.blackview.base.http.CacheInterceptor
+import com.blackview.base.http.LoggerInterceptor
+import com.blackview.repository.api.ApiService
+import com.blackview.repository.api.ApiService2
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -19,6 +24,9 @@ import java.util.concurrent.TimeUnit
 //双重校验锁式-单例 封装NetApiService 方便直接快速调用简单的接口
 val apiService: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(ApiService::class.java, ApiService.SERVER_URL)
+}
+val apiService2: ApiService2 by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+    NetworkApi.INSTANCE.getApi(ApiService2::class.java, ApiService2.SERVER_URL)
 }
 
 class NetworkApi : BaseNetworkApi() {
@@ -79,7 +87,7 @@ class NetworkApi : BaseNetworkApi() {
             builder.addHeader("Authorization", "").build()
             return chain.proceed(builder.build())
         }
-        
+
     }
 
 

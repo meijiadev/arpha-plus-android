@@ -7,7 +7,7 @@ package com.blackview.base.http;
 
 import android.text.TextUtils;
 
-import com.blackview.util.LogUtil;
+import com.blackview.util.L;
 
 import java.io.IOException;
 
@@ -52,34 +52,34 @@ public class LoggerInterceptor implements Interceptor {
 
 	private Response logForResponse(Response response) {
 		try {
-			LogUtil.d(this.tag, "============================response\'log============================");
+			L.d(this.tag, "============================response\'log============================");
 			Builder e = response.newBuilder();
 			Response clone = e.build();
-			LogUtil.d(this.tag, "url : " + clone.request().url());
-			LogUtil.d(this.tag, "code : " + clone.code());
-			LogUtil.d(this.tag, "protocol : " + clone.protocol());
+			L.d(this.tag, "url : " + clone.request().url());
+			L.d(this.tag, "code : " + clone.code());
+			L.d(this.tag, "protocol : " + clone.protocol());
 			if (!TextUtils.isEmpty(clone.message())) {
-				LogUtil.d(this.tag, "message : " + clone.message());
+				L.d(this.tag, "message : " + clone.message());
 			}
 			if (this.showResponse) {
 				ResponseBody body = clone.body();
 				if (body != null) {
 					MediaType mediaType = body.contentType();
 					if (mediaType != null) {
-						LogUtil.d(this.tag, "responseBody\'s contentType : " + mediaType.toString());
+						L.d(this.tag, "responseBody\'s contentType : " + mediaType.toString());
 						if (this.isText(mediaType)) {
 							String resp = body.string();
-							LogUtil.d(this.tag, "responseBody\'s content : " + resp);
+							L.d(this.tag, "responseBody\'s content : " + resp);
 							body = ResponseBody.create(mediaType, resp);
 							return response.newBuilder().body(body).build();
 						}
 
-						LogUtil.d(this.tag, "responseBody\'s content :  maybe [file part] , too large too print , ignored!");
+						L.d(this.tag, "responseBody\'s content :  maybe [file part] , too large too print , ignored!");
 					}
 				}
 			}
 
-			LogUtil.d(this.tag, "============================response\'log============================end");
+			L.d(this.tag, "============================response\'log============================end");
 		} catch (Exception var7) {
 			var7.printStackTrace();
 		}
@@ -91,27 +91,27 @@ public class LoggerInterceptor implements Interceptor {
 		try {
 			String e = request.url().toString();
 			Headers headers = request.headers();
-			LogUtil.d(this.tag, "============================request\'log============================");
-			LogUtil.d(this.tag, "method : " + request.method());
-			LogUtil.d(this.tag, "url : " + e);
+			L.d(this.tag, "============================request\'log============================");
+			L.d(this.tag, "method : " + request.method());
+			L.d(this.tag, "url : " + e);
 			if (headers.size() > 0) {
-				LogUtil.d(this.tag, "headers : " + headers.toString());
+				L.d(this.tag, "headers : " + headers.toString());
 			}
 
 			RequestBody requestBody = request.body();
 			if (requestBody != null) {
 				MediaType mediaType = requestBody.contentType();
 				if (mediaType != null) {
-					LogUtil.d(this.tag, "requestBody\'s contentType : " + mediaType.toString());
+					L.d(this.tag, "requestBody\'s contentType : " + mediaType.toString());
 					if (this.isText(mediaType)) {
-						LogUtil.d(this.tag, "requestBody\'s content : " + this.bodyToString(request));
+						L.d(this.tag, "requestBody\'s content : " + this.bodyToString(request));
 					} else {
-						LogUtil.d(this.tag, "requestBody\'s content :  maybe [file part] , too large too print , ignored!");
+						L.d(this.tag, "requestBody\'s content :  maybe [file part] , too large too print , ignored!");
 					}
 				}
 			}
 
-			LogUtil.d(this.tag, "============================request\'log============================end");
+			L.d(this.tag, "============================request\'log============================end");
 		} catch (Exception var6) {
 			var6.printStackTrace();
 		}

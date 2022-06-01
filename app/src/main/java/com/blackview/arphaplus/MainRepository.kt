@@ -1,13 +1,10 @@
 package com.blackview.arphaplus
 
 import androidx.databinding.ObservableField
-import com.blackview.base.base.BaseViewModel
-import com.blackview.base.http.request
-import com.blackview.base.http.requestNoCheck
-import com.blackview.repository.apiService
 import com.blackview.repository.apiService2
-import com.blackview.repository.repository.RepositoryFactory
-import com.blackview.util.L
+import com.blackview.repository.base.BaseRepository
+import com.blackview.repository.base.request
+import com.blackview.repository.base.requestNoCheck
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -30,21 +27,16 @@ import com.blackview.util.L
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * Created by home on 2022/5/30.
+ * Created by home on 2022/5/31.
  */
-class MainModel : BaseViewModel() {
+val url = "https://cx.shouji.360.cn/phonearea.php"
+class MainRepository : BaseRepository() {
 
-    val repository = RepositoryFactory.createByAccountSession(MainRepository::class.java)
+    var string = ObservableField<String>()
+        
+    var livePhone = http { apiService2.getData1(url,"13590404481") }
 
-    //val repository=MainRepository()
-    var string = repository.string
+    override fun onClean() {
 
-
-    fun getData() {
-        requestNoCheck({ apiService2.getData() }, {
-            L.e(it.toString())
-        })
     }
-
-
 }

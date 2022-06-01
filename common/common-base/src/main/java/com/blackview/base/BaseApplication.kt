@@ -1,8 +1,6 @@
 package com.blackview.base
 
 import android.app.Application
-import com.blackview.base.request.BaseResponse
-import com.blackview.util.LogUtil
 
 /**
  * ━━━━━━神兽出没━━━━━━

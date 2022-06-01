@@ -1,13 +1,11 @@
 package com.blackview.base.base
 
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
-import com.blackview.util.LogUtil
+import com.blackview.util.L
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
 import java.util.concurrent.TimeUnit
 
 
@@ -31,7 +29,7 @@ open class BaseViewModel : ViewModel() {
     }
 
     fun onBackPressed() {
-        uiChangeLiveData.backPressedEvent.call()
+        uiChangeLiveData.finishEvent.call()
     }
 
     fun postUiMessageEvent(message: UIMessage) {
@@ -45,7 +43,7 @@ open class BaseViewModel : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     heartbeat.call()
-                    LogUtil.e(it.toString())
+                    L.e(it.toString())
                 }
         }
     }
@@ -68,7 +66,6 @@ open class BaseViewModel : ViewModel() {
             val showDialogEvent = SingleLiveEvent<String>()
             val dismissDialogEvent = SingleLiveEvent<Void>()
             val finishEvent = SingleLiveEvent<Void>()
-            val backPressedEvent = SingleLiveEvent<Void>()
             val uiMessageEvent = SingleLiveEvent<UIMessage>()
             val toastEvent = SingleLiveEvent<String>()
         }

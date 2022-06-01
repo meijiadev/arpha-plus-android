@@ -2,14 +2,14 @@ package com.blackview.util;
 
 import android.util.Log;
 
-public class LogUtil {
+public class L {
 
 	private static boolean DBG = BuildConfig.DEBUG;
 
-	public static final String TAG = "LogUtil";
+	public static final String TAG = "ddd";
 
 	public static void logV(String TAG, String msg) {
-		Log.d("LogUtil", "log is " + DBG);
+		Log.d("ddd", "log is " + DBG);
 		if (DBG) {
 			Log.v(TAG, msg);
 		}

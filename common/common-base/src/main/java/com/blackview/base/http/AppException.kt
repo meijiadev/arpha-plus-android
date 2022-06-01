@@ -7,18 +7,18 @@ package com.blackview.base.http
 class AppException : Exception {
 
     var status: Int = 0 //错误码
-    var msg: String? = null //错误日志
+    override var message: String? = null //错误日志
     var throwable: Throwable? = null
 
     constructor(status: Int, message: String? = "", throwable: Throwable? = null) : super(message) {
-        this.msg = message ?: "请求失败，请稍后再试"
+        this.message = message ?: "请求失败，请稍后再试"
         this.status = status
         this.throwable = throwable
     }
 
     constructor(error: Error, e: Throwable?) {
         status = error.getKey()
-        msg = e?.message
+        message = e?.message
         throwable = e
     }
 }
