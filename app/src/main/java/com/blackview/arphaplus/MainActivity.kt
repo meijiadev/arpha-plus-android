@@ -2,7 +2,7 @@ package com.blackview.arphaplus
 
 import com.blackview.arphaplus.databinding.ActivityMainBinding
 import com.blackview.base.base.BaseMVVMActivity
-import com.blackview.base.http.observeState
+import com.blackview.repository.base.observeState
 import com.blackview.repository.session.AccountSessionManager
 import com.blackview.util.L
 import com.blackview.util.gotoAct

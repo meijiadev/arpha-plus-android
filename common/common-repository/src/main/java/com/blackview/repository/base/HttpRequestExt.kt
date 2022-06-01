@@ -1,9 +1,10 @@
-package com.blackview.base.http
+package com.blackview.repository.base
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.blackview.base.http.AppException
+import com.blackview.base.http.HttpRequestCallback
 import com.blackview.base.request.BaseResponse
-import com.blackview.repository.base.IStateObserver
 
 
 /**
