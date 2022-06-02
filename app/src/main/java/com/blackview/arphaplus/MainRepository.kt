@@ -1,6 +1,7 @@
 package com.blackview.arphaplus
 
 import androidx.databinding.ObservableField
+import com.blackview.repository.apiService
 import com.blackview.repository.apiService2
 import com.blackview.repository.base.BaseRepository
 import com.blackview.repository.base.request
@@ -29,14 +30,18 @@ import com.blackview.repository.base.requestNoCheck
  *
  * Created by home on 2022/5/31.
  */
-val url = "https://cx.shouji.360.cn/phonearea.php"
 class MainRepository : BaseRepository() {
 
-    var string = ObservableField<String>()
-        
-    var livePhone = http { apiService2.getData1(url,"13590404481") }
 
     override fun onClean() {
 
     }
+
+    fun phoneAddress(phone: String) = http {
+        apiService2.getData1(
+            "https://cx.shouji.360.cn/phonearea.php",
+            phone
+        )
+    }
+
 }

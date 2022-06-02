@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.blackview.arphaplus.databinding.ActivityMainBinding
 import com.blackview.base.base.BaseMVVMFragment
+import com.blackview.repository.base.observeState
 import com.blackview.repository.repository.RepositoryFactory
 import com.blackview.repository.session.AccountSessionManager
 import com.blackview.repository.session.AppSessionManager
@@ -49,10 +50,11 @@ class IndexFragment : BaseMVVMFragment<ActivityMainBinding, MainModel>() {
     override fun initView() {
         super.initView()
         binding.btnClick.setOnClickListener {
+            
         }
         binding.tvHelloWorld.setOnClickListener {
             viewModel.onBackPressed()
         }
-       
+
     }
 }

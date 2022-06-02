@@ -1,7 +1,10 @@
 package com.blackview.arphaplus
 
+import androidx.lifecycle.map
 import com.blackview.arphaplus.databinding.ActivityMainBinding
 import com.blackview.base.base.BaseMVVMActivity
+import com.blackview.base.request.StartResponse
+import com.blackview.base.request.SuccessResponse
 import com.blackview.repository.base.observeState
 import com.blackview.repository.session.AccountSessionManager
 import com.blackview.util.L
@@ -23,27 +26,24 @@ class MainActivity : BaseMVVMActivity<ActivityMainBinding, MainModel>() {
         super.initView()
         L.e(AccountSessionManager.accountSession.accountId)
         binding.btnClick.setOnClickListener {
-            viewModel.repository.livePhone.observeState(this) {
-                onStart {
-                    viewModel.uiChangeLiveData.toastEvent.postValue("hello")
-                }
-                onSuccess {
-                    viewModel.uiChangeLiveData.toastEvent.postValue("success")
-                    viewModel.repository.string.set(it.province)
-                }
-                onFailure {
-                    viewModel.uiChangeLiveData.toastEvent.postValue(it.message)
-                }
-            }
             //viewModel.getData()
-
+            viewModel.phoneString.value="13590404481"
         }
 
         binding.tvHelloWorld.setOnClickListener {
-            gotoAct<DemoActivity>()
+            //gotoAct<DemoActivity>()
+            viewModel.phoneString.value="13929786724"
         }
 
+    }
 
+    override fun initViewObservable() {
+        super.initViewObservable()
+        viewModel.phoneInfo.observeState(this, viewModel) {
+            onSuccess {
+                viewModel.string.set(it.province + it.city + it.sp)
+            }
+        }
     }
 
 

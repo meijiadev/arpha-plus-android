@@ -20,7 +20,8 @@ class CacheInterceptor(var day: Int = 7) : Interceptor {
             val maxAge = 60 * 60
             response.newBuilder()
                 .removeHeader("Pragma")
-                .header("Cache-Control", "public, max-age=$maxAge")
+                //.header("Cache-Control", "public, max-age=$maxAge")
+                .header("Cache-Control", "no-cache")
                 .build()
         } else {
             val maxStale = 60 * 60 * 24 * day // tolerate 4-weeks stale

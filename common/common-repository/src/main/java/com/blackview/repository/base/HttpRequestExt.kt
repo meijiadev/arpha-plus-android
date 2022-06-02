@@ -2,6 +2,7 @@ package com.blackview.repository.base
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.blackview.base.base.BaseViewModel
 import com.blackview.base.http.AppException
 import com.blackview.base.http.HttpRequestCallback
 import com.blackview.base.request.BaseResponse
@@ -12,11 +13,13 @@ import com.blackview.base.request.BaseResponse
  */
 inline fun <T> LiveData<BaseResponse<T>>.observeState(
     owner: LifecycleOwner,
+    model: BaseViewModel,
     crossinline callback: HttpRequestCallback<T>.() -> Unit
 ) {
     val requestCallback = HttpRequestCallback<T>().apply(callback)
     observe(owner, object : IStateObserver<T> {
         override fun onStart() {
+            model.uiChangeLiveData.showDialogEvent.post()
             requestCallback.startCallback?.invoke()
         }
 
@@ -33,6 +36,7 @@ inline fun <T> LiveData<BaseResponse<T>>.observeState(
         }
 
         override fun onFinish() {
+            model.uiChangeLiveData.dismissDialogEvent.post()
             requestCallback.finishCallback?.invoke()
         }
     })

@@ -1,7 +1,12 @@
 package com.blackview.arphaplus
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
+import androidx.lifecycle.switchMap
 import com.blackview.base.base.BaseViewModel
+import com.blackview.base.base.SingleLiveEvent
 import com.blackview.base.http.request
 import com.blackview.base.http.requestNoCheck
 import com.blackview.repository.apiService
@@ -34,16 +39,22 @@ import com.blackview.util.L
  */
 class MainModel : BaseViewModel() {
 
-    val repository = RepositoryFactory.createByAccountSession(MainRepository::class.java)
+    //val repository = RepositoryFactory.createByAccountSession(MainRepository::class.java)
 
-    //val repository=MainRepository()
-    var string = repository.string
+    private val repository by lazy { MainRepository() }
 
+    var string = ObservableField<String>()
+
+    val phoneString = MutableLiveData<String>()
+
+    val phoneInfo = phoneString.switchMap {
+        repository.phoneAddress(it)
+    }
 
     fun getData() {
         requestNoCheck({ apiService2.getData() }, {
             L.e(it.toString())
-        })
+        }, {}, true)
     }
 
 
