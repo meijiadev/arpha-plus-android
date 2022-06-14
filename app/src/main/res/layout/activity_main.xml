@@ -21,7 +21,26 @@
             android:layout_height="wrap_content"
             android:text="hello" />
 
-      
+        <Button
+            android:id="@+id/btn_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="device"
+            app:layout_constraintTop_toBottomOf="@+id/btn_click" />
+
+        <Button
+            android:id="@+id/btn_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="notice"
+            app:layout_constraintTop_toBottomOf="@+id/btn_device" />
+
+        <Button
+            android:id="@+id/btn_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vip"
+            app:layout_constraintTop_toBottomOf="@+id/btn_notice" />
 
         <TextView
             android:id="@+id/tv_hello_world"

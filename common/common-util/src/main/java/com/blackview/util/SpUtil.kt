@@ -20,7 +20,7 @@ object SpUtil {
             is Long -> mmkv?.encode(key, value)
             is Double -> mmkv?.encode(key, value)
             is ByteArray -> mmkv?.encode(key, value)
-            is Nothing -> return
+            else -> return
         }
     }
 

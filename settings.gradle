@@ -22,3 +22,8 @@ include ':common:common-base'
 include ':common:common-util'
 include ':common:common-widget'
 include ':common:common-repository'
+include ':common:common-constant'
+
+include ':module_device'
+include ':module_notice'
+include ':module_vip'

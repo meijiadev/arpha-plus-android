@@ -15,6 +15,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
     }
 
     buildTypes {
@@ -43,7 +49,19 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-
+    
     implementation project(":common:common-repository")
+    kapt 'com.alibaba:arouter-compiler:1.5.2'
+
+
+    if (isDeviceModule.toBoolean()) {
+        implementation project(':module_device')
+    }
+    if (isNoticeModule.toBoolean()) {
+        implementation project(':module_notice')
+    }
+    if (isVipModule.toBoolean()) {
+        implementation project(':module_vip')
+    }
 
 }

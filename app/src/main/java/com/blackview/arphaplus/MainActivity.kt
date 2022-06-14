@@ -1,10 +1,10 @@
 package com.blackview.arphaplus
 
-import androidx.lifecycle.map
 import com.blackview.arphaplus.databinding.ActivityMainBinding
 import com.blackview.base.base.BaseMVVMActivity
-import com.blackview.base.request.StartResponse
-import com.blackview.base.request.SuccessResponse
+import com.blackview.contant.device
+import com.blackview.contant.notice
+import com.blackview.contant.vip
 import com.blackview.repository.base.observeState
 import com.blackview.repository.session.AccountSessionManager
 import com.blackview.util.L
@@ -27,14 +27,27 @@ class MainActivity : BaseMVVMActivity<ActivityMainBinding, MainModel>() {
         L.e(AccountSessionManager.accountSession.accountId)
         binding.btnClick.setOnClickListener {
             //viewModel.getData()
-            viewModel.phoneString.value="13590404481"
+            viewModel.phoneString.value = "13590404481"
         }
 
         binding.tvHelloWorld.setOnClickListener {
             //gotoAct<DemoActivity>()
-            viewModel.phoneString.value="13929786724"
+            viewModel.phoneString.value = "13929786724"
         }
 
+        binding.btnDevice.setOnClickListener {
+            gotoAct(device)
+        }
+        binding.btnNotice.setOnClickListener {
+            gotoAct(notice) {
+                withInt("dd", 123)
+                withString("zz", "hell world")
+            }
+        }
+
+        binding.btnVip.setOnClickListener {
+            gotoAct(vip)
+        }
     }
 
     override fun initViewObservable() {
