@@ -1,20 +1,31 @@
 package com.blackview.base.base
 
+import android.app.Activity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.blackview.base.R
+import com.blackview.base.titlebar.IPageHead
+import com.blackview.base.titlebar.PageHead
 import com.blankj.utilcode.util.ToastUtils
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel > : AppCompatActivity(),
-    IBaseView {
+abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
+    IBaseView, IPageHead {
 
     protected lateinit var binding: V
     protected lateinit var viewModel: VM
 
     protected var progressDialog: ProgressDialog? = null
+
+    private lateinit var contentLayout: LinearLayout
+    private lateinit var pageHead: PageHead
 
     abstract fun getViewBinding(): V
 
@@ -22,10 +33,26 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel > : AppCompatA
         super.onCreate(savedInstanceState)
         binding = getViewBinding()
         viewModel = ViewModelProvider(this).get(getViewModelClass())
+        initContentView()
         setContentView(binding.root)
         onViewCreated()
         progressDialog = ProgressDialog.Builder(this).noClose().get()
         initParam()
+    }
+
+    open fun initContentView() {
+        val viewGroup: ViewGroup = findViewById(android.R.id.content)
+        viewGroup.removeAllViews()
+        contentLayout = LinearLayout(this)
+        contentLayout.orientation = LinearLayout.VERTICAL
+        contentLayout.setBackgroundResource(android.R.color.white)
+        viewGroup.addView(contentLayout)
+        LayoutInflater.from(this).inflate(R.layout.layout_title, contentLayout, true)
+    }
+
+    override fun setContentView(view: View) {
+        //val lp = ViewGroup.LayoutParams(-1,-1)
+        contentLayout.addView(view)
     }
 
     private fun getViewModelClass(): Class<VM> {
@@ -33,7 +60,7 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel > : AppCompatA
         return type as Class<VM>
     }
 
-    fun onViewCreated() {
+    private fun onViewCreated() {
 
         initView()
         initData()
@@ -82,4 +109,16 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel > : AppCompatA
         progressDialog?.cancel()
     }
 
+    override fun getPageHead(
+        activity: Activity?,
+        listener: PageHead.OnPageHeadClickListener?
+    ): PageHead {
+        pageHead = PageHead(activity, listener)
+        return pageHead
+    }
+
+    override fun getPageHead(activity: Activity?): PageHead {
+        pageHead = PageHead(activity)
+        return pageHead
+    }
 }

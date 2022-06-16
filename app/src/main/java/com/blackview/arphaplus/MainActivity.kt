@@ -24,6 +24,9 @@ class MainActivity : BaseMVVMActivity<ActivityMainBinding, MainModel>() {
 
     override fun initView() {
         super.initView()
+        
+        getPageHead(this).apply { setTitleText("title bar") }
+        
         L.e(AccountSessionManager.accountSession.accountId)
         binding.btnClick.setOnClickListener {
             //viewModel.getData()
@@ -31,8 +34,8 @@ class MainActivity : BaseMVVMActivity<ActivityMainBinding, MainModel>() {
         }
 
         binding.tvHelloWorld.setOnClickListener {
-            //gotoAct<DemoActivity>()
-            viewModel.phoneString.value = "13929786724"
+            gotoAct<DemoActivity>()
+            //viewModel.phoneString.value = "13929786724"
         }
 
         binding.btnDevice.setOnClickListener {
