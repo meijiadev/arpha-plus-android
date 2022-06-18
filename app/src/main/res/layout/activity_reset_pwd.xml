@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_reset_logo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/image_arpha_logo_3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_reset_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/reset_pwd"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_reset_logo" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_BC9E70"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_reset_title"
+        app:layout_constraintRight_toRightOf="@+id/tv_reset_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reset_title" />
+
+
+    <TextView
+        android:id="@+id/tv_reset_dd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/reset_pwd_hint2"
+        android:textColor="@color/grey_4F4C4B"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reset_title" />
+
+    <EditText
+        android:id="@+id/tv_reset_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:hint="@string/input_pwd"
+        android:inputType="textPassword"
+        android:textColor="@color/gray_979797"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reset_dd" />
+
+    <CheckBox
+        android:id="@+id/cb_reset_pwd"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/pwd_check_style"
+        android:button="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_reset_pwd"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_reset_pwd" />
+
+    <View
+        android:id="@+id/v_reset_line3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/line_E2E2E2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reset_pwd" />
+
+    <EditText
+        android:id="@+id/tv_reset_pwd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:hint="@string/input_pwd_again"
+        android:inputType="textPassword"
+        android:textColor="@color/gray_979797"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_reset_line3" />
+
+    <CheckBox
+        android:id="@+id/cb_reset_pwd1"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/pwd_check_style"
+        android:button="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_reset_pwd1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_reset_pwd1" />
+
+    <View
+        android:id="@+id/v_reset_line31"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/line_E2E2E2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reset_pwd1" />
+
+    <com.caldremch.widget.round.RoundButton
+        android:id="@+id/btn_reset_go"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_reset_line31"
+        app:rl_backgroundColor="@color/gray_B5B5B6"
+        app:rl_radius="30dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

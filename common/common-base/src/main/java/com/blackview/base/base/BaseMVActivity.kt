@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
@@ -51,13 +53,21 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
     }
 
     override fun setContentView(view: View) {
-        //val lp = ViewGroup.LayoutParams(-1,-1)
-        contentLayout.addView(view)
+        val lp = ViewGroup.LayoutParams(-1, -1)
+        contentLayout.addView(view, lp)
     }
 
     private fun getViewModelClass(): Class<VM> {
         val type = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1]
         return type as Class<VM>
+    }
+
+    fun hideTitleBar() {
+        contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible=false
+    }
+
+    fun showTitleBar() {
+        contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible = true
     }
 
     private fun onViewCreated() {

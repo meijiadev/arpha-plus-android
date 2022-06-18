@@ -56,6 +56,10 @@ public class PageHead implements View.OnClickListener {
 		}
 	}
 
+	public void setTitleText(int value) {
+		mTvTitle.setText(value);
+	}
+
 	public void hideIvBack(boolean isShow) {
 		if (isShow) {
 			mIvBack.setVisibility(View.GONE);

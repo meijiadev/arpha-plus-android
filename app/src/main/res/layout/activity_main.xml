@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="mainModel"
             type="com.blackview.arphaplus.MainModel" />
@@ -14,6 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_click"
@@ -53,19 +61,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#00ff00">
+            android:background="#00ff00"
+            android:visibility="gone">
 
             <TextView
-                android:layout_centerInParent="true"
-                android:text="hello wold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="hello wold" />
 
         </RelativeLayout>
-        
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

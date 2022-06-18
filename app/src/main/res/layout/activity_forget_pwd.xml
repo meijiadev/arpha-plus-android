@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_forget_logo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/image_arpha_logo_3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_forget_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/reset_pwd"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_forget_logo" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_BC9E70"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_forget_title"
+        app:layout_constraintRight_toRightOf="@+id/tv_forget_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forget_title" />
+
+
+    <TextView
+        android:id="@+id/tv_forget_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/reset_pwd_hint"
+        android:textColor="@color/grey_4F4C4B"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forget_title" />
+
+
+    <TextView
+        android:id="@+id/tv_forget_region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/select_region"
+        android:textColor="@color/gray_979797"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forget_hint" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/icon_arrow_down2_16"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_forget_region"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_forget_region" />
+
+
+    <View
+        android:id="@+id/v_forget_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/line_E2E2E2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forget_region" />
+
+    <EditText
+        android:id="@+id/tv_forget_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:hint="@string/input_phone"
+        android:inputType="number"
+        android:textColor="@color/gray_979797"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_forget_line1" />
+
+    <View
+        android:id="@+id/v_forget_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/line_E2E2E2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forget_phone" />
+
+    <com.caldremch.widget.round.RoundButton
+        android:id="@+id/btn_forget_go"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_forget_line2"
+        app:rl_backgroundColor="@color/gray_B5B5B6"
+        app:rl_radius="30dp" />
+
+    <TextView
+        android:id="@+id/tv_forget_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/return_back"
+        android:textColor="@color/text_BC9E70"
+        app:layout_constraintEnd_toEndOf="@+id/btn_forget_go"
+        app:layout_constraintStart_toStartOf="@+id/btn_forget_go"
+        app:layout_constraintTop_toBottomOf="@+id/btn_forget_go" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.blackview.repository.api
 
 import com.blackview.base.request.BaseResponse
-import com.blackview.repository.entity.LoginModel
 import com.blackview.repository.entity.PhoneInfo
 import okhttp3.ResponseBody
 import retrofit2.http.*
@@ -20,6 +19,6 @@ interface ApiService2 {
 
     @GET("/")
     suspend fun getData(): ResponseBody
-    
+
 
 }

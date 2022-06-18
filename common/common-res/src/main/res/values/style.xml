@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ActivityAnimFade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/action_rigth_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/action_rigth_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/action_left_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/action_left_exit</item>
+    </style>
+
+    <style name="welcome">
+        <item name="android:textSize">48sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="arpha_intel">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+
+    </style>
+
+    <style name="next">
+
+        <item name="android:textSize">
+            16sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.03
+        </item>
+
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+
+    </style>
+
+
+</resources>

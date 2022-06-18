@@ -46,6 +46,7 @@ dependencies {
 
     api project(":common:common-util")
     api project(":common:common-constant")
+    api project(":common:common-res")
 
     // viewModel
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
@@ -59,6 +60,7 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.8.1'
 
-   
+    //ui适配
+    api 'me.jessyan:autosize:1.2.1'
     
 }

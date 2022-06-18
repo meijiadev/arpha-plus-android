@@ -46,12 +46,7 @@ class DemoActivity : BaseMVActivity<ActivityDemoBinding, MainModel>() {
         binding.btnHello1.setOnClickListener { 
             viewModel.showToast("hello world")
         }
-
-        //supportFragmentManager.beginTransaction()
-        //    .add(R.id.fragment, IndexFragment())
-        //    .commit()
         
-        //binding.fragment.isVisible=false
     }
     
 

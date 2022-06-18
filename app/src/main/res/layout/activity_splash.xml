@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_lunch"
+    android:background="@drawable/rectangle"
+    android:paddingLeft="20dp">
+
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="top"
+        android:text="@string/welcome"
+        android:textAppearance="@style/welcome"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_logo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/image_arpha_logo_2"
+        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+
+    <TextView
+        android:id="@+id/arpha_intel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/arpha_intel"
+        android:textAppearance="@style/arpha_intel"
+        android:translationY="-2.65sp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo2" />
+
+
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right|top"
+        android:lineSpacingExtra="3dp"
+        android:text="@string/next"
+        android:layout_marginRight="10dp"
+        android:textAppearance="@style/next"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_arrow_icon36"
+        app:layout_constraintRight_toLeftOf="@+id/iv_arrow_icon36"
+        app:layout_constraintTop_toTopOf="@+id/iv_arrow_icon36" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_icon36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/back_arrow_icon_36"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
