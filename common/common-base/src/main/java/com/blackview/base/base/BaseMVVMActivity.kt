@@ -3,6 +3,7 @@ package com.blackview.base.base
 import android.app.ActionBar
 import android.app.Activity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -98,7 +99,7 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
             progressDialog?.dismiss()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(this, Observer {
-            ToastUtils.showShort(it)
+            toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(this, Observer {
             handleEvent(it)
@@ -140,5 +141,9 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
         pageHead = PageHead(activity)
         return pageHead
     }
-    
+
+    private fun toastShort(msg: String) {
+        ToastUtils.make().setGravity(Gravity.CENTER, 0, 0)
+        ToastUtils.showShort(msg)
+    }
 }

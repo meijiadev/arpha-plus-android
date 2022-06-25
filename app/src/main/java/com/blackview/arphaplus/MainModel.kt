@@ -1,17 +1,11 @@
 package com.blackview.arphaplus
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import androidx.lifecycle.switchMap
 import com.blackview.base.base.BaseViewModel
-import com.blackview.base.base.SingleLiveEvent
-import com.blackview.base.http.request
 import com.blackview.base.http.requestNoCheck
-import com.blackview.repository.apiService
 import com.blackview.repository.apiService2
-import com.blackview.repository.repository.RepositoryFactory
 import com.blackview.util.L
 
 /**

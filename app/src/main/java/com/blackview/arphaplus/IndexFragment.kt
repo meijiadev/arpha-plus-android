@@ -4,12 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.blackview.arphaplus.databinding.ActivityMainBinding
+import com.blackview.arphaplus.databinding.ActivityTestBinding
 import com.blackview.base.base.BaseMVVMFragment
-import com.blackview.repository.base.observeState
-import com.blackview.repository.repository.RepositoryFactory
-import com.blackview.repository.session.AccountSessionManager
-import com.blackview.repository.session.AppSessionManager
-import com.blankj.utilcode.util.PhoneUtils.call
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -34,9 +30,9 @@ import com.blankj.utilcode.util.PhoneUtils.call
  *
  * Created by home on 2022/5/31.
  */
-class IndexFragment : BaseMVVMFragment<ActivityMainBinding, MainModel>() {
+class IndexFragment : BaseMVVMFragment<ActivityTestBinding, MainModel>() {
     override fun initLayoutId(savedInstanceState: Bundle?): Int {
-        return R.layout.activity_main
+        return R.layout.activity_test
     }
 
     override fun createViewModel(fragment: Fragment): MainModel {

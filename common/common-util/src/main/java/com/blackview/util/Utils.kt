@@ -8,6 +8,7 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.launcher.ARouter
 
+
 inline fun <reified T : Activity> Context.gotoAct() {
     val intent = Intent(this, T::class.java)
     if (this is Application) {

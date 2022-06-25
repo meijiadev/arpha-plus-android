@@ -4,7 +4,10 @@ import androidx.lifecycle.viewModelScope
 import com.blackview.base.base.BaseViewModel
 import com.blackview.base.request.BaseResponse
 import com.blackview.util.L
+import com.google.gson.Gson
 import kotlinx.coroutines.*
+import org.json.JSONObject
+import retrofit2.HttpException
 
 /**
  * 过滤服务器结果，失败直接抛异常，没有回到异常信息
@@ -16,7 +19,7 @@ import kotlinx.coroutines.*
 fun <T> BaseViewModel.request(
     block: suspend () -> BaseResponse<T>,
     success: (T) -> Unit,
-    isShowDialog: Boolean = false,
+    isShowDialog: Boolean = true,
     loadingMessage: String = "请求网络中..."
 ): Job {
     //如果需要弹窗 通知Activity/fragment弹窗
@@ -44,11 +47,22 @@ fun <T> BaseViewModel.request(
         }.onFailure {
             //网络请求异常 关闭弹窗
             uiChangeLiveData.dismissDialogEvent.postValue(null)
-            //失败回调
-            ExceptionHandle.handleException(it).message?.apply {
-                //打印错误消息
-                L.e(this)
-                uiChangeLiveData.toastEvent.postValue(this)
+            if (it is HttpException) {
+                it.response()?.errorBody()?.string()?.apply {
+                    if (this.isNotEmpty()) {
+                        val message = JSONObject(this).optString("message")
+                        uiChangeLiveData.toastEvent.postValue(message)
+                    } else {
+                        uiChangeLiveData.toastEvent.postValue(it.response()?.message())
+                    }
+                }
+            } else {
+                //失败回调
+                ExceptionHandle.handleException(it).message?.apply {
+                    //打印错误消息
+                    L.e(this)
+                    uiChangeLiveData.toastEvent.postValue(this)
+                }
             }
         }
     }
@@ -66,7 +80,7 @@ fun <T> BaseViewModel.request(
     block: suspend () -> BaseResponse<T>,
     success: (T) -> Unit,
     error: (AppException) -> Unit = {},
-    isShowDialog: Boolean = false,
+    isShowDialog: Boolean = true,
     loadingMessage: String = "请求网络中..."
 ): Job {
     //如果需要弹窗 通知Activity/fragment弹窗
@@ -96,11 +110,22 @@ fun <T> BaseViewModel.request(
             //网络请求异常 关闭弹窗
             uiChangeLiveData.dismissDialogEvent.postValue(null)
             error(ExceptionHandle.handleException(it))
-            //失败回调
-            ExceptionHandle.handleException(it).message?.apply {
-                //打印错误消息
-                L.e(this)
-                uiChangeLiveData.toastEvent.postValue(this)
+            if (it is HttpException) {
+                it.response()?.errorBody()?.string()?.apply {
+                    if (this.isNotEmpty()) {
+                        val message = JSONObject(this).optString("message")
+                        uiChangeLiveData.toastEvent.postValue(message)
+                    } else {
+                        uiChangeLiveData.toastEvent.postValue(it.response()?.message())
+                    }
+                }
+            } else {
+                //失败回调
+                ExceptionHandle.handleException(it).message?.apply {
+                    //打印错误消息
+                    L.e(this)
+                    uiChangeLiveData.toastEvent.postValue(this)
+                }
             }
         }
     }
@@ -118,7 +143,7 @@ fun <T> BaseViewModel.requestNoCheck(
     block: suspend () -> T,
     success: (T) -> Unit,
     error: (AppException) -> Unit = {},
-    isShowDialog: Boolean = false,
+    isShowDialog: Boolean = true,
     loadingMessage: String = "请求网络中..."
 ): Job {
     //如果需要弹窗 通知Activity/fragment弹窗
@@ -136,11 +161,22 @@ fun <T> BaseViewModel.requestNoCheck(
             //网络请求异常 关闭弹窗
             uiChangeLiveData.dismissDialogEvent.postValue(null)
             error(ExceptionHandle.handleException(it))
-            //失败回调
-            ExceptionHandle.handleException(it).message?.apply {
-                //打印错误消息
-                L.e(this)
-                uiChangeLiveData.toastEvent.postValue(this)
+            if (it is HttpException) {
+                it.response()?.errorBody()?.string()?.apply {
+                    if (this.isNotEmpty()) {
+                        val message = JSONObject(this).optString("message")
+                        uiChangeLiveData.toastEvent.postValue(message)
+                    } else {
+                        uiChangeLiveData.toastEvent.postValue(it.response()?.message())
+                    }
+                }
+            } else {
+                //失败回调
+                ExceptionHandle.handleException(it).message?.apply {
+                    //打印错误消息
+                    L.e(this)
+                    uiChangeLiveData.toastEvent.postValue(this)
+                }
             }
         }
     }

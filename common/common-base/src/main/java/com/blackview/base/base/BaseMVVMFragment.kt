@@ -1,6 +1,7 @@
 package com.blackview.base.base
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,7 +88,7 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
             activity?.onBackPressed()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(viewLifecycleOwner, Observer {
-            ToastUtils.showShort(it)
+            toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(viewLifecycleOwner, Observer {
             handleEvent(it)
@@ -110,5 +111,10 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
     override fun initViewObservable() {
         viewModel.observeLiveData(this)
+    }
+
+    private fun toastShort(msg: String) {
+        ToastUtils.make().setGravity(Gravity.CENTER, 0, 0)
+        ToastUtils.showShort(msg)
     }
 }

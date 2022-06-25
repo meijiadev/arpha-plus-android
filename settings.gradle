@@ -5,6 +5,8 @@ pluginManagement {
         jcenter()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        // huawei HMS maven
+        maven { url 'https://developer.huawei.com/repo/' }
     }
 }
 dependencyResolutionManagement {
@@ -14,6 +16,8 @@ dependencyResolutionManagement {
         jcenter()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        // huawei HMS maven
+        maven { url 'https://developer.huawei.com/repo/' }
     }
 }
 rootProject.name = "arpha-plus-android"
@@ -23,6 +27,8 @@ include ':common:common-util'
 include ':common:common-widget'
 include ':common:common-repository'
 include ':common:common-constant'
+
+include ':notification:aipn'
 
 include ':module_device'
 include ':module_notice'

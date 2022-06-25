@@ -38,23 +38,38 @@
         app:layout_constraintRight_toRightOf="@+id/tv_register_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_register_title" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        android:paddingLeft="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/iv_register_arrow"
+        app:layout_constraintTop_toBottomOf="@+id/iv_register_register" />
+
     <TextView
         android:id="@+id/tv_register_region"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="90dp"
         android:text="@string/select_region"
         android:textColor="@color/gray_979797"
         android:textSize="14dp"
+        android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/iv_register_arrow"
         app:layout_constraintTop_toBottomOf="@+id/iv_register_register" />
 
     <ImageView
+        android:id="@+id/iv_register_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="40dp"
         android:src="@drawable/icon_arrow_down2_16"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tv_register_region"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_register_region" />
@@ -79,7 +94,8 @@
         android:background="@null"
         android:hint="@string/input_phone"
         android:inputType="number"
-        android:textColor="@color/gray_979797"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_979797"
         android:textSize="14dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v_register_line1" />
@@ -103,7 +119,8 @@
         android:background="@null"
         android:hint="@string/input_pwd"
         android:inputType="textPassword"
-        android:textColor="@color/gray_979797"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_979797"
         android:textSize="14dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v_register_line2" />
@@ -144,10 +161,9 @@
         android:id="@+id/cb_register_pwd_keep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="40dp"
-        android:button="@drawable/keep_check_style"
-        android:checked="false"
+        android:checked="true"
         android:paddingLeft="5dp"
         android:text="@string/policy1"
         app:layout_constraintLeft_toLeftOf="parent"

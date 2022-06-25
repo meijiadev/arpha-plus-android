@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorClean">#00000000</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="white">#fff</color>
+
+    <color name="AlarmColor">#FFF66333</color>
+    <color name="WarningColor">#FFFF6B6B</color>
+    <color name="LineColor">#FF666666</color>
+    <color name="TextColor">#FF666666</color>
+    <color name="TextColor9">#FF999999</color>
+    <color name="BtnNorColor">#FF666666</color>
+    <color name="BtnBlkColor">#FF444444</color>
+    <color name="BtnSelColor">#FF26A0FE</color>
+
+
+
+    <color name="ColBlue">#FF4fa4fc</color>
+    <color name="ColGray">#FFdddddd</color>
+    <color name="ColBg">#FFf6fbff</color>
+
+</resources>

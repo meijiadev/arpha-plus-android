@@ -40,6 +40,8 @@ class App : BaseApplication() {
             ARouter.openDebug()
         }
         ARouter.init(instance)
+
+        //AiPNDataCenter.getInstance().configAiPNSDK(instance)
     }
 
 }

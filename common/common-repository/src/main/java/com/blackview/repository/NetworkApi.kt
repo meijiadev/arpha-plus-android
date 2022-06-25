@@ -6,6 +6,7 @@ import com.blackview.base.http.CacheInterceptor
 import com.blackview.base.http.LoggerInterceptor
 import com.blackview.repository.api.ApiService
 import com.blackview.repository.api.ApiService2
+import com.blackview.repository.api.HttpService
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -27,6 +28,9 @@ val apiService: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
 }
 val apiService2: ApiService2 by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(ApiService2::class.java, ApiService2.SERVER_URL)
+}
+val httpService: HttpService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+    NetworkApi.INSTANCE.getApi(HttpService::class.java, HttpService.HTTP_URL)
 }
 
 class NetworkApi : BaseNetworkApi() {
@@ -83,8 +87,9 @@ class NetworkApi : BaseNetworkApi() {
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): Response {
             val builder = chain.request().newBuilder()
-            builder.addHeader("token", "").build()
-            builder.addHeader("Authorization", "").build()
+            builder.addHeader("key", "Accept-Language").build()
+            builder.addHeader("value", "zh-TW").build()
+            builder.addHeader("type", "text").build()
             return chain.proceed(builder.build())
         }
 

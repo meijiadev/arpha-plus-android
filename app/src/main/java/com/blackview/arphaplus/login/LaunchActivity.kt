@@ -42,7 +42,7 @@ class LaunchActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
-            gotoAct<LoginActivity>()
+            gotoAct<MainActivity>()
             finish()
         }, 1500)
     }

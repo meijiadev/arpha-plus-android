@@ -16,3 +16,5 @@ data class SuccessResponse<T>( var data1: T) : BaseResponse<T>()
 class EmptyResponse<T> : BaseResponse<T>()
 
 data class FailureResponse<T>(val exception: AppException) : BaseResponse<T>()
+
+data class Region(val id:String,val name:String) 

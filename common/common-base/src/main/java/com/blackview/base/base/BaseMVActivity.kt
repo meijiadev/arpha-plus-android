@@ -2,12 +2,14 @@ package com.blackview.base.base
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -63,7 +65,7 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
     }
 
     fun hideTitleBar() {
-        contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible=false
+        contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible = false
     }
 
     fun showTitleBar() {
@@ -89,7 +91,7 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
             progressDialog?.dismiss()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(this, Observer {
-            ToastUtils.showShort(it)
+            toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(this, Observer {
             handleEvent(it)
@@ -130,5 +132,52 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
     override fun getPageHead(activity: Activity?): PageHead {
         pageHead = PageHead(activity)
         return pageHead
+    }
+
+    fun getResString(res: Int): String {
+        return resources.getString(res)
+    }
+
+    private fun toastShort(msg: String) {
+        ToastUtils.make().apply {
+            setGravity(Gravity.CENTER, 0, 0)
+            setBgColor(ContextCompat.getColor(this@BaseMVActivity, com.blackview.common_res.R.color.black))
+            setTextColor(ContextCompat.getColor(this@BaseMVActivity, com.blackview.common_res.R.color.white))
+            show(msg)
+        }
+    }
+
+    var isEnableHideSoftInputFromWindow = false
+
+    /**
+     * 触摸空白区域自动隐藏键盘
+     *
+     * @param ev
+     * @return
+     */
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (ev.action == MotionEvent.ACTION_DOWN && isEnableHideSoftInputFromWindow) {
+            currentFocus?.apply {
+                if (isShouldHideKeyboard(this, ev)) {
+                    val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+                    imm?.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
+    // 根据EditText所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘
+    private fun isShouldHideKeyboard(v: View, event: MotionEvent): Boolean {
+        if (v is EditText) {
+            val l = intArrayOf(0, 0)
+            v.getLocationInWindow(l)
+            val left = l[0]
+            val top = l[1]
+            val bottom = top + v.getHeight()
+            val right = left + v.getWidth()
+            return !(event.x > left && event.x < right && event.y > top && event.y < bottom)
+        }
+        return false
     }
 }

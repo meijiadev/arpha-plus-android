@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">AutoKey</string>
 
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">钥匙</string>
+    <string name="title_notifications">我的</string>
+    
     <string name="welcome">Welcome</string>
     <string name="arpha_intel">Arpha intelligent home security solution.\nArpha in your life.</string>
     <string name="next">NEXT</string>
 
     <string name="select_region">请选择国家或地区</string>
+    <string name="china">中国</string>
+    <string name="taiwan">台湾</string>
+    <string name="japan">日本</string>
+    <string name="usa">美国</string>
+    <string name="email">邮箱</string>
     <string name="input_phone">请输入手机号码</string>
     <string name="input_pwd">请输入密码</string>
     <string name="input_pwd_again">请再次输入密码</string>
@@ -32,4 +41,5 @@
     <string name="reset_pwd_hint">請輸入您註冊時的電話號碼，我們會發送一封簡訊，點擊簡訊中的連結以重設密碼。若尚未收到認證簡訊時，請等待 5 分鐘。</string>
     <string name="return_back">返回上一页</string>
     <string name="reset_pwd_hint2">歡迎回來，請輸入 8 碼以上的英文、數字來重設密碼。</string>
+    
 </resources>

@@ -1,0 +1,206 @@
+<resources>
+    <string name="app_name">AiPN STG</string>
+
+    <!--推送标题-->
+    <string name="Service_Text">DPS 推送接收服务</string>
+
+    <!--lgRefreshListView 主界面设备列表下拉刷新-->
+    <string name="Date_Day1">天</string>
+    <string name="Time_Hour1">小时</string>
+    <string name="Time_Minute1">分钟</string>
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_at">上次更新于%1$s前</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
+
+    <string name="head_refreshing">正在刷新...</string>
+    <string name="head_release">松开刷新</string>
+    <string name="head_pulldown">下拉刷新</string>
+
+    <string name="footer_loading">正在加载...</string>
+    <string name="footer_release">松开加载</string>
+    <string name="footer_pullup">上拉加载</string>
+
+
+    <!--lgRefreshListView 主界面设备列表下拉刷新-->
+    <!--<string name="Date_Day1">days</string>-->
+    <!--<string name="Time_Hour1">hours</string>-->
+    <!--<string name="Time_Minute1">minutes</string>-->
+    <!--<string name="pull_to_refresh">Pull down to refresh</string>-->
+    <!--<string name="release_to_refresh">Release to stop refresh</string>-->
+    <!--<string name="refreshing">Refreshing...</string>-->
+    <!--<string name="not_updated_yet">Ready to refresh</string>-->
+    <!--<string name="updated_at">Refreshed in %1$s ago</string>-->
+    <!--<string name="updated_just_now">Refreshed just now</string>-->
+    <!--<string name="time_error">Time error</string>-->
+    <!---->
+    <string name="ShowMsg_DClickExit">再按一次退出程序</string>
+    <!--<string name="ShowMsg_DClickExit">Tap again to exit app!</string>-->
+
+    <string name="ShowMsg_Fail">失败</string>
+
+    <string name="ShowMsg_TimeOut">超时</string>
+    <string name="ShowMsg_OffAipnTip">关闭AiPN推送后,将无法收到推送消息</string>
+    <string name="ShowMsg_OffPush">推送已关闭</string>
+    <string name="ShowMsg_OnPush">推送已开启</string>
+    <string name="ShowMsg_unSubscribOk">已取消订阅AiPN推送</string>
+    <string name="ShowMsg_SubscribOk">已成功订阅AiPN推送</string>
+    <string name="ShowMsg_IsDeleteDev">确定要删除该设备?</string>
+    <string name="ShowMsg_DeleteDevOk">删除设备成功</string>
+    <string name="ShowMsg_MainPushOff">请先在首页开启推送</string>
+    <string name="ShowMsg_ChgeChnl">设备 %1$s 已经订阅通道 %2$s,需要取消订阅,才能订阅新通道</string>
+
+    <!-- lgDialog Btn  弹出输入框、提示框按钮-->
+    <string name="lgDBtn_NextStep">下一步</string>
+    <string name="lgDBtn_Determine">确定</string>
+    <string name="lgDBtn_Cancel">取消</string>
+    <string name="lgDBtn_YES">是</string>
+    <string name="lgDBtn_NO">否</string>
+    <!-- lgDialog Title  弹出输入框、提示框 标题-->
+    <string name="lgDTitle_Prompt">提示</string>
+    <string name="ShowMsg_Loading">加载中...</string>
+
+    <!--&lt;!&ndash; lgDialog Btn  弹出输入框、提示框按钮&ndash;&gt;-->
+    <!--<string name="lgDBtn_NextStep">Next</string>-->
+    <!--<string name="lgDBtn_Determine">OK</string>-->
+    <!--<string name="lgDBtn_Cancel">Cancel</string>-->
+    <!--<string name="lgDBtn_YES">YES</string>-->
+    <!--<string name="lgDBtn_NO">NO</string>-->
+    <!--&lt;!&ndash; lgDialog Title  弹出输入框、提示框 标题&ndash;&gt;-->
+    <!--<string name="lgDTitle_Prompt">Prompt</string>-->
+    <!--<string name="ShowMsg_Loading">Loading...</string>-->
+
+    <!-- lx_start_view -->
+    <string name="checkNil">未知</string>
+    <string name="checkIng">,请稍后</string>
+    <string name="checkOk">完成</string>
+    <string name="checkFailed">失败</string>
+    <string name="checkNdtQSText">检查 Get Server Info</string>
+    <string name="checkApnsTokenText">检查 Device Token</string>
+    <string name="checkAipnSubText">检查 AiPN CheckSub</string>
+    <string name="checkTipText">检查完成,2秒后退回主界面...</string>
+    <string name="checkNetworkState">联网检查中,请稍后...</string>
+    <string name="checkNetworkAgain">重新检查</string>
+
+    <!--首页-->
+    <string name="startMainViewTitle">首页</string>
+    <string name="startMainBtnDevList">设备列表</string>
+    <string name="startMainBtnNetCk">联网检查</string>
+    <string name="startMainBtnAbout">关于</string>
+
+    <!--ActDevList-->
+    <string name="ActDevList_title">设备列表</string>
+    <string name="ActDevList_return">回首页</string>
+    <string name="ActDevList_netCheck">联网检查</string>
+    <string name="ActDevList_devAdd">添加设备</string>
+    <string name="ActDevList_emptytip">还没有添加设备</string>
+
+    <string name="ActDevList_Edit">修改</string>
+    <string name="ActDevList_SubNil">未订阅</string>
+    <string name="ActDevList_SubEd">已订阅</string>
+    <string name="ActDevList_AiServer">AI服务</string>
+    <string name="ActDevList_HistoryEd">历史</string>
+    <string name="ActDevList_HistoryIng">加载中...</string>
+    <string name="ActDevList_HistoryNil">待加载</string>
+    <string name="ActDevList_HistoryErr">错误</string>
+
+    <!--ActMsgList-->
+    <string name="ActMsgList_title">历史消息</string>
+    <string name="ActMsgList_Today">今天</string>
+    <string name="ActMsgList_Yesterday">昨天</string>
+    <string name="ActMsgList_custom">自定义</string>
+    <string name="ActMsgList_DTstr">开始时间</string>
+    <string name="ActMsgList_DTetr">结束时间</string>
+    <string name="ActMsgList_DTnet">下一步</string>
+    <string name="ActMsgList_DTsub">确定</string>
+    <string name="ActMsgList_CancelBtn">取消</string>
+    <string name="ActMsgList_emptytip">该时间段没有消息</string>
+
+    <string name="ActMsgList_StLgEt">开始时间不能大于或等于结束时间</string>
+
+    <!--ActMsgInFo-->
+    <string name="ActMsgInFo_title">消息详情</string>
+    <string name="ActMsgInFo_Did">DID</string>
+    <string name="ActMsgInFo_Ch">通道</string>
+    <string name="ActMsgInFo_SubKey">SubscribKey</string>
+    <string name="ActMsgInFo_Time">时间</string>
+    <string name="ActMsgInFo_Content">Push Content</string>
+    <string name="ActMsgInFo_Ainame"></string>
+    <string name="ActMsgInFo_Img">图片文件</string>
+    <string name="ActMsgInFo_Gif">gif文件</string>
+    <string name="ActMsgInFo_Video">视频文件</string>
+    <string name="ActMsgInFo_Other">其他文件</string>
+    <string name="ShowMsg_NoAvailablePlayer">没有找到可用播放器</string>
+
+    <string name="ActMsgInFo_DelTitle">删除事件</string>
+    <string name="ActMsgInFo_DelTitleTips">确定要删除选择的 %1$s 个事件</string>
+    <string name="ActMsgInFo_DelTitleTip">确定要删除当前事件吗？</string>
+    <string name="ActMsgInFo_DelLc">删除本地</string>
+    <string name="ActMsgInFo_DelClu">删除本地和云端</string>
+    <string name="ActMsgInFo_DelOk">删除事件成功</string>
+
+    <!--ActAbout-->
+    <string name="ActAbout_title">关于我们</string>
+    <string name="ActAbout_AppVs">App版本</string>
+    <string name="ActAbout_PushSetting">推送设置</string>
+    <string name="ActAbout_About">关于尚云</string>
+    <string name="ActAbout_helpPdf">帮助文档</string>
+
+    <!--ActAddEditDev-->
+    <string name="ActAddEditDev_AddTitle">添加设备</string>
+    <string name="ActAddEditDev_EditTitle">修改信息</string>
+    <string name="ActAddEidtDev_SaveBtn">存储</string>
+    <string name="ActAddEditDev_DeleteBtn">删除设备</string>
+
+    <string name="ActAddEidtDev_Did">DID</string>
+    <string name="ActAddEditDev_SubKey">SubscribKey</string>
+    <string name="ActAddEditDev_Ch">CH</string>
+    <string name="ActAddEditDev_DidHint">请输入DID</string>
+    <string name="ActAddEditDev_SubKeyHint">请输入SubscribKey</string>
+    <string name="ActAddEditDev_ChHint">请输入CH</string>
+    <string name="ActAddEditDev_ChHintInvalid">CH取值为[0~65535]</string>
+    <string name="ActAddEditDev_DevExist">通道为 %1$s 的设备 %2$s 已经存在</string>
+    <string name="ShowMsg_InvalDevDid">无效DID</string>
+    <string name="add_device_unsubscrib_failed">取消订阅失败，请稍后再试</string>
+
+    <string name="devlist_subscrib_failed">订阅AiPN推送失败</string>
+    <string name="devlist_unsubscrib_failed">取消订阅AiPN推送失败</string>
+    <string name="main_enable_global_push_failed">开启推送失败，建议检查网络</string>
+    <string name="main_disable_global_push_failed">关闭推送失败，建议检查网络</string>
+    <string name="devlist_sync_failed">同步事件失败</string>
+    <string name="msg_detail_load_pushcontent">loading push content...</string>
+    <string name="msg_detail_load_filelist">loading file list...</string>
+    <string name="msg_detail_download_file">Downloading...</string>
+
+    <string name="lgDPrompt_MakeSureDelVideo">确定删除视频?</string>
+    <string name="lgDPrompt_MakeSureDelFile">确定删除文件?</string>
+    <string name="AlbumChooserTitle_Share">分享</string>
+
+    <string name="lxFrgmBotmView_Del">删除</string>
+    <string name="lxFrgmBotmView_Dl">下载</string>
+    <string name="lxFrgmBotmView_Shear">分享</string>
+
+    <!--AI-->
+    <string name="ai_device_id">设备ID：</string>
+    <string name="ai_current">当前套餐：</string>
+    <string name="ai_period">有效期：</string>
+
+    <string name="ai_history">历史购买记录</string>
+    <string name="ai_priceset_buy">购买套餐</string>
+    <string name="ai_pay">购买</string>
+    <string name="ai_effect">生效中</string>
+    <string name="ai_effect_no">未生效</string>
+    <string name="ai_price_unit">￥%s元/月</string>
+    <string name="ai_price">￥%s元</string>
+
+    <string name="ai_pay_type">支付方式</string>
+    <string name="ai_pay_wx">微信支付</string>
+    <string name="ai_pay_ali">支付宝</string>
+    <string name="ai_pay_ok">确认支付￥%s</string>
+
+    <string name="ai_pay_success">支付成功</string>
+    <string name="ai_pay_fail">支付失败</string>
+</resources>

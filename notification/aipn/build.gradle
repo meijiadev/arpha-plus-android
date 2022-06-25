@@ -1,0 +1,81 @@
+if (!isAipn.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+//apply plugin: 'com.huawei.agconnect'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        if (!isAipn.toBoolean()) {
+            applicationId "mykj.stg.aipn"
+        }
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 11
+        versionName "1.0.8"
+
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    if (!isAipn.toBoolean()) {
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                if (variant.name.endsWith("debug")) {
+                    outputFileName = "STG Dv" + defaultConfig.versionName + "(" + defaultConfig.versionCode + ").apk"
+                } else {
+                    outputFileName = "STG Rv" + defaultConfig.versionName + "(" + defaultConfig.versionCode + ").apk"
+                }
+            }
+        }
+    }
+   
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            // 独立调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (isAipn.toBoolean()) {
+                manifest.srcFile 'src/main/moduleManifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    //implementation 'com.github.nuptboyzhb.lib.uikit:superswiperefreshlayout:1.0.0'
+    //implementation 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+    //implementation 'com.feezu.liuli:timeselector:1.1.3+'
+    //implementation 'com.github.bumptech.glide:glide:4.9.0'
+    //annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    //implementation 'cn.jzvd:jiaozivideoplayer:7.0.5'
+
+    // HMS push kit
+    implementation 'com.huawei.hms:push:4.0.3.301'
+    // VIVO push aar
+    implementation files('libs/vivo_pushsdk-v2.9.0.0.aar')
+    // OPPO push arr
+    implementation files('libs/com.heytap.msp.aar')
+}
+
