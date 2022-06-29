@@ -15,6 +15,9 @@
     <color name="text_BC9E70">#BC9E70</color>
     <color name="gray_B5B5B6">#B5B5B6</color>
     <color name="grey_4F4C4B">#4F4C4B</color>
+    <color name="gray_F8F8F8">#F8F8F8</color>
+    <color name="gray_E5E5E5">#E5E5E5</color>
+    <color name="gray_e2e2e2">#e2e2e2</color>
 
     <color name="line_color">#ffececec</color>
 </resources>

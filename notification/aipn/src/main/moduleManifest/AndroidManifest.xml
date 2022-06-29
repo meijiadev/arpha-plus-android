@@ -13,15 +13,15 @@
     <!-- DPS Needed -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-<!--    <uses-permission-->
-<!--        android:name="android.permission.WRITE_SETTINGS"-->
-<!--        tools:ignore="ProtectedPermissions" />-->
+    <!--    <uses-permission-->
+    <!--        android:name="android.permission.WRITE_SETTINGS"-->
+    <!--        tools:ignore="ProtectedPermissions" />-->
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-<!--    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />-->
+    <!--    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<!--    <uses-permission android:name="android.permission.VIBRATE" />-->
+    <!--    <uses-permission android:name="android.permission.VIBRATE" />-->
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- MI Push -->
@@ -118,7 +118,8 @@
             android:exported="true" />
 
         <!-- VIVO Push Receiver -->
-        <receiver android:name="com.push.VIVOPushMessageReceiver"
+        <receiver
+            android:name="com.push.VIVOPushMessageReceiver"
             android:exported="true">
             <intent-filter>
                 <!-- 接收 push 消息 -->
@@ -134,7 +135,21 @@
             android:name="com.vivo.push.app_id"
             android:value="16636" />
 
+        <service
+            android:name="com.heytap.msp.push.service.CompatibleDataMessageCallbackService"
+            android:exported="true" />
 
+        <service
+            android:name="com.heytap.msp.push.service.DataMessageCallbackService"
+            android:exported="true" />
+
+        <receiver
+            android:name="com.huawei.hms.support.api.push.PushMsgReceiver"
+            android:exported="true" />
+        <receiver
+            android:name="com.huawei.hms.support.api.push.PushReceiver"
+            android:exported="true" />
+        
     </application>
 
 </manifest>

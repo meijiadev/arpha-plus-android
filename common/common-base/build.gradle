@@ -62,5 +62,7 @@ dependencies {
 
     //ui适配
     api 'me.jessyan:autosize:1.2.1'
+
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     
 }

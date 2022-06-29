@@ -42,4 +42,19 @@
     <string name="return_back">返回上一页</string>
     <string name="reset_pwd_hint2">歡迎回來，請輸入 8 碼以上的英文、數字來重設密碼。</string>
     
+    
+    <string name="device">Device</string>
+    <string name="search_hint">請輸入裝置名稱或編號</string>
+    <string name="add_device">新增装置</string>
+    <string name="add_device1">選擇裝置類型</string>
+    <string name="add_device2">選擇配網方式</string>
+    <string name="add_device22">選擇 2.4 GHz Wi-Fi 網路並輸入密碼</string>
+    <string name="add_device3">正在新增裝置</string>
+    <string name="add_device4">設備已連接</string>
+    <string name="add_device_hint">說明: 熱點為裝置熱點 \n QRcode:需為 2.4GHz </string>
+    <string name="hot_dot">热点</string>
+    <string name="qr_code">Qrcode</string>
+    <string name="select_wifi">請選擇 Wi-Fi</string>
+    <string name="select_wifi_tips">如果你的 Wi-Fi 是 5GHz，請先設置為 2.4 Hz</string>
+    <string name="more_tips">更多常見問題</string>
 </resources>
