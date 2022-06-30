@@ -4,7 +4,7 @@
     package="com.blackview.arphaplus">
 
     <application
-        android:name=".App"
+        android:name="com.blackview.base.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".login.LaunchActivity"
+            android:name=".LaunchActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
@@ -26,18 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" 
+            android:launchMode="singleTask"
+            />
         <activity android:name=".DemoActivity" />
-
         <activity android:name=".TestActivity" />
-        <activity
-            android:name=".login.LoginActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".login.RegisterActivity" />
-        <activity android:name=".login.CodeActivity" />
-        <activity android:name=".login.SuccessActivity" />
-        <activity android:name=".login.ForgetActivity"/>
-        <activity android:name=".login.ResetPwdActivity"/>
+        
         <!--全面屏-->
         <meta-data
             android:name="android.max_aspect"

@@ -26,14 +26,14 @@ import retrofit2.http.*
  * 　　　　　┃┫┫　┃┫┫
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
- *
+ *  登录
  * Created by home on 2022/6/20.
  */
 interface LoginService {
 
     companion object {
         //const val HTTP_URL = "http://54.251.22.185/"
-        const val HTTP_URL="https://api2.arpha-tech.com"
+        const val HTTP_URL = "https://api2.arpha-tech.com"
     }
 
     //注册
@@ -50,19 +50,19 @@ interface LoginService {
 
     //输入验证码
     @POST("api/valid")
-    suspend fun validCode(@Body params: ArrayMap<Any, Any>):ResponseBody
+    suspend fun validCode(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     //忘记密码--检查账号
     @POST("api/forget-check")
-    suspend fun forgetCheck(@Body params: ArrayMap<Any, Any>):ResponseBody
+    suspend fun forgetCheck(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     //忘记密码--输入验证码
     @POST("api/forget-validate")
-    suspend fun forgetValidate(@Body params: ArrayMap<Any, Any>):ResponseBody
+    suspend fun forgetValidate(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     //忘记密码--更新密码
     @PUT("api/reset-password")
-    suspend fun resetPwd(@Body params: ArrayMap<Any, Any>):ResponseBody
+    suspend fun resetPwd(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     //微信登录
     @POST("api/oauth/wechat")

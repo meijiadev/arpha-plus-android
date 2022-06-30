@@ -1,4 +1,4 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
 import android.os.Bundle
 import android.text.InputType
@@ -6,14 +6,11 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.blackview.arphaplus.R
-import com.blackview.arphaplus.databinding.ActivityRegisterBinding
+import com.blackview.base.R
 import com.blackview.base.base.BaseMVActivity
-import com.blackview.base.request.Region
-import com.blackview.util.gotoAct
+import com.blackview.base.databinding.ActivityRegisterBinding
 import com.blackview.common_res.R.string
+import com.blackview.util.gotoAct
 
 /**
  * ━━━━━━神兽出没━━━━━━

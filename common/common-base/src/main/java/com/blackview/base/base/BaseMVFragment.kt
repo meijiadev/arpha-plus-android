@@ -58,6 +58,8 @@ abstract class BaseMVFragment<V : ViewBinding, VM : BaseViewModel> : Fragment(),
 
         initData()
 
+        initListener()
+
         initViewObservable()
 
         viewModel.uiChangeLiveData.showDialogEvent.observe(viewLifecycleOwner, Observer {
@@ -76,6 +78,9 @@ abstract class BaseMVFragment<V : ViewBinding, VM : BaseViewModel> : Fragment(),
             activity?.onBackPressed()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(viewLifecycleOwner, Observer {
+            if (it.contains("unauthenticated")) {
+                activity?.finish()
+            }
             toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(viewLifecycleOwner, Observer {
@@ -96,9 +101,11 @@ abstract class BaseMVFragment<V : ViewBinding, VM : BaseViewModel> : Fragment(),
 
     override fun initView() {
     }
+
     override fun initListener() {
 
     }
+
     override fun initViewObservable() {
         viewModel.observeLiveData(this)
     }
@@ -107,8 +114,9 @@ abstract class BaseMVFragment<V : ViewBinding, VM : BaseViewModel> : Fragment(),
         _binding = null
         super.onDestroyView()
     }
-    private fun toastShort(msg:String){
-        ToastUtils.make().setGravity(Gravity.CENTER,0,0)
+
+    private fun toastShort(msg: String) {
+        ToastUtils.make().setGravity(Gravity.CENTER, 0, 0)
         ToastUtils.showShort(msg)
     }
 }

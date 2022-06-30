@@ -1,4 +1,4 @@
-package com.blackview.arphaplus.login
+package com.blackview.arphaplus
 
 import android.app.Activity
 import android.os.Build
@@ -8,9 +8,8 @@ import android.os.Looper
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import com.blackview.arphaplus.MainActivity
-import com.blackview.arphaplus.R
-import com.blackview.base.BaseApplication.Companion.token
+import com.blackview.base.App.Companion.token
+import com.blackview.repository.login.LoginActivity
 import com.blackview.util.gotoAct
 
 /**

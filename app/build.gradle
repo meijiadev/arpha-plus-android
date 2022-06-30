@@ -64,8 +64,6 @@ dependencies {
     if (isVipModule.toBoolean()) {
         implementation project(':module_vip')
     }
-    if (isAipn) {
-        implementation project(':notification:aipn')
-    }
+    
 
 }

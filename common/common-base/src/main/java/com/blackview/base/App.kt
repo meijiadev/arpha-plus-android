@@ -1,6 +1,9 @@
 package com.blackview.base
 
 import android.app.Application
+import com.AiPN.AiPNDataCenter
+import com.alibaba.android.arouter.launcher.ARouter
+import com.blackview.contant.USER_TOKEN
 import com.blackview.util.L
 import com.blackview.util.SpUtil
 import com.tencent.mmkv.MMKV
@@ -28,19 +31,26 @@ import com.tencent.mmkv.MMKV
  *
  * Created by home on 2022/5/30.
  */
-abstract class BaseApplication : Application() {
+class App : Application() {
 
     companion object {
-        lateinit var instance: BaseApplication
+        lateinit var instance: App
         lateinit var token: String
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
+        ARouter.init(instance)
         MMKV.initialize(instance)
-        token = SpUtil.decodeString("token") ?: ""
+        token = SpUtil.decodeString(USER_TOKEN) ?: ""
         L.e("token:$token")
+        AiPNDataCenter.getInstance().configAiPNSDK(instance)
+
     }
 
 

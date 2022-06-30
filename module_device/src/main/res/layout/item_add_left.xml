@@ -6,6 +6,8 @@
     android:layout_height="wrap_content">
 
     <com.caldremch.widget.round.RoundTextView
+        android:id="@+id/tv_left_title"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -18,4 +20,15 @@
         app:rl_radius_right_bottom="30dp"
         app:rl_radius_right_top="30dp"
         app:rl_startColor="#C9A063" />
+
+    <com.caldremch.widget.round.RoundTextView
+        android:id="@+id/tv_left_title1"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minWidth="120dp"
+        android:minHeight="32dp"
+        android:text="hello wrold"
+        android:textColor="@color/black_4F4C4B" />
 </androidx.constraintlayout.widget.ConstraintLayout>

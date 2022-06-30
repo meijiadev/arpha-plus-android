@@ -62,6 +62,10 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
         showFragment1()
     }
 
+    override fun initData() {
+        super.initData()
+    }
+
     @SuppressLint("MissingSuperCall")
     override fun onSaveInstanceState(outState: Bundle) {
         //super.onSaveInstanceState(outState)

@@ -84,6 +84,8 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
 
         initData()
 
+        initListener()
+        
         initViewObservable()
 
         viewModel.uiChangeLiveData.showDialogEvent.observe(this, Observer {
@@ -99,6 +101,9 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
             progressDialog?.dismiss()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(this, Observer {
+            if (it.contains("unauthenticated")){
+                finish()
+            }
             toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(this, Observer {

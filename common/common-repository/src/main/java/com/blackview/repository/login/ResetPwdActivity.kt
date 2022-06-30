@@ -1,12 +1,10 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import com.blackview.arphaplus.R
-import com.blackview.arphaplus.databinding.ActivityCodeBinding
-import com.blackview.arphaplus.databinding.ActivityResetPwdBinding
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.base.databinding.ActivityResetPwdBinding
 import com.blackview.util.gotoAct
 
 /**

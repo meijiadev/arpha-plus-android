@@ -2,6 +2,8 @@ package com.blackview.module_device.add.adapter
 
 import com.blackview.base.base.BaseViewModel
 import com.blackview.module_device.R
+import com.blackview.repository.entity.ProductList
+import com.blackview.repository.entity.ProductType
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
@@ -28,9 +30,17 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  *
  * Created by home on 2022/6/28.
  */
-class AddLeftAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_add_left) {
+class AddLeftAdapter : BaseQuickAdapter<ProductType, BaseViewHolder>(R.layout.item_add_left) {
 
-    override fun convert(holder: BaseViewHolder, item: String) {
-
+    override fun convert(holder: BaseViewHolder, item: ProductType) {
+        if (item.isSelect) {
+            holder.setGone(R.id.tv_left_title, false)
+            holder.setGone(R.id.tv_left_title1, true)
+        } else {
+            holder.setGone(R.id.tv_left_title, true)
+            holder.setGone(R.id.tv_left_title1, false)
+        }
+        holder.setText(R.id.tv_left_title, item.name)
+        holder.setText(R.id.tv_left_title1, item.name)
     }
 }

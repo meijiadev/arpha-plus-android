@@ -2,6 +2,7 @@ package com.blackview.module_device.add.adapter
 
 import com.blackview.base.base.BaseViewModel
 import com.blackview.module_device.R
+import com.blackview.repository.entity.Product
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
@@ -28,11 +29,11 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  *
  * Created by home on 2022/6/28.
  */
-class AddRightAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_add_right) {
-   
-    override fun convert(holder: BaseViewHolder, item: String) {
-        
+class AddRightAdapter : BaseQuickAdapter<Product, BaseViewHolder>(R.layout.item_add_right) {
+
+    override fun convert(holder: BaseViewHolder, item: Product) {
+        holder.setText(R.id.tv_right_title, item.product_name)
     }
-    
-    
+
+
 }

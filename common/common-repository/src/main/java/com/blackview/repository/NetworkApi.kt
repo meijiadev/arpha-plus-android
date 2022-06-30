@@ -1,11 +1,12 @@
 package com.blackview.repository
 
-import com.blackview.base.BaseApplication
+import com.blackview.base.App
 import com.blackview.base.http.BaseNetworkApi
 import com.blackview.base.http.CacheInterceptor
 import com.blackview.base.http.LoggerInterceptor
 import com.blackview.repository.api.ApiService
 import com.blackview.repository.api.ApiService2
+import com.blackview.repository.api.HttpService
 import com.blackview.repository.api.LoginService
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -32,6 +33,9 @@ val apiService2: ApiService2 by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
 val loginService: LoginService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(LoginService::class.java, LoginService.HTTP_URL)
 }
+val httpService: HttpService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+    NetworkApi.INSTANCE.getApi(HttpService::class.java, LoginService.HTTP_URL)
+}
 
 class NetworkApi : BaseNetworkApi() {
 
@@ -48,7 +52,7 @@ class NetworkApi : BaseNetworkApi() {
     override fun setHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder {
         builder.apply {
             //设置缓存配置 缓存最大10M
-            cache(Cache(File(BaseApplication.instance.cacheDir, "cache"), 10 * 1024 * 1024))
+            cache(Cache(File(App.instance.cacheDir, "cache"), 10 * 1024 * 1024))
             //添加Cookies自动持久化
             cookieJar(cookieJar)
             //示例：添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
@@ -76,7 +80,7 @@ class NetworkApi : BaseNetworkApi() {
     }
 
     private val cookieJar: PersistentCookieJar by lazy {
-        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(BaseApplication.instance))
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.instance))
     }
 
     /**
@@ -90,6 +94,9 @@ class NetworkApi : BaseNetworkApi() {
             builder.addHeader("key", "Accept-Language").build()
             builder.addHeader("value", "zh-TW").build()
             builder.addHeader("type", "text").build()
+            if (App.token.isNotEmpty()) {
+                builder.addHeader("Authorization", "Bearer ${App.token}")
+            }
             return chain.proceed(builder.build())
         }
 

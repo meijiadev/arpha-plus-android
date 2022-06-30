@@ -4,6 +4,7 @@
 
     <application>
         <activity android:name=".DeviceActivity" />
+        <activity android:name=".add.AddAty"/>
     </application>
 
 </manifest>

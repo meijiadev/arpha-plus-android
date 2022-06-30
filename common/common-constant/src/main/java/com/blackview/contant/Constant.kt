@@ -33,3 +33,5 @@ const val vip = "/vip/main"
 const val USER = "username"
 
 const val PASSWORD = "password"
+
+const val USER_TOKEN="token"

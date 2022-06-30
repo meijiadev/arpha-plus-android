@@ -70,6 +70,8 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
         initData()
 
+        initListener()
+
         initViewObservable()
 
         viewModel.uiChangeLiveData.showDialogEvent.observe(viewLifecycleOwner, Observer {
@@ -88,6 +90,9 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
             activity?.onBackPressed()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(viewLifecycleOwner, Observer {
+            if (it.contains("unauthenticated")) {
+                activity?.finish()
+            }
             toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(viewLifecycleOwner, Observer {
@@ -108,9 +113,11 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
     override fun initView() {
     }
+
     override fun initListener() {
 
     }
+
     override fun initViewObservable() {
         viewModel.observeLiveData(this)
     }

@@ -1,11 +1,7 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
-import android.content.ContextParams
-import androidx.core.content.ContextCompat
-import com.blackview.arphaplus.R
-import com.blackview.arphaplus.databinding.ActivityCodeBinding
-import com.blackview.arphaplus.databinding.ActivityRegisterSuccessBinding
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.base.databinding.ActivityRegisterSuccessBinding
 import com.blackview.util.gotoAct
 
 /**

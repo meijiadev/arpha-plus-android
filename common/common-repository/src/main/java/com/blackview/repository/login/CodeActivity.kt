@@ -1,9 +1,8 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
 import android.os.Bundle
-import com.blackview.arphaplus.R
-import com.blackview.arphaplus.databinding.ActivityCodeBinding
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.base.databinding.ActivityCodeBinding
 import com.blackview.util.gotoAct
 
 /**

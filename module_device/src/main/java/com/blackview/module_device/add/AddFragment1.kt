@@ -14,6 +14,7 @@ import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.add.adapter.AddLeftAdapter
 import com.blackview.module_device.add.adapter.AddRightAdapter
 import com.blackview.module_device.databinding.FragmentAddOneBinding
+import com.blackview.repository.entity.ProductType
 import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.SizeUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -72,7 +73,6 @@ class AddFragment1 : BaseMVFragment<FragmentAddOneBinding, AddModel>() {
                 }
             })
         }
-        leftAdapter.addData(listOf("dd", "dd", "dd", "dd"))
 
         binding.recyclerRight.apply {
             setHasFixedSize(true)
@@ -85,13 +85,42 @@ class AddFragment1 : BaseMVFragment<FragmentAddOneBinding, AddModel>() {
                 }
             })
         }
-        rightAdapter.addData(listOf("aa", "aa", "aa", "aa"))
+
+        viewModel.productType()
+        
     }
 
-    override fun initParam() {
-        super.initParam()
+
+    override fun initListener() {
+        super.initListener()
+        leftAdapter.setOnItemClickListener { adater, view, position ->
+            val datas = adater.data as List<ProductType>
+            val bean = adater.data[position] as ProductType
+            if (!bean.isSelect) {
+                datas.forEach {
+                    it.isSelect = false
+                }
+                bean.isSelect = true
+                adater.notifyDataSetChanged()
+                viewModel.products(bean.name)
+            }
+
+
+        }
         rightAdapter.setOnItemClickListener { adapter, view, position ->
             (activity as AddAty).showFragment2()
         }
+    }
+
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        viewModel.liveDataProductList.observe(this) {
+            leftAdapter.setList(it)
+        }
+        viewModel.liveDataProducts.observe(this) {
+            rightAdapter.addData(it)
+        }
+
     }
 } 

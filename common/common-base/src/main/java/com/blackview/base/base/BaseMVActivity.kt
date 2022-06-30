@@ -92,6 +92,9 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
             progressDialog?.dismiss()
         })
         viewModel.uiChangeLiveData.toastEvent.observe(this, Observer {
+            if (it.contains("unauthenticated")){
+                finish()
+            }
             toastShort(it)
         })
         viewModel.uiChangeLiveData.uiMessageEvent.observe(this, Observer {

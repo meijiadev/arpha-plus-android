@@ -1,10 +1,14 @@
 package com.blackview.base.http
 
 import androidx.lifecycle.viewModelScope
+import com.blackview.base.App
 import com.blackview.base.base.BaseViewModel
 import com.blackview.base.request.BaseResponse
+import com.blackview.contant.USER_TOKEN
+import com.blackview.repository.login.LoginActivity
 import com.blackview.util.L
-import com.google.gson.Gson
+import com.blackview.util.SpUtil
+import com.blackview.util.gotoAct
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import retrofit2.HttpException
@@ -52,6 +56,12 @@ fun <T> BaseViewModel.request(
                     if (this.isNotEmpty()) {
                         val message = JSONObject(this).optString("message")
                         uiChangeLiveData.toastEvent.postValue(message)
+                        //token 过期 重新登录
+                        if (message.contains("unauthenticated")){
+                            SpUtil.encode(USER_TOKEN,"")
+                            App.instance.gotoAct<LoginActivity>()
+                        }
+                        
                     } else {
                         uiChangeLiveData.toastEvent.postValue(it.response()?.message())
                     }
@@ -115,6 +125,10 @@ fun <T> BaseViewModel.request(
                     if (this.isNotEmpty()) {
                         val message = JSONObject(this).optString("message")
                         uiChangeLiveData.toastEvent.postValue(message)
+                        //token 过期 重新登录
+                        if (message.contains("unauthenticated")){
+                            App.instance.gotoAct<LoginActivity>()
+                        }
                     } else {
                         uiChangeLiveData.toastEvent.postValue(it.response()?.message())
                     }
@@ -166,6 +180,10 @@ fun <T> BaseViewModel.requestNoCheck(
                     if (this.isNotEmpty()) {
                         val message = JSONObject(this).optString("message")
                         uiChangeLiveData.toastEvent.postValue(message)
+                        //token 过期 重新登录
+                        if (message.contains("unauthenticated")){
+                            App.instance.gotoAct<LoginActivity>()
+                        }
                     } else {
                         uiChangeLiveData.toastEvent.postValue(it.response()?.message())
                     }
@@ -191,7 +209,7 @@ suspend fun <T> executeResponse(
 ) {
     coroutineScope {
         when (response.code) {
-            0, 200 -> {
+            0, 20000,20004 -> {
                 response.data?.let {
                     success(it)
                 }

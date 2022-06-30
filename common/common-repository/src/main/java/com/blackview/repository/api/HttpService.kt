@@ -1,9 +1,12 @@
-package com.blackview.arphaplus
+package com.blackview.repository.api
 
-import com.AiPN.AiPNDataCenter
-import com.alibaba.android.arouter.launcher.ARouter
-import com.blackview.base.BaseApplication
-import com.blackview.base.BuildConfig
+import android.util.ArrayMap
+import com.blackview.base.request.BaseResponse
+import com.blackview.repository.entity.Product
+import com.blackview.repository.entity.ProductList
+import com.blackview.repository.entity.Products
+import okhttp3.ResponseBody
+import retrofit2.http.*
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -26,19 +29,17 @@ import com.blackview.base.BuildConfig
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * Created by home on 2022/5/30.
+ * Created by home on 2022/6/30.
  */
-class App : BaseApplication() {
+interface HttpService {
 
-    override fun onCreate() {
-        super.onCreate()
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(instance)
+    /**获取产品类型*/
+    @GET("/api/product-types")
+    suspend fun produceTypes(): BaseResponse<ProductList>
+    
+    @GET("/api/products/{product_type}")
+    suspend fun products(@Path("product_type") product_type:String): BaseResponse<Products>
 
-        AiPNDataCenter.getInstance().configAiPNSDK(instance)
-    }
-
+    @GET("/api/member/get-member-token")
+    suspend fun getMemberToken()
 }

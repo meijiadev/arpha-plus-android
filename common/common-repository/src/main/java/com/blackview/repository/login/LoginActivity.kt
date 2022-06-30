@@ -1,14 +1,13 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
 import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.AdapterView
-import com.blackview.arphaplus.MainActivity
-import com.blackview.arphaplus.R
-import com.blackview.arphaplus.databinding.ActivityLoginBinding
+import com.blackview.base.R
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.base.databinding.ActivityLoginBinding
 import com.blackview.contant.PASSWORD
 import com.blackview.contant.USER
 import com.blackview.util.SpUtil
@@ -135,7 +134,7 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
                 SpUtil.encode(USER, "")
                 SpUtil.encode(PASSWORD, "")
             }
-            gotoAct<MainActivity>()
+            //gotoAct<MainActivity>()
             finish()
         }
     }

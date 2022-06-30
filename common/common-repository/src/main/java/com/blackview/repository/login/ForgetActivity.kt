@@ -1,13 +1,12 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.widget.AdapterView
-import com.blackview.arphaplus.R
-import com.blackview.arphaplus.databinding.ActivityCodeBinding
-import com.blackview.arphaplus.databinding.ActivityForgetPwdBinding
+import com.blackview.base.R
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.base.databinding.ActivityForgetPwdBinding
 import com.blackview.util.gotoAct
 
 /**

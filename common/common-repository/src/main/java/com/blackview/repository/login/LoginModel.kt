@@ -1,13 +1,13 @@
-package com.blackview.arphaplus.login
+package com.blackview.repository.login
 
 import android.content.res.Resources
 import android.util.ArrayMap
-import androidx.lifecycle.MutableLiveData
-import com.blackview.arphaplus.App
+import com.blackview.base.App
 import com.blackview.base.base.BaseViewModel
 import com.blackview.base.base.SingleLiveEvent
 import com.blackview.base.http.requestNoCheck
 import com.blackview.base.request.Region
+import com.blackview.contant.USER_TOKEN
 import com.blackview.repository.loginService
 import com.blackview.util.L
 import com.blackview.util.SpUtil
@@ -70,7 +70,8 @@ class LoginModel : BaseViewModel() {
         requestNoCheck({ loginService.login(params) }, {
             //{"code":20000,"message":"success","data":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNTRkZjc1MjE3YmNjOGY3ZmU1NGIxNzczM2FjODc0NzdkOWE0ZmRkZDJmODYwZThiZWU2ODViZWM1MzZiYjU5NGZlNDk2ODMyMDM2ZTU5NTEiLCJpYXQiOjE2NTY0OTk5MTAuMTg3Mzk3LCJuYmYiOjE2NTY0OTk5MTAuMTg3NDAzLCJleHAiOjE2NTY1MDcxMTAuMTc3NjYzLCJzdWIiOiIyOCIsInNjb3BlcyI6W119.Ph1t6mT1alNze1WFxZbdhRaPadJpBBeoOaYrF_gZMSk2nvIfUde-6ZryqlCsII6WrBmSwPqy7pPmtqv-x1Ikwm4cRlSOMcN_ZNf672YnJFq0WXm2utdq-n302zCgl533nOnDnEjIC_Rytio2RsScj9kAGHgn6BdXEDjstoNzhnSLc4t3Qv05EsWfc4sJwtT0o1EAA2-vZKzgguf9UME0uKwGY6PgF1lp3f4ROw1t-iL09NAXzwJULh_c-4ekRLLD5RU75HAZgOyOnH5pRPAQBcAY2KUVE7HgKvLcFmLa_Bsg86BRfYpkAv9e2-A8PhRPhLAvGS7xM_FPDHKMCq-hw-pVOqiJpgsMI4mofgOHNYZDlMO1CONOG1335BePAnVik_Q6YyotQnwfCb56hJQo-Vn73VfdeDm_TIsq24E2Rj80-00hGIdtaKrzdcqmruRCW53YtqWwnoJRZI8peSuinhO33i28Yq4OHvpPLYwgZzPCigaEdj1rdmvafzRYBlwm-0L0B6NvGYKJhiWTX7Nx5hWwaS7HQG3wroJ_V-kZkOkUOnLKl7wVLXV-lrc-zWC76UIeVVb2GsRQw-ZZwuLP9cDjz2BTj1Lj3NOu9YeO8QjiMf_dSW5Fv6fu5uurfAXaCJo7BRtgj5Gt7xC8DaSqaln3SBIVkqBnm97o6zf1g4g"}}
             val token = JSONObject(it.string()).optJSONObject("data").optString("token")
-            SpUtil.encode("token", token)
+            SpUtil.encode(USER_TOKEN, token)
+            App.token=token
             L.e("token:$token")
             loginEvent.post()
         })
