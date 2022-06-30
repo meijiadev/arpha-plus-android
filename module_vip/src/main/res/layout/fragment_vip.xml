@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vipModel"
+            type="com.blackview.module_vip.VipViewModel" />
+        <variable
+            name="click"
+            type="com.blackview.module_vip.VipFragment.ProxyClick" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F8F8F8"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:textSize="24dp"
+            android:textColor="@color/grey_4F4C4B"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            />
+        <RelativeLayout
+            android:id="@+id/pathRelative"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVipName"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="Sandy Wang"
+                android:textColor="@color/black_333333"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVipAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_below="@id/tvVipName"
+                android:layout_marginTop="5dp"
+                android:text="+886 919-888-888"
+                android:gravity="center"
+                android:textColor="@color/gray_83817C"
+                android:textSize="14dp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_location_16"
+                android:layout_below="@id/tvVipAccount"
+                android:layout_marginTop="10dp"
+                android:text="台湾"
+                android:drawablePadding="6dp"
+                android:textColor="@color/gray_898A8B"
+                android:textSize="12dp"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivVipHead"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/empty_head" />
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_E2E2E2"
+                android:layout_below="@id/tvLocation"
+                android:layout_marginTop="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/line1"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/vip_card_shape"
+                android:orientation="vertical"
+                android:onClick="@{()->click.onMessage()}"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:scaleType="center"
+                    android:src="@drawable/icon_message" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/message_settings"
+                    android:textColor="@color/black_333333"
+                    android:textSize="12dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/line1"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/vip_card_shape"
+                android:orientation="vertical"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{()->click.onShare()}"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/icon_share_36"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:scaleType="center"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/black_333333"
+                    android:text="@string/device_share"
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="308dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pathRelative"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

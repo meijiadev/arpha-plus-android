@@ -35,9 +35,9 @@ class IndexFragment : BaseMVVMFragment<ActivityTestBinding, MainModel>() {
         return R.layout.activity_test
     }
 
-//    override fun createViewModel(fragment: Fragment): MainModel {
-//        return ViewModelProvider(this).get(MainModel::class.java)
-//    }
+    override fun createViewModel(fragment: Fragment): MainModel {
+        return ViewModelProvider(this).get(MainModel::class.java)
+    }
 
     override fun initVariableId(): Int {
         return BR.mainModel

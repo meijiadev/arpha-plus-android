@@ -36,7 +36,7 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
             container,
             false
         )
-        viewModel = createViewModel()
+        viewModel = createViewModel(this)
         //XML的viewModel的绑定
         viewModelId = initVariableId()
         binding.setVariable(viewModelId, viewModel)
@@ -46,12 +46,8 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
     abstract fun initLayoutId(savedInstanceState: Bundle?): Int
 
-    /**
-     * 创建属于当前fragment的viewModel对象
-     */
-    private fun createViewModel():VM{
-        return ViewModelProvider(this).get(getVmClazz(this))
-    }
+
+    abstract fun createViewModel(fragment: Fragment):VM
 
     /**
      * 获取作用域为该Fragment的ViewModel

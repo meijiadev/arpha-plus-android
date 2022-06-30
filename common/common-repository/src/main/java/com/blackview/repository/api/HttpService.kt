@@ -2,12 +2,10 @@ package com.blackview.repository.api
 
 import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
+import com.blackview.repository.entity.VipMemberInfo
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -69,5 +67,8 @@ interface HttpService {
     //微信登录
     @POST("api/oauth/wechat")
     suspend fun wechatLogin()
+
+    @GET("api/member")
+    suspend fun  vipMember(@Header("Authorization") token:String):BaseResponse<VipMemberInfo>
 
 }
