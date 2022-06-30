@@ -8,6 +8,7 @@ import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.module_device.databinding.ActivityAddBinding
 import com.blackview.module_device.databinding.FragmentDeviceBinding
+import com.caldremch.widget.round.RoundTextView
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -36,6 +37,8 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
 
     private val fragment1 by lazy { AddFragment1().newInstance() }
     private val fragment2 by lazy { AddFragment2().newInstance() }
+    private val fragment3 by lazy { AddFragment3().newInstance() }
+    private val fragment4 by lazy { AddFragment4().newInstance() }
 
     override fun getViewBinding(): ActivityAddBinding {
         return ActivityAddBinding.inflate(layoutInflater)
@@ -43,7 +46,19 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
 
     override fun initView() {
         super.initView()
-        getPageHead(this).setTitleText(com.blackview.common_res.R.string.add_device)
+        getPageHead(this).apply {
+            setBackClick {
+                if (fragment2.isAdded) {
+                    if (!fragment2.isShowInputLayout) {
+                        fragment2.initShowView()
+                    } else {
+                        finish()
+                    }
+                } else {
+                    finish()
+                }
+            }
+        }.setTitleText(com.blackview.common_res.R.string.add_device)
         showFragment1()
     }
 
@@ -57,14 +72,24 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
     }
 
     fun showFragment2() {
-        binding.tvAddSelectName.text=getString(com.blackview.common_res.R.string.add_device2)
+        binding.tvAddSelectName.text = getString(com.blackview.common_res.R.string.add_device2)
         switchContent(fragment2)
         if (fragment2.isAdded) {
             fragment2.initShowView()
         }
     }
-    fun setTitle(){
-        binding.tvAddSelectName.text=getString(com.blackview.common_res.R.string.add_device22)
+
+    fun showFragment3() {
+        switchContent(fragment3)
+    }
+
+    fun showFragment4() {
+        binding.tvAddSelectName.text = getString(com.blackview.common_res.R.string.add_device4)
+        switchContent(fragment4)
+    }
+
+    fun setTitle2(title: String) {
+        binding.tvAddSelectName.text = title
     }
 
     /**
@@ -94,4 +119,5 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
             mFragment = to
         }
     }
+
 }

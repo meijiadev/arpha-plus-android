@@ -20,4 +20,6 @@ interface IBaseView {
      * 初始化界面
      */
     fun initView()
+    
+    fun initListener()
 }

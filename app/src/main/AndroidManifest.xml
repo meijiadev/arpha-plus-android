@@ -37,6 +37,7 @@
         <activity android:name=".login.CodeActivity" />
         <activity android:name=".login.SuccessActivity" />
         <activity android:name=".login.ForgetActivity"/>
+        <activity android:name=".login.ResetPwdActivity"/>
         <!--全面屏-->
         <meta-data
             android:name="android.max_aspect"

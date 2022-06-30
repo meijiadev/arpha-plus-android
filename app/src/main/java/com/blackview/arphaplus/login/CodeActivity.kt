@@ -64,11 +64,13 @@ class CodeActivity : BaseMVActivity<ActivityCodeBinding, LoginModel>() {
     override fun initViewObservable() {
         super.initViewObservable()
         viewModel.validCodeEvent.observe(this) {
-            if (type == 1) {
-                gotoAct<ResetPwdActivity>()
-            } else {
-                gotoAct<SuccessActivity>()
-            }
+            gotoAct<SuccessActivity>()
+            finish()
+        }
+        viewModel.forgetValidateEvent.observe(this){
+            gotoAct<ResetPwdActivity>(Bundle().apply { 
+                putString("reset_token",it)
+            })
             finish()
         }
     }

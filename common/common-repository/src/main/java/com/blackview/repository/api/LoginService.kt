@@ -4,10 +4,7 @@ import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -32,10 +29,11 @@ import retrofit2.http.POST
  *
  * Created by home on 2022/6/20.
  */
-interface HttpService {
+interface LoginService {
 
     companion object {
-        const val HTTP_URL = "http://54.251.22.185/"
+        //const val HTTP_URL = "http://54.251.22.185/"
+        const val HTTP_URL="https://api2.arpha-tech.com"
     }
 
     //注册
@@ -63,7 +61,7 @@ interface HttpService {
     suspend fun forgetValidate(@Body params: ArrayMap<Any, Any>):ResponseBody
 
     //忘记密码--更新密码
-    @POST("api/reset-password")
+    @PUT("api/reset-password")
     suspend fun resetPwd(@Body params: ArrayMap<Any, Any>):ResponseBody
 
     //微信登录

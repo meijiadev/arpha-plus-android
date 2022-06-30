@@ -76,6 +76,7 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
 
         initView()
         initData()
+        initListener()
         initViewObservable()
 
         viewModel.uiChangeLiveData.showDialogEvent.observe(this, Observer {
@@ -110,6 +111,10 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
     }
 
     override fun initView() {
+    }
+
+    override fun initListener() {
+        
     }
 
     override fun initViewObservable() {

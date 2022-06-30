@@ -119,7 +119,9 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
 
     override fun initView() {
     }
+    override fun initListener() {
 
+    }
     override fun initViewObservable() {
         viewModel.observeLiveData(this)
     }

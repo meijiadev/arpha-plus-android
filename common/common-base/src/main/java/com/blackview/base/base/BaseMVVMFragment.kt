@@ -108,7 +108,9 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
     override fun initView() {
     }
+    override fun initListener() {
 
+    }
     override fun initViewObservable() {
         viewModel.observeLiveData(this)
     }

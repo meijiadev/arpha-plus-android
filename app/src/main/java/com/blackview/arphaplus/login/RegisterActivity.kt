@@ -41,6 +41,7 @@ import com.blackview.common_res.R.string
 class RegisterActivity : BaseMVActivity<ActivityRegisterBinding, LoginModel>() {
 
     private var regionId = ""
+    private var inputType=true
 
     override fun getViewBinding(): ActivityRegisterBinding {
         return ActivityRegisterBinding.inflate(layoutInflater)
@@ -64,7 +65,11 @@ class RegisterActivity : BaseMVActivity<ActivityRegisterBinding, LoginModel>() {
             if (regionId.isEmpty()) {
                 viewModel.showToast(getResString(string.select_region))
             } else if (binding.tvRegisterPhone.text.isEmpty()) {
-                viewModel.showToast(getResString(string.input_phone))
+                if (inputType){
+                    viewModel.showToast(getResString(string.input_phone))
+                }else{
+                    viewModel.showToast(getResString(string.input_email))
+                }
             } else if (binding.tvRegisterPwd.text.isEmpty()) {
                 viewModel.showToast(getResString(string.input_pwd))
             } else if (!binding.cbRegisterPwdKeep.isChecked) {
@@ -97,8 +102,12 @@ class RegisterActivity : BaseMVActivity<ActivityRegisterBinding, LoginModel>() {
                 if (p2 > 0) {
                     regionId = viewModel.array?.get(p2)?.id ?: ""
                     if (p2 == 5) {
+                        inputType=false
+                        binding.tvRegisterPhone.hint = getString(string.input_email)
                         binding.tvRegisterPhone.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                     } else {
+                        inputType=true
+                        binding.tvRegisterPhone.hint = getString(string.input_phone)
                         binding.tvRegisterPhone.inputType = InputType.TYPE_CLASS_PHONE
                     }
                 }

@@ -161,7 +161,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_login_pwd_keep"
-        app:rl_backgroundColor="@color/gray_B5B5B6"
+        app:rl_backgroundColor="@color/grey_4F4C4B"
         app:rl_radius="30dp" />
 
 

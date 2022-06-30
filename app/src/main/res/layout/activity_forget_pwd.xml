@@ -109,7 +109,8 @@
         android:background="@null"
         android:hint="@string/input_phone"
         android:inputType="number"
-        android:textColor="@color/gray_979797"
+        android:textColorHint="@color/gray_979797"
+        android:textColor="@color/black_4F4C4B"
         android:textSize="14dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v_forget_line1" />
@@ -136,7 +137,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v_forget_line2"
-        app:rl_backgroundColor="@color/gray_B5B5B6"
+        app:rl_backgroundColor="@color/grey_4F4C4B"
         app:rl_radius="30dp" />
 
     <TextView

@@ -1,7 +1,9 @@
 package com.blackview.arphaplus
 
+import com.AiPN.AiPNDataCenter
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blackview.base.BaseApplication
+import com.blackview.base.BuildConfig
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -28,20 +30,15 @@ import com.blackview.base.BaseApplication
  */
 class App : BaseApplication() {
 
-    companion object {
-        lateinit var instance: App
-    }
-
     override fun onCreate() {
         super.onCreate()
-        instance = this
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
             ARouter.openDebug()
         }
         ARouter.init(instance)
 
-        //AiPNDataCenter.getInstance().configAiPNSDK(instance)
+        AiPNDataCenter.getInstance().configAiPNSDK(instance)
     }
 
 }

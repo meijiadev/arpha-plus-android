@@ -29,3 +29,7 @@ const val device = "/device/main"
 const val notice = "/notice/main"
 
 const val vip = "/vip/main"
+
+const val USER = "username"
+
+const val PASSWORD = "password"

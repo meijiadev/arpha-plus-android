@@ -5,10 +5,15 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.AdapterView
+import com.blackview.arphaplus.MainActivity
 import com.blackview.arphaplus.R
 import com.blackview.arphaplus.databinding.ActivityLoginBinding
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.contant.PASSWORD
+import com.blackview.contant.USER
+import com.blackview.util.SpUtil
 import com.blackview.util.gotoAct
+import com.push.PushCenter
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -36,6 +41,10 @@ import com.blackview.util.gotoAct
 class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
 
     private var regionId = ""
+    private var inputType = true
+    private val pushCenter by lazy {
+        PushCenter.getInstance()
+    }
 
     override fun getViewBinding(): ActivityLoginBinding {
         return ActivityLoginBinding.inflate(layoutInflater)
@@ -44,7 +53,13 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
     override fun initView() {
         super.initView()
         hideTitleBar()
-        isEnableHideSoftInputFromWindow=true
+        isEnableHideSoftInputFromWindow = true
+        SpUtil.decodeString(USER)?.apply {
+            binding.tvLoginPhone.setText(this)
+        }
+        SpUtil.decodeString(PASSWORD)?.apply {
+            binding.tvLoginPwd.setText(this)
+        }
         binding.tvLoginRegister.setOnClickListener {
             gotoAct<RegisterActivity>()
         }
@@ -62,17 +77,21 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
             if (regionId.isEmpty()) {
                 viewModel.showToast(getResString(com.blackview.common_res.R.string.select_region))
             } else if (binding.tvLoginPhone.text.isEmpty()) {
-                viewModel.showToast(getResString(com.blackview.common_res.R.string.input_phone))
+                if (inputType) {
+                    viewModel.showToast(getResString(com.blackview.common_res.R.string.input_phone))
+                } else {
+                    viewModel.showToast(getResString(com.blackview.common_res.R.string.input_email))
+                }
             } else if (binding.tvLoginPwd.text.isEmpty()) {
                 viewModel.showToast(getResString(com.blackview.common_res.R.string.input_pwd))
             } else {
+                pushCenter.configPushCenter(this)
                 viewModel.login(
                     regionId, binding.tvLoginPhone.text.toString().trim(),
-                    binding.tvLoginPwd.text.toString().trim()
+                    binding.tvLoginPwd.text.toString().trim(),
+                    pushCenter.deviceToken
                 )
-
             }
-
         }
     }
 
@@ -89,9 +108,13 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
                 if (p2 > 0) {
                     regionId = viewModel.array?.get(p2)?.id ?: ""
                     if (p2 == 5) {
+                        inputType = false
                         binding.tvLoginPhone.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                        binding.tvLoginPhone.hint = getString(com.blackview.common_res.R.string.input_email)
                     } else {
+                        inputType = true
                         binding.tvLoginPhone.inputType = InputType.TYPE_CLASS_PHONE
+                        binding.tvLoginPhone.hint = getString(com.blackview.common_res.R.string.input_phone)
                     }
                 }
             }
@@ -105,7 +128,15 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
     override fun initViewObservable() {
         super.initViewObservable()
         viewModel.loginEvent.observe(this) {
-
+            if (binding.cbLoginPwdKeep.isChecked) {
+                SpUtil.encode(USER, binding.tvLoginPhone.text.trim())
+                SpUtil.encode(PASSWORD, binding.tvLoginPwd.text.trim())
+            } else {
+                SpUtil.encode(USER, "")
+                SpUtil.encode(PASSWORD, "")
+            }
+            gotoAct<MainActivity>()
+            finish()
         }
     }
 

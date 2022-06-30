@@ -1,6 +1,9 @@
 package com.blackview.base
 
 import android.app.Application
+import com.blackview.util.L
+import com.blackview.util.SpUtil
+import com.tencent.mmkv.MMKV
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -29,12 +32,15 @@ abstract class BaseApplication : Application() {
 
     companion object {
         lateinit var instance: BaseApplication
+        lateinit var token: String
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-       
+        MMKV.initialize(instance)
+        token = SpUtil.decodeString("token") ?: ""
+        L.e("token:$token")
     }
 
 

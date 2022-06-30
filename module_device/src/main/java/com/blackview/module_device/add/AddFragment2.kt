@@ -43,6 +43,9 @@ import com.blankj.utilcode.util.SizeUtils
  */
 class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
 
+    
+    var isShowInputLayout=true
+    
     override fun createViewModel(fragment: Fragment): AddModel {
         return ViewModelProvider(this).get(AddModel::class.java)
     }
@@ -55,15 +58,31 @@ class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
     }
 
     fun initShowView() {
+        isShowInputLayout=true
         binding.layoutAddHotdotQrcode.isVisible = true
         binding.layoutInputNumber.isVisible = false
     }
 
     override fun initView() {
         super.initView()
+        initShowView()
         binding.tvAddSelectHotQrcode.setOnClickListener {
+            (activity as AddAty).setTitle2(getString(com.blackview.common_res.R.string.add_device22))
             binding.layoutAddHotdotQrcode.isVisible = false
             binding.layoutInputNumber.isVisible = true
+            isShowInputLayout=false
+        }
+        binding.tvAddSelectNext.setOnClickListener {
+            (activity as AddAty).setTitle2(getString(com.blackview.common_res.R.string.add_device23))
+            binding.ivAddDeviceQrCode.isVisible=true
+            binding.layoutAddHotdotQrcode.isVisible = false
+            binding.layoutInputNumber.isVisible = false
+            isShowInputLayout=true
+        }
+        
+        binding.ivAddDeviceQrCode.setOnClickListener {
+            (activity as AddAty).setTitle2(getString(com.blackview.common_res.R.string.add_device3))
+            (activity as AddAty).showFragment3()
         }
     }
 }

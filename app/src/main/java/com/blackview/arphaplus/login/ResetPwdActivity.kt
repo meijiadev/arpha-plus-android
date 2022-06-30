@@ -1,6 +1,8 @@
 package com.blackview.arphaplus.login
 
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import com.blackview.arphaplus.R
 import com.blackview.arphaplus.databinding.ActivityCodeBinding
 import com.blackview.arphaplus.databinding.ActivityResetPwdBinding
@@ -32,6 +34,7 @@ import com.blackview.util.gotoAct
  */
 class ResetPwdActivity : BaseMVActivity<ActivityResetPwdBinding, LoginModel>() {
 
+    var reset_token: String? = null
     override fun getViewBinding(): ActivityResetPwdBinding {
         return ActivityResetPwdBinding.inflate(layoutInflater)
     }
@@ -39,17 +42,36 @@ class ResetPwdActivity : BaseMVActivity<ActivityResetPwdBinding, LoginModel>() {
     override fun initView() {
         super.initView()
         hideTitleBar()
-        isEnableHideSoftInputFromWindow=true
+        reset_token = intent?.extras?.getString("reset_token")
+        isEnableHideSoftInputFromWindow = true
         binding.btnResetGo.setOnClickListener {
             if (binding.tvResetPwd.text.toString().trim().isEmpty()) {
                 viewModel.showToast(getResString(com.blackview.common_res.R.string.input_pwd))
             } else if (binding.tvResetPwd1.text.toString().trim().isEmpty()) {
                 viewModel.showToast(getResString(com.blackview.common_res.R.string.input_pwd_again))
             } else {
-                viewModel.resetPwd(
-                    binding.tvResetPwd.text.toString().trim(),
-                    binding.tvResetPwd1.text.toString().trim()
-                )
+                reset_token?.apply {
+                    viewModel.resetPwd(
+                        binding.tvResetPwd.text.toString().trim(),
+                        binding.tvResetPwd1.text.toString().trim(),
+                        this
+                    )
+                }
+            }
+        }
+
+        binding.cbResetPwd.setOnCheckedChangeListener { _, b ->
+            if (b) {
+                binding.tvResetPwd.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            } else {
+                binding.tvResetPwd.transformationMethod = PasswordTransformationMethod.getInstance()
+            }
+        }
+        binding.cbResetPwd1.setOnCheckedChangeListener { _, b ->
+            if (b) {
+                binding.tvResetPwd1.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            } else {
+                binding.tvResetPwd1.transformationMethod = PasswordTransformationMethod.getInstance()
             }
         }
     }

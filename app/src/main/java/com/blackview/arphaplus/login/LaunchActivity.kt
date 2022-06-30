@@ -10,6 +10,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.blackview.arphaplus.MainActivity
 import com.blackview.arphaplus.R
+import com.blackview.base.BaseApplication.Companion.token
 import com.blackview.util.gotoAct
 
 /**
@@ -42,7 +43,11 @@ class LaunchActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
-            gotoAct<MainActivity>()
+            if (token.isNotEmpty()){
+                gotoAct<MainActivity>()
+            }else{
+                gotoAct<LoginActivity>()
+            }
             finish()
         }, 1500)
     }

@@ -36,6 +36,7 @@ import com.blackview.util.gotoAct
 class ForgetActivity : BaseMVActivity<ActivityForgetPwdBinding, LoginModel>() {
 
     private var regionId = ""
+    private var inputType = true
 
     override fun getViewBinding(): ActivityForgetPwdBinding {
         return ActivityForgetPwdBinding.inflate(layoutInflater)
@@ -52,7 +53,11 @@ class ForgetActivity : BaseMVActivity<ActivityForgetPwdBinding, LoginModel>() {
             if (regionId.isEmpty()) {
                 viewModel.showToast(getResString(com.blackview.common_res.R.string.select_region))
             } else if (binding.tvForgetPhone.text.toString().trim().isEmpty()) {
-                viewModel.showToast(getResString(com.blackview.common_res.R.string.input_phone))
+                if (inputType) {
+                    viewModel.showToast(getResString(com.blackview.common_res.R.string.input_phone))
+                } else {
+                    viewModel.showToast(getResString(com.blackview.common_res.R.string.input_email))
+                }
             } else {
                 viewModel.forgetCheck(regionId, binding.tvForgetPhone.text.toString().trim())
             }
@@ -74,9 +79,13 @@ class ForgetActivity : BaseMVActivity<ActivityForgetPwdBinding, LoginModel>() {
                 if (p2 > 0) {
                     regionId = viewModel.array?.get(p2)?.id ?: ""
                     if (p2 == 5) {
+                        inputType = false
                         binding.tvForgetPhone.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                        binding.tvForgetPhone.hint = getString(com.blackview.common_res.R.string.input_email)
                     } else {
+                        inputType = true
                         binding.tvForgetPhone.inputType = InputType.TYPE_CLASS_PHONE
+                        binding.tvForgetPhone.hint = getString(com.blackview.common_res.R.string.input_phone)
                     }
                 }
             }
