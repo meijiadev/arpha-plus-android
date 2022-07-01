@@ -23,7 +23,7 @@ class VipActivity : AppCompatActivity() {
          MainScope().launch(Dispatchers.Main){
              delay(2000)
              if (App.token.isNullOrEmpty()){
-                 App.instance.gotoAct<LoginActivity>()
+                 this@VipActivity.gotoAct<LoginActivity>()
              }
          }
     }

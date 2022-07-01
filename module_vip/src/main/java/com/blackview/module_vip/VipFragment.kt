@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blackview.base.App
 import com.blackview.base.base.BaseMVVMFragment
 import com.blackview.module_vip.adapter.SettingsAdapter
 import com.blackview.module_vip.databinding.FragmentVipBinding
 import com.blackview.util.L
+import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.ToastUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -82,10 +84,16 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
     inner class ProxyClick{
         fun onMessage(){
             ToastUtils.showShort("点击通知设定")
+            val bundle=Bundle()
+            bundle.putString(WHERE_TO_JUMP_FROM, JUMP_FORM_MESSAGE_SETTINGS)
+            context?.gotoAct<VipDeviceActivity>(bundle)
         }
 
         fun onShare(){
             ToastUtils.showShort("点击装置共享")
+            val bundle=Bundle()
+            bundle.putString(WHERE_TO_JUMP_FROM, JUMP_FORM_DEVICE_SHARE)
+            context?.gotoAct<VipDeviceActivity>(bundle)
         }
 
 
