@@ -6,6 +6,18 @@ data class PhoneInfo(
     val sp: String
 )
 
+/**
+ *    author : MJ
+ *    time   : 2022/06/30
+ *    desc   : 会员的信息
+ */
+data class VipMemberInfo(
+    val email: String,
+    val img_url: String,
+    val mobile: String,
+    val name: String,
+    val oauth: Boolean
+)
 
 data class ProductList(
     var product_types: List<ProductType>

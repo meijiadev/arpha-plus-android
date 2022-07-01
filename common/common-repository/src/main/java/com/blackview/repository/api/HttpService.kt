@@ -2,9 +2,8 @@ package com.blackview.repository.api
 
 import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
-import com.blackview.repository.entity.Product
-import com.blackview.repository.entity.ProductList
-import com.blackview.repository.entity.Products
+import com.blackview.repository.entity.VipMemberInfo
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.http.*
 
@@ -29,7 +28,7 @@ import retrofit2.http.*
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * Created by home on 2022/6/30.
+ * Created by home on 2022/6/20.
  */
 interface HttpService {
 
@@ -42,4 +41,8 @@ interface HttpService {
 
     @GET("/api/member/get-member-token")
     suspend fun getMemberToken()
+
+    @GET("api/member")
+    suspend fun  vipMember(@Header("Authorization") token:String):BaseResponse<VipMemberInfo>
+
 }
