@@ -2,6 +2,8 @@ package com.blackview.repository.api
 
 import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
+import com.blackview.repository.entity.ProductList
+import com.blackview.repository.entity.Products
 import com.blackview.repository.entity.VipMemberInfo
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -35,14 +37,21 @@ interface HttpService {
     /**获取产品类型*/
     @GET("/api/product-types")
     suspend fun produceTypes(): BaseResponse<ProductList>
-    
-    @GET("/api/products/{product_type}")
-    suspend fun products(@Path("product_type") product_type:String): BaseResponse<Products>
 
+    /**产品列表*/
+    @GET("/api/products/{product_type}")
+    suspend fun products(@Path("product_type") product_type: String): BaseResponse<Products>
+
+    /**配网token*/
     @GET("/api/member/get-member-token")
-    suspend fun getMemberToken()
+    suspend fun getMemberToken(): ResponseBody
+
+    /**配网轮询*/
+    @PUT("/api/member/match-check")
+    suspend fun matchCheck(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     @GET("api/member")
-    suspend fun  vipMember(@Header("Authorization") token:String):BaseResponse<VipMemberInfo>
+    suspend fun vipMember(@Header("Authorization") token: String): BaseResponse<VipMemberInfo>
+
 
 }

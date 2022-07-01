@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="20dp">
@@ -71,7 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="38dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <TextView
             android:id="@+id/tv_add_select_wifi"
@@ -186,15 +188,51 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <ImageView
-        android:id="@+id/iv_add_device_qr_code"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_qrcode_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/text_BC9E70"
         android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_add_device_qr_code"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@color/text_BC9E70"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_wifi_didi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/wifi_didi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_add_device_qr_code" />
+
+        <com.caldremch.widget.round.RoundTextView
+            android:id="@+id/tv_add_select_next22"
+            android:layout_width="148dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wifi_didi"
+            app:rl_backgroundColor="@color/black_4F4C4B"
+            app:rl_radius="30dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

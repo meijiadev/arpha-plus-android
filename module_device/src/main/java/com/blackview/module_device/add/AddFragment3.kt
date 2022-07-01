@@ -51,5 +51,7 @@ class AddFragment3 : BaseMVFragment<FragmentAddThreeBinding, AddModel>() {
         binding.imageView.setOnClickListener {
             (activity as AddAty).showFragment4()
         }
+        
+        viewModel.matchCheck((activity as AddAty).member_token)
     }
 }

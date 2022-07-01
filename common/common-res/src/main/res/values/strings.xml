@@ -59,7 +59,9 @@
     <string name="select_wifi">請選擇 Wi-Fi</string>
     <string name="select_wifi_tips">如果你的 Wi-Fi 是 5GHz，請先設置為 2.4 Hz</string>
     <string name="more_tips">更多常見問題</string>
-    
+    <string name="wifi_permission_tips1">获取WiFi 需要获取手机位置权限</string>
+    <string name="wifi_permission_tips2">获取WiFi 需要获取手机位置权限，请打开之后重试</string>
+    <string name="wifi_didi">听到设备 滴滴声之后 请点击下一步 </string>
 <!--    会员中心-->
     <string name="message_settings">通知設定</string>
     <string name="device_share">装置共享</string>

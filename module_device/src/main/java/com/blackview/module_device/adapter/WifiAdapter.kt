@@ -1,9 +1,7 @@
-package com.blackview.module_device.add.adapter
+package com.blackview.module_device.adapter
 
-import com.blackview.base.base.BaseViewModel
+import android.net.wifi.ScanResult
 import com.blackview.module_device.R
-import com.blackview.repository.entity.ProductList
-import com.blackview.repository.entity.ProductType
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
@@ -28,19 +26,12 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * Created by home on 2022/6/28.
+ * Created by home on 2022/7/1.
  */
-class AddLeftAdapter : BaseQuickAdapter<ProductType, BaseViewHolder>(R.layout.item_add_left) {
-
-    override fun convert(holder: BaseViewHolder, item: ProductType) {
-        if (item.isSelect) {
-            holder.setGone(R.id.tv_left_title, false)
-            holder.setGone(R.id.tv_left_title1, true)
-        } else {
-            holder.setGone(R.id.tv_left_title, true)
-            holder.setGone(R.id.tv_left_title1, false)
+class WifiAdapter : BaseQuickAdapter<ScanResult, BaseViewHolder>(R.layout.item_wifi) {
+    override fun convert(holder: BaseViewHolder, item: ScanResult) {
+        if (item.SSID.isNotEmpty()){
+            holder.setText(R.id.tv_wifi_name, item.SSID)
         }
-        holder.setText(R.id.tv_left_title, item.name)
-        holder.setText(R.id.tv_left_title1, item.name)
     }
 }

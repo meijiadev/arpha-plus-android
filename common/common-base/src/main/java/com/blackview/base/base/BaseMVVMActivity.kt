@@ -136,13 +136,6 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
         progressDialog?.cancel()
     }
 
-    override fun getPageHead(
-        activity: Activity?,
-        listener: PageHead.OnPageHeadClickListener?
-    ): PageHead {
-        pageHead = PageHead(activity, listener)
-        return pageHead
-    }
 
     override fun getPageHead(activity: Activity?): PageHead {
         pageHead = PageHead(activity)

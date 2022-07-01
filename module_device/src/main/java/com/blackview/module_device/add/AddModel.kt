@@ -1,11 +1,16 @@
 package com.blackview.module_device.add
 
+import android.util.ArrayMap
 import androidx.lifecycle.MutableLiveData
 import com.blackview.base.base.BaseViewModel
+import com.blackview.base.base.SingleLiveEvent
 import com.blackview.base.http.request
+import com.blackview.base.http.requestNoCheck
 import com.blackview.repository.entity.Product
 import com.blackview.repository.entity.ProductType
 import com.blackview.repository.httpService
+import com.google.zxing.qrcode.encoder.QRCode
+import org.json.JSONObject
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -34,6 +39,7 @@ class AddModel : BaseViewModel() {
 
     val liveDataProductList = MutableLiveData<List<ProductType>>()
     val liveDataProducts = MutableLiveData<List<Product>>()
+    val memberTokenEvent = SingleLiveEvent<String>()
 
     fun productType() {
         request({ httpService.produceTypes() }, {
@@ -48,6 +54,24 @@ class AddModel : BaseViewModel() {
     fun products(name: String) {
         request({ httpService.products(name) }, {
             liveDataProducts.postValue(it.products)
+        })
+    }
+
+    fun getMemberToken() {
+        requestNoCheck({ httpService.getMemberToken() }, {
+            //{"code":20000,"message":"success","data":{"member_token":"a12f02"}}
+            val member_token = JSONObject(it.string()).optJSONObject("data").optString("member_token")
+            if (member_token.isNotEmpty()) {
+                memberTokenEvent.postValue(member_token)
+            }
+        })
+    }
+
+    fun matchCheck(member_token:String) {
+        val params=ArrayMap<Any,Any>()
+        params["member_token"] = member_token
+        requestNoCheck({ httpService.matchCheck(params)}, {
+            
         })
     }
 
