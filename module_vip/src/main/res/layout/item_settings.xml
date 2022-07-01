@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginEnd="28dp"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLeftName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:drawableLeft="@drawable/icon_setting_16"
+        android:drawablePadding="9dp"
+        android:gravity="center"
+        android:text="@string/vip_account"
+        android:textSize="14sp"
+        android:textColor="@color/grey_4F4C4B"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRightMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="@color/gray_83817C"
+        android:layout_toLeftOf="@id/ivRightIcon"
+        android:layout_marginRight="16dp"
+        android:text="1.16M"
+        />
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivRightIcon"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_arrow_right_16"
+        android:layout_alignParentEnd="true"
+        />
+
+</RelativeLayout>

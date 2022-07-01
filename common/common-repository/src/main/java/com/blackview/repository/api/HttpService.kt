@@ -2,6 +2,8 @@ package com.blackview.repository.api
 
 import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
+import com.blackview.repository.entity.ProductList
+import com.blackview.repository.entity.Products
 import com.blackview.repository.entity.VipMemberInfo
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -43,6 +45,6 @@ interface HttpService {
     suspend fun getMemberToken()
 
     @GET("api/member")
-    suspend fun  vipMember(@Header("Authorization") token:String):BaseResponse<VipMemberInfo>
+    suspend fun vipMember():BaseResponse<VipMemberInfo>
 
 }

@@ -63,6 +63,14 @@
 <!--    会员中心-->
     <string name="message_settings">通知設定</string>
     <string name="device_share">装置共享</string>
+    <string name="vip_account">賬號管理</string>
+    <string name="vip_language">語言設定</string>
+    <string name="vip_privacy">隱私設置</string>
+    <string name="vip_qa">常見問題</string>
+    <string name="vip_update">更新設定</string>
+    <string name="vip_clear_cache">清理緩存</string>
+    <string name="vip_logout">登出</string>
+    
     <string name="pairing_finish">120 秒後完成配對...</string>
     <string name="pairing_finish1">配對完成...</string>
     <string name="goto_device_list">前往装置清单</string>

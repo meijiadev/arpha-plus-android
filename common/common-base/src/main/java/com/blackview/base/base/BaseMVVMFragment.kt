@@ -22,7 +22,7 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
     private var progressDialog: ProgressDialog? = null
 
-    private var mFragmentProvider: ViewModelProvider?=null
+    private var mFragmentProvider: ViewModelProvider? = null
 
 
     override fun onCreateView(
@@ -47,14 +47,14 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
     abstract fun initLayoutId(savedInstanceState: Bundle?): Int
 
 
-    abstract fun createViewModel(fragment: Fragment):VM
+    abstract fun createViewModel(fragment: Fragment): VM
 
     /**
      * 获取作用域为该Fragment的ViewModel
      */
-    protected fun <T: ViewModel> getFragmentViewModel(modelClass:Class<T>):T?{
-        if (mFragmentProvider==null){
-            mFragmentProvider= ViewModelProvider(this)
+    protected fun <T : ViewModel> getFragmentViewModel(modelClass: Class<T>): T? {
+        if (mFragmentProvider == null) {
+            mFragmentProvider = ViewModelProvider(this)
         }
         return mFragmentProvider?.get(modelClass)
     }
@@ -62,7 +62,6 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         progressDialog = ProgressDialog.Builder(requireContext()).noClose().get()
-        initParam()
     }
 
     /**
@@ -74,13 +73,10 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initView()
-
+        initParam()
         initData()
-
         initListener()
-
         initViewObservable()
 
         viewModel.uiChangeLiveData.showDialogEvent.observe(viewLifecycleOwner, Observer {

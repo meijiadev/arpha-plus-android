@@ -18,9 +18,9 @@ class VipViewModel:BaseViewModel() {
      */
     var vipMemberEvent=MutableLiveData<VipMemberInfo>()
 
-    fun getVipMemberInfo(token:String){
+    fun getVipMemberInfo(){
         requestNoCheck({
-            httpService.vipMember(token)
+            httpService.vipMember()
         },{
             it?.data?.let { data->
                 vipMemberEvent.value=data
