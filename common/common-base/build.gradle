@@ -69,5 +69,9 @@ dependencies {
         api project(':notification:aipn')
     }
 
+    // 日志框架
+    api 'com.orhanobut:logger:2.2.0'
+
+
 
 }
