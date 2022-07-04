@@ -19,6 +19,12 @@ data class VipMemberInfo(
     val oauth: Boolean
 )
 
+data class DeviceData(
+    val device_id: Int,
+    val did: String,
+    val nick_name: String
+)
+
 data class ProductList(
     var product_types: List<ProductType>
 )

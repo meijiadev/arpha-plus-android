@@ -5,18 +5,101 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/gray_F8F8F8">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="48dp"
         android:background="@color/white"
+        android:orientation="horizontal"
         >
+        <RelativeLayout
+            android:id="@+id/rlLeft"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLeftTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="30dp"
+                android:minWidth="56dp"
+                android:text="@string/my_device"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/gray_868686"
+                android:drawableBottom="@drawable/yellow_line"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlRight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="30dp"
+                android:minWidth="56dp"
+                android:text="@string/receive_device"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/gray_868686"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigationBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_home_80"
+            android:layout_gravity="center_horizontal"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nothing_device_tips"
+            android:gravity="center_horizontal"
+            android:textSize="14sp"
+            android:textColor="@color/black_333333"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="13dp"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btAddDevice"
+            android:layout_width="148dp"
+            android:layout_height="36dp"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:text="@string/add_device"
+            android:background="@drawable/gray_button_bg_shape"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

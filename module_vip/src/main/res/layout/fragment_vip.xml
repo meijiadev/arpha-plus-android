@@ -5,10 +5,10 @@
     <data>
         <variable
             name="vipModel"
-            type="com.blackview.module_vip.VipViewModel" />
+            type="com.blackview.module_vip.main.VipViewModel" />
         <variable
             name="click"
-            type="com.blackview.module_vip.VipFragment.ProxyClick" />
+            type="com.blackview.module_vip.main.VipFragment.ProxyClick" />
 
     </data>
 
@@ -149,8 +149,7 @@
             android:layout_height="308dp"
             android:layout_below="@id/pathRelative"
             android:layout_marginTop="20dp"
-            android:background="@color/white"
-            />
+            android:background="@color/white" />
 
     </RelativeLayout>
 </layout>

@@ -2,7 +2,7 @@ package com.blackview.module_vip.adapter
 
 import androidx.appcompat.widget.AppCompatTextView
 import com.blackview.module_vip.R
-import com.blackview.module_vip.VipFragment
+import com.blackview.module_vip.main.VipFragment
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 

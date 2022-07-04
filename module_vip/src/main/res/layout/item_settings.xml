@@ -29,13 +29,12 @@
         android:layout_marginRight="16dp"
         android:text="1.16M"
         />
-    
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivRightIcon"
         android:layout_width="20dp"
         android:layout_height="match_parent"
-        android:src="@drawable/icon_arrow_right_16"
         android:layout_alignParentEnd="true"
-        />
+        android:src="@drawable/icon_arrow_right_16" />
 
 </RelativeLayout>

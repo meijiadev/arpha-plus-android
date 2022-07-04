@@ -3,7 +3,7 @@
     package="com.blackview.module_vip">
 
     <application>
-        <activity android:name=".VipActivity" />
+        <activity android:name=".main.VipActivity" />
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@
     <color name="gray_F8F8F8">#F8F8F8</color>
     <color name="gray_E5E5E5">#E5E5E5</color>
     <color name="gray_e2e2e2">#e2e2e2</color>
-    
+    <color name="gray_868686">#868686</color>
 
     <color name="line_color">#ffececec</color>
 </resources>

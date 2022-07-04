@@ -61,7 +61,6 @@ class App : Application() {
             val formatStrategy= PrettyFormatStrategy
                 .newBuilder()
                 .showThreadInfo(false)
-                .methodOffset(1)
                 .methodCount(2)
                 .tag("arpha-plus-debug")
                 .build()

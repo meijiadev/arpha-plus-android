@@ -1,12 +1,10 @@
 package com.blackview.repository.api
 
-import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
+import com.blackview.repository.entity.DeviceData
 import com.blackview.repository.entity.ProductList
 import com.blackview.repository.entity.Products
 import com.blackview.repository.entity.VipMemberInfo
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.http.*
 
 /**
@@ -44,7 +42,25 @@ interface HttpService {
     @GET("/api/member/get-member-token")
     suspend fun getMemberToken()
 
+    /**
+     * 获取会员信息
+     */
     @GET("api/member")
     suspend fun vipMember():BaseResponse<VipMemberInfo>
+
+    /**
+     * 获取用户拥有的设备
+     */
+    @GET("api/share/owner-device")
+    suspend fun  getOwnDevices():BaseResponse<MutableList<DeviceData>>
+
+
+    /**
+     * 获取别人分享给用户的设备
+     */
+    @GET("api/share/accepted-device")
+    suspend fun getShareDevices():BaseResponse<MutableList<DeviceData>>
+
+
 
 }

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Arphaplusandroid">
         <activity
-            android:name=".VipActivity"
+            android:name=".main.VipActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VipDeviceActivity"/>
+        <activity android:name=".device.VipDeviceActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.blackview.module_vip
+package com.blackview.module_vip.main
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.blackview.base.App
 import com.blackview.base.base.BaseMVVMFragment
+import com.blackview.module_vip.BR
+import com.blackview.module_vip.R
 import com.blackview.module_vip.adapter.SettingsAdapter
 import com.blackview.module_vip.databinding.FragmentVipBinding
+import com.blackview.module_vip.device.JUMP_FORM_DEVICE_SHARE
+import com.blackview.module_vip.device.JUMP_FORM_MESSAGE_SETTINGS
+import com.blackview.module_vip.device.VipDeviceActivity
+import com.blackview.module_vip.device.WHERE_TO_JUMP_FROM
 import com.blackview.util.L
 import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.ToastUtils
@@ -19,6 +24,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.orhanobut.logger.Logger
 
 
 /**
@@ -105,34 +111,48 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
      */
     private fun initSettingsList(){
         settingsList= mutableListOf()
-        settingsList.add(SettingItem(
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_setting_16,
             getString(com.blackview.common_res.R.string.vip_account)
-        ))
-        settingsList.add(SettingItem(
+        )
+        )
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_language_16,
             getString(com.blackview.common_res.R.string.vip_language)
-        ))
-        settingsList.add(SettingItem(
+        )
+        )
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_change_16,
             getString(com.blackview.common_res.R.string.vip_privacy)
-        ))
-        settingsList.add(SettingItem(
+        )
+        )
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_qa_16,
             getString(com.blackview.common_res.R.string.vip_qa)
-        ))
-        settingsList.add(SettingItem(
+        )
+        )
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_renew_16,
             getString(com.blackview.common_res.R.string.vip_update)
-        ))
-        settingsList.add(SettingItem(
+        )
+        )
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_delete_16,
             getString(com.blackview.common_res.R.string.vip_clear_cache)
-        ))
-        settingsList.add(SettingItem(
+        )
+        )
+        settingsList.add(
+            SettingItem(
             com.blackview.common_res.R.drawable.icon_logout_16,
             getString(com.blackview.common_res.R.string.vip_logout)
-        ))
+        )
+        )
 
     }
 
@@ -140,7 +160,7 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
     data class SettingItem (val iconRes:Int,val itemName:String,var rightMsg:String="")
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-        L.i("点击：$position,${settingsList[position].itemName}")
+        Logger.i("点击：$position,${settingsList[position].itemName}")
         ToastUtils.showShort("点击：$position,${settingsList[position].itemName}")
     }
 
