@@ -22,7 +22,8 @@ data class VipMemberInfo(
 data class DeviceData(
     val device_id: Int,
     val did: String,
-    val nick_name: String
+    val nick_name: String,
+    var selected:Boolean=false
 )
 
 data class ProductList(

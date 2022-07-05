@@ -1,10 +1,12 @@
 package com.blackview.repository.api
 
+import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
 import com.blackview.repository.entity.DeviceData
 import com.blackview.repository.entity.ProductList
 import com.blackview.repository.entity.Products
 import com.blackview.repository.entity.VipMemberInfo
+import okhttp3.ResponseBody
 import retrofit2.http.*
 
 /**
@@ -60,6 +62,12 @@ interface HttpService {
      */
     @GET("api/share/accepted-device")
     suspend fun getShareDevices():BaseResponse<MutableList<DeviceData>>
+
+    /**
+     * 校驗查詢賬號是否存在
+     */
+    @POST("api/share/check-member")
+    suspend fun checkMember(@Body params:ArrayMap<Any,Any>):ResponseBody
 
 
 

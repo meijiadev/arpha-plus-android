@@ -73,6 +73,13 @@
     <string name="my_device">我的裝置</string>
     <string name="receive_device">接收装置</string>
     <string name="nothing_device_tips">您沒有裝置\n所以不能共享給親友</string>
+    <string name="button_text_select_device">選擇裝置</string>
+    <string name="button_text_share_device">共享權限給親友</string>
+    <string name="button_text_delete_device">刪除裝置權限</string>
+    <string name="please_select_device">请先勾選需共享的裝置</string>
+    <string name="dialog_title_share_device">輸入對象手機號碼共享裝置</string>
+    <string name="dialog_phone_input_hint">請輸入手機號碼</string>
+    <string name="dialog_join">加入</string>
     
     <string name="pairing_finish">120 秒後完成配對...</string>
     <string name="pairing_finish1">配對完成...</string>
