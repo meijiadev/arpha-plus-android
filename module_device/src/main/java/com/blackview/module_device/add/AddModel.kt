@@ -40,7 +40,9 @@ class AddModel : BaseViewModel() {
     val liveDataProductList = MutableLiveData<List<ProductType>>()
     val liveDataProducts = MutableLiveData<List<Product>>()
     val memberTokenEvent = SingleLiveEvent<String>()
+    val matchCheckEvent = SingleLiveEvent<Void>()
 
+    /**获取产品类型*/
     fun productType() {
         request({ httpService.produceTypes() }, {
             if (it.product_types.isNotEmpty()) {
@@ -51,12 +53,14 @@ class AddModel : BaseViewModel() {
         })
     }
 
+    /**产品列表*/
     fun products(name: String) {
         request({ httpService.products(name) }, {
             liveDataProducts.postValue(it.products)
         })
     }
 
+    /**配网token*/
     fun getMemberToken() {
         requestNoCheck({ httpService.getMemberToken() }, {
             //{"code":20000,"message":"success","data":{"member_token":"a12f02"}}
@@ -67,11 +71,12 @@ class AddModel : BaseViewModel() {
         })
     }
 
-    fun matchCheck(member_token:String) {
-        val params=ArrayMap<Any,Any>()
+    /**配网轮询*/
+    fun matchCheck(member_token: String) {
+        val params = ArrayMap<Any, Any>()
         params["member_token"] = member_token
-        requestNoCheck({ httpService.matchCheck(params)}, {
-            
+        requestNoCheck({ httpService.matchCheck(params) }, {
+            matchCheckEvent.post()
         })
     }
 

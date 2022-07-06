@@ -29,6 +29,7 @@
         
         <activity android:name=".add.AddAty"/>
         <activity android:name=".SelectWifiActivity"/>
+        <activity android:name=".DeviceInfoAty"/>
     </application>
 
 </manifest>

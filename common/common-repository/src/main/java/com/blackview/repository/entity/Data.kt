@@ -1,5 +1,8 @@
 package com.blackview.repository.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class PhoneInfo(
     val city: String,
     val province: String,
@@ -48,7 +51,7 @@ data class ProductList(
 
 data class ProductType(
     val name: String,
-    var isSelect:Boolean=false
+    var isSelect: Boolean = false
 )
 
 
@@ -61,4 +64,36 @@ data class Product(
     val product_name: String,
     val serial: String,
     val webs: List<String>
+)
+
+data class Devices(
+    val devices: List<Device>
+)
+
+@Parcelize
+data class Device(
+    val device_name: String,
+    val did: String,
+    val id: Int,
+    val notifications: Notifications,
+    val power: Int,
+    val wifi: Int
+) : Parcelable
+
+@Parcelize
+data class Notifications(
+    val door_alert: Boolean,
+    val door_bell: Boolean,
+    val door_open: Boolean
+) : Parcelable
+
+data class Dd(
+    val device_id: String,
+    val notifications: Noti
+)
+
+data class Noti(
+    val door_bell: Boolean,
+    val door_open: Boolean,
+    val door_alert: Boolean
 )

@@ -48,6 +48,7 @@ dependencies {
     api project(":common:common-util")
     api project(":common:common-constant")
     api project(":common:common-res")
+    api project(":common:common-widget")
 
     // viewModel
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"

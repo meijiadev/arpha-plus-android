@@ -41,7 +41,7 @@ class AddFragment4 : BaseMVFragment<FragmentAddFourBinding, AddModel>() {
 
     fun newInstance(): AddFragment4 {
         val args = Bundle()
-        
+
         val fragment = AddFragment4()
         fragment.arguments = args
         return fragment
@@ -49,5 +49,12 @@ class AddFragment4 : BaseMVFragment<FragmentAddFourBinding, AddModel>() {
 
     override fun initView() {
         super.initView()
+    }
+
+    override fun initListener() {
+        super.initListener()
+        binding.tvGoToDeviceList.setOnClickListener {
+            activity?.finish()
+        }
     }
 }
