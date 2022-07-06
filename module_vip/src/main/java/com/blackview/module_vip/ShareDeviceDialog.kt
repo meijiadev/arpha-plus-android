@@ -67,6 +67,11 @@ class ShareDeviceDialog(context: Context) : CenterPopupView(context) {
         }
     }
 
+    override fun init() {
+        super.init()
+
+    }
+
     fun onJoin(action: ((data: String) -> Unit)): ShareDeviceDialog = apply {
         onJoinAction = action
     }
@@ -77,6 +82,10 @@ class ShareDeviceDialog(context: Context) : CenterPopupView(context) {
 
     fun onConfirm(action: () -> Unit): ShareDeviceDialog = apply {
         onConfirmAction = action
+    }
+
+    fun setData(){
+
     }
 
 

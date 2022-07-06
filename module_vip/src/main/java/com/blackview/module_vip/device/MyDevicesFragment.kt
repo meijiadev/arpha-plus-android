@@ -27,7 +27,7 @@ import java.util.stream.IntStream
  *    time   : 2022\07\05
  *    desc   : 我的设备
  */
-class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, BaseViewModel>(),
+class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, MyDevicesModel>(),
     OnItemClickListener {
 
     private val devicesAdapter: DevicesAdapter by lazy { DevicesAdapter() }
@@ -46,8 +46,8 @@ class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, BaseViewModel>(
         }
     }
 
-    override fun createViewModel(fragment: Fragment): BaseViewModel {
-        return ViewModelProvider(this).get(BaseViewModel::class.java)
+    override fun createViewModel(fragment: Fragment): MyDevicesModel {
+        return ViewModelProvider(this).get(MyDevicesModel::class.java)
     }
 
 
@@ -77,8 +77,10 @@ class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, BaseViewModel>(
             if (devicesAdapter.getSelectState()) {
                 // 判断是否有选中要分享的设备
                 val found = devicesData.any { it.selected }
+                val device:DeviceData=devicesData.first{it.selected}
                 if (found) {
-                    showShareDialog()
+                    viewModel.getShareList(device.device_id.toString())
+                   // showShareDialog()
                 } else {
                     ToastUtils.showShort(com.blackview.common_res.R.string.please_select_device)
                 }
@@ -87,6 +89,15 @@ class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, BaseViewModel>(
                 devicesAdapter.notifyDataSetChanged()
                 binding.bottomButton.text =
                     getString(com.blackview.common_res.R.string.button_text_share_device)
+            }
+        }
+    }
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        viewModel.shareMemberEvent.observe(viewLifecycleOwner){
+            it?.let {
+                showShareDialog()
             }
         }
     }
@@ -103,9 +114,11 @@ class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, BaseViewModel>(
         val shareDeviceDialog = ShareDeviceDialog(requireContext())
             .onJoin {
                 Logger.i("校验的phone:$it")
+                viewModel.checkMember(it)
             }
             .onCancel {
                 Logger.i("取消")
+
             }
             .onConfirm {
                 Logger.i("确认")
