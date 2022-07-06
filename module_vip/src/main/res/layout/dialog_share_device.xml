@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="272dp"
+    android:layout_height="wrap_content"
+    android:maxHeight="519dp"
+    android:background="@drawable/vip_card_shape"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginRight="36dp"
+        android:drawableBottom="@drawable/yellow_line_l"
+        android:gravity="center"
+        android:hint="@string/dialog_title_share_device"
+        android:text="@string/dialog_title_share_device"
+        android:textColor="@color/black_333333"
+        android:textColorHint="@color/gray_979797"
+        android:textSize="16dp"
+        android:layout_marginTop="28dp"
+        />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="164dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/phone_edit_bg_shape"
+        android:text=""
+        android:textColor="@color/black_333333"
+        android:textSize="14dp"
+        android:hint="@string/dialog_phone_input_hint"
+        android:paddingStart="15dp"
+        android:textColorHint="@color/gray_979797"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btJoin"
+        android:layout_width="68dp"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@id/etPhone"
+        android:layout_toRightOf="@id/etPhone"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/gray_button_bg_shape"
+        android:text="@string/dialog_join"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_e2e2e2"
+        android:layout_below="@id/etPhone"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line1"
+        android:layout_marginTop="20dp"
+        android:minHeight="100dp"
+        android:maxHeight="250dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btCancel"
+        android:layout_width="84dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/recyclerFriend"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/gray_b5b6b6_shape"
+        android:layout_marginBottom="24dp"
+        android:text="@string/lgDBtn_Cancel"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btConfirm"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@id/btCancel"
+        android:layout_marginStart="8dp"
+        android:layout_toRightOf="@id/btCancel"
+        android:background="@drawable/gray_button_bg_shape"
+        android:text="@string/lgDBtn_Determine"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+</RelativeLayout>

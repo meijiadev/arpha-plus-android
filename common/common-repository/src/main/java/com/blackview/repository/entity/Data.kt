@@ -19,6 +19,29 @@ data class VipMemberInfo(
     val oauth: Boolean
 )
 
+/**
+ * author : MJ
+ * time   : 2022/07/06
+ * desc   : 设备信息
+ */
+data class DeviceData(
+    val device_id: Int,
+    val did: String,
+    val nick_name: String,
+    var selected:Boolean=false
+)
+
+/**
+ * author: MJ
+ * time  : 2022/07/06
+ * desc  : 共享的用户列表
+ */
+data class ShareMember(
+    val member_id:Int,
+    val name:String
+)
+
+
 data class ProductList(
     var product_types: List<ProductType>
 )

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VipActivity">
+    tools:context=".main.VipActivity">
 
     <fragment
         android:id="@+id/fragmentVip"
-        android:name="com.blackview.module_vip.VipFragment"
+        android:name="com.blackview.module_vip.main.VipFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blackview.contant.USER_TOKEN
 import com.blackview.util.L
 import com.blackview.util.SpUtil
+import com.orhanobut.logger.*
 import com.tencent.mmkv.MMKV
 
 /**
@@ -50,7 +51,21 @@ class App : Application() {
         token = SpUtil.decodeString(USER_TOKEN) ?: ""
         L.e("token:$token")
         AiPNDataCenter.getInstance().configAiPNSDK(instance)
+        initLog()
 
+    }
+
+    private fun initLog(){
+        // 初始化日志打印
+        if (BuildConfig.DEBUG) {
+            val formatStrategy= PrettyFormatStrategy
+                .newBuilder()
+                .showThreadInfo(false)
+                .methodCount(2)
+                .tag("arpha-plus-debug")
+                .build()
+            Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
+        }
     }
 
 

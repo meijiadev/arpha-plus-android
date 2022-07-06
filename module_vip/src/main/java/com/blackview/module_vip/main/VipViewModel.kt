@@ -1,7 +1,8 @@
-package com.blackview.module_vip
+package com.blackview.module_vip.main
 
 import androidx.lifecycle.MutableLiveData
 import com.blackview.base.base.BaseViewModel
+import com.blackview.base.http.request
 import com.blackview.base.http.requestNoCheck
 import com.blackview.repository.entity.VipMemberInfo
 import com.blackview.repository.httpService
@@ -18,13 +19,11 @@ class VipViewModel:BaseViewModel() {
      */
     var vipMemberEvent=MutableLiveData<VipMemberInfo>()
 
-    fun getVipMemberInfo(token:String){
-        requestNoCheck({
-            httpService.vipMember(token)
+    fun getVipMemberInfo(){
+        request({
+            httpService.vipMember()
         },{
-            it?.data?.let { data->
-                vipMemberEvent.value=data
-            }
+            vipMemberEvent.value=it
         })
     }
 

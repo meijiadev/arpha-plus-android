@@ -5,14 +5,14 @@
     <data>
         <variable
             name="vipModel"
-            type="com.blackview.module_vip.VipViewModel" />
+            type="com.blackview.module_vip.main.VipViewModel" />
         <variable
             name="click"
-            type="com.blackview.module_vip.VipFragment.ProxyClick" />
+            type="com.blackview.module_vip.main.VipFragment.ProxyClick" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray_F8F8F8"
@@ -25,8 +25,6 @@
             android:textSize="24dp"
             android:textColor="@color/grey_4F4C4B"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp"
             android:layout_marginStart="24dp"
             />
@@ -34,9 +32,7 @@
             android:id="@+id/pathRelative"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            android:layout_below="@id/tvTitle"
             android:layout_marginTop="20dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
@@ -148,13 +144,12 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSettings"
             android:layout_width="match_parent"
             android:layout_height="308dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pathRelative"
+            android:layout_below="@id/pathRelative"
             android:layout_marginTop="20dp"
-            android:background="@color/white"
-            />
+            android:background="@color/white" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>

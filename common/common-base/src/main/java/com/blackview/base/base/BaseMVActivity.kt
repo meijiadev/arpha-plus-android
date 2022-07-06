@@ -4,10 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -71,6 +68,17 @@ abstract class BaseMVActivity<V : ViewBinding, VM : BaseViewModel> : AppCompatAc
     fun showTitleBar() {
         contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible = true
     }
+
+
+    fun setTitle(title:String){
+        contentLayout.findViewById<TextView>(R.id.tvTitle).text=title
+    }
+
+    fun getBackButton():ImageView{
+        return contentLayout.findViewById(R.id.ivBack)
+    }
+
+
 
     private fun onViewCreated() {
 

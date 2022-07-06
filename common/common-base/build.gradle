@@ -71,5 +71,9 @@ dependencies {
     //权限
     api "com.github.permissions-dispatcher:permissionsdispatcher:4.9.2"
 
+    // 日志框架
+    api 'com.orhanobut:logger:2.2.0'
+
+
 
 }

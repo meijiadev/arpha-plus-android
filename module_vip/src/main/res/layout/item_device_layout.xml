@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_layout"
+    android:layout_width="130dp"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/vip_card_shape"
+    android:layout_marginTop="16dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    >
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/device_icon"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:autoSizeTextType="uniform"
+        android:text="M1-3D20333090"
+        android:textColor="@color/black_333333"
+        android:textSize="12dp"
+        app:autoSizeMaxTextSize="12dp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSelect"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="13dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/radio_input"
+        android:visibility="gone"
+        />
+
+
+</RelativeLayout>
