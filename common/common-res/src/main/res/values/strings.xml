@@ -80,6 +80,8 @@
     <string name="dialog_title_share_device">輸入對象手機號碼共享裝置</string>
     <string name="dialog_phone_input_hint">請輸入手機號碼</string>
     <string name="dialog_join">加入</string>
+    <string name="please_add_member">请添加共享的朋友</string>
+    <string name="text_change_success">變更成功</string>
     
     <string name="pairing_finish">120 秒後完成配對...</string>
     <string name="pairing_finish1">配對完成...</string>

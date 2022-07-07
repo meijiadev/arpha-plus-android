@@ -21,4 +21,14 @@ class AppException : Exception {
         message = e?.message
         throwable = e
     }
+
+    constructor(status: Int,message: String?){
+        this.message = message ?: "请求失败，请稍后再试"
+        this.status = status
+    }
+
+    override fun toString(): String {
+        return "status:$status \n" +
+                "message:$message"
+    }
 }

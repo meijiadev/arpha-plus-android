@@ -25,7 +25,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
-        android:autoSizeTextType="uniform"
+        android:maxWidth="106dp"
         android:text="M1-3D20333090"
         android:textColor="@color/black_333333"
         android:textSize="12dp"

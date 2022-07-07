@@ -12,7 +12,12 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  *    time   : 2022/07/06
  *    desc   : 朋友列表适配器
  */
-class MembersAdapter() :BaseQuickAdapter<ShareMember,BaseViewHolder>(R.layout.item_share_member){
+class MembersAdapter :BaseQuickAdapter<ShareMember,BaseViewHolder>{
+
+    constructor(layoutRes:Int=R.layout.item_share_member):super(layoutRes){
+        addChildClickViewIds(R.id.ivDelete)
+    }
+
 
     override fun convert(holder: BaseViewHolder, item: ShareMember) {
         holder.getView<AppCompatTextView>(R.id.tvMemberName).text=item.name

@@ -30,14 +30,14 @@ class DevicesAdapter : BaseQuickAdapter<DeviceData, BaseViewHolder>(R.layout.ite
                     else com.blackview.common_res.R.drawable.radio_input
                 )
             }
-            holder.getView<RelativeLayout>(R.id.item_layout)
-                .setBackgroundResource(
-                    if (item.selected) com.blackview.common_res.R.drawable.card_selected_shape
-                    else com.blackview.common_res.R.drawable.vip_card_shape
-                )
         } else {
             holder.getView<AppCompatImageView>(R.id.ivSelect).visibility = View.GONE
         }
+        holder.getView<RelativeLayout>(R.id.item_layout)
+            .setBackgroundResource(
+                if (item.selected) com.blackview.common_res.R.drawable.card_selected_shape
+                else com.blackview.common_res.R.drawable.vip_card_shape
+            )
     }
 
 

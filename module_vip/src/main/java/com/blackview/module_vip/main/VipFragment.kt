@@ -77,7 +77,8 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
         viewModel.getVipMemberInfo()
         viewModel.vipMemberEvent.observe(viewLifecycleOwner){
             binding.tvVipName.text=it?.name
-            binding.tvVipAccount.text= if (it?.email.isNullOrEmpty()) it?.mobile else it?.email
+            binding.tvVipAccount.text= it?.account
+            binding.tvLocation.text=it?.location
             Glide.with(this)
                 .load(it?.img_url ?: com.blackview.common_res.R.drawable.empty_head)
                 .transform(MultiTransformation(CenterCrop(), RoundedCorners(15)))

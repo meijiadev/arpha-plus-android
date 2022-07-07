@@ -178,6 +178,7 @@ fun <T> BaseViewModel.requestNoCheck(
             if (it is HttpException) {
                 it.response()?.errorBody()?.string()?.apply {
                     if (this.isNotEmpty()) {
+                        val code=JSONObject(this).optString("code")
                         val message = JSONObject(this).optString("message")
                         uiChangeLiveData.toastEvent.postValue(message)
                         //token 过期 重新登录
@@ -199,6 +200,63 @@ fun <T> BaseViewModel.requestNoCheck(
         }
     }
 }
+
+/**
+ *  不过滤请求结果
+ * @param block 请求体 必须要用suspend关键字修饰
+ * @param success 成功回调
+ * @param error 失败回调 可不给
+ * @param isShowDialog 是否显示加载框
+ * @param loadingMessage 加载框提示内容
+ */
+fun <T> BaseViewModel.requestNoCheckAndError(
+    block: suspend () -> T,
+    success: (T) -> Unit,
+    error: (AppException) -> Unit = {},
+    isShowDialog: Boolean = true,
+    loadingMessage: String = "请求网络中..."
+): Job {
+    //如果需要弹窗 通知Activity/fragment弹窗
+    if (isShowDialog) uiChangeLiveData.showDialogEvent.postValue(loadingMessage)
+    return viewModelScope.launch {
+        runCatching {
+            //请求体
+            block()
+        }.onSuccess {
+            //网络请求成功 关闭弹窗
+            uiChangeLiveData.dismissDialogEvent.postValue(null)
+            //成功回调
+            success(it)
+        }.onFailure {
+            //网络请求异常 关闭弹窗
+            uiChangeLiveData.dismissDialogEvent.postValue(null)
+            if (it is HttpException) {
+                it.response()?.errorBody()?.string()?.apply {
+                    if (this.isNotEmpty()) {
+                        val code=JSONObject(this).optInt("code")
+                        val message = JSONObject(this).optString("message")
+                        error(AppException(code,message))
+                        uiChangeLiveData.toastEvent.postValue(message)
+                        //token 过期 重新登录
+                        if (message.contains("unauthenticated")){
+                            App.instance.gotoAct<LoginActivity>()
+                        }
+                    } else {
+                        uiChangeLiveData.toastEvent.postValue(it.response()?.message())
+                    }
+                }
+            } else {
+                //失败回调
+                ExceptionHandle.handleException(it).message?.apply {
+                    //打印错误消息
+                    L.e(this)
+                    uiChangeLiveData.toastEvent.postValue(this)
+                }
+            }
+        }
+    }
+}
+
 
 /**
  * 请求结果过滤，判断请求服务器请求结果是否成功，不成功则会抛出异常

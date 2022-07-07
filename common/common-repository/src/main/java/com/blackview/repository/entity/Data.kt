@@ -12,11 +12,12 @@ data class PhoneInfo(
  *    desc   : 会员的信息
  */
 data class VipMemberInfo(
-    val email: String,
+    val account: String,
     val img_url: String,
-    val mobile: String,
     val name: String,
-    val oauth: Boolean
+    val oauth: Boolean,
+    val location:String
+
 )
 
 /**

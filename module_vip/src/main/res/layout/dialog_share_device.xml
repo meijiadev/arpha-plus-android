@@ -66,10 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
-        android:layout_marginTop="20dp"
-        android:minHeight="100dp"
         android:maxHeight="250dp"
-        />
+        android:minHeight="100dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btCancel"

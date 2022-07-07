@@ -2,6 +2,7 @@ package com.blackview.repository.api
 
 import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
+import com.blackview.base.request.BaseResponseNotData
 import com.blackview.repository.entity.*
 import okhttp3.ResponseBody
 import retrofit2.http.*
@@ -64,7 +65,7 @@ interface HttpService {
      * 校驗查詢賬號是否存在
      */
     @POST("api/share/check-member")
-    suspend fun checkMember(@Body params:ArrayMap<Any,Any>):BaseResponse<String>
+    suspend fun checkMember(@Body params:ArrayMap<Any,Any>):BaseResponseNotData
 
     /**
      * 获取装置分享的用户列表
@@ -74,6 +75,12 @@ interface HttpService {
         @Query("device_id")
         deviceId:String
     ):BaseResponse<MutableList<ShareMember>>
+
+
+    @POST("api/share/device-share")
+    suspend fun shareDevices(
+        @Body params: ArrayMap<Any, Any>
+    ):BaseResponseNotData
 
 
 

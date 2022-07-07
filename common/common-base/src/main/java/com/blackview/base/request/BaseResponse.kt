@@ -9,6 +9,11 @@ open class BaseResponse<T> {
     var data: T? = null
 }
 
+data class BaseResponseNotData(
+    val message:String,
+    val code:Int
+)
+
 class StartResponse<T> : BaseResponse<T>()
 
 data class SuccessResponse<T>( var data1: T) : BaseResponse<T>()
