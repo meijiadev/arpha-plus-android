@@ -10,8 +10,10 @@ import com.blackview.base.base.BaseMVActivity
 import com.blackview.base.databinding.ActivityLoginBinding
 import com.blackview.contant.PASSWORD
 import com.blackview.contant.USER
+import com.blackview.util.L
 import com.blackview.util.SpUtil
 import com.blackview.util.gotoAct
+import com.google.android.material.tabs.TabLayout
 import com.push.PushCenter
 
 /**
@@ -58,6 +60,7 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
         }
         SpUtil.decodeString(PASSWORD)?.apply {
             binding.tvLoginPwd.setText(this)
+            binding.cbLoginPwdKeep.isChecked = true
         }
         binding.tvLoginRegister.setOnClickListener {
             gotoAct<RegisterActivity>()
@@ -128,8 +131,8 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
         super.initViewObservable()
         viewModel.loginEvent.observe(this) {
             if (binding.cbLoginPwdKeep.isChecked) {
-                SpUtil.encode(USER, binding.tvLoginPhone.text.trim())
-                SpUtil.encode(PASSWORD, binding.tvLoginPwd.text.trim())
+                SpUtil.encode(USER, binding.tvLoginPhone.text.toString().trim())
+                SpUtil.encode(PASSWORD, binding.tvLoginPwd.text.toString().trim())
             } else {
                 SpUtil.encode(USER, "")
                 SpUtil.encode(PASSWORD, "")

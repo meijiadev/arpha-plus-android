@@ -1,13 +1,16 @@
 package com.blackview.module_device
 
+import android.util.ArrayMap
 import androidx.lifecycle.MutableLiveData
 import com.blackview.base.base.BaseViewModel
+import com.blackview.base.base.SingleLiveEvent
 import com.blackview.base.http.request
 import com.blackview.base.http.requestNoCheck
 import com.blackview.repository.entity.Dd
 import com.blackview.repository.entity.Device
 import com.blackview.repository.entity.Noti
 import com.blackview.repository.httpService
+import com.blackview.repository.repository.RepositoryFactory
 import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -38,23 +41,37 @@ import okhttp3.RequestBody
  */
 class DeviceModel : BaseViewModel() {
 
-
+    val repository = RepositoryFactory.createByAccountSession(DeviceRepository::class.java)
+    
     var liveDevices = MutableLiveData<List<Device>>()
+    var changeDeviceNameEvent = SingleLiveEvent<Void>()
+    var setNoticeEvent=SingleLiveEvent<Void>()
 
+    
+
+    
     fun devices() {
         request({ httpService.devices() }, {
             liveDevices.postValue(it.devices)
+            repository.liveDevices.value=it.devices
         })
     }
 
-    fun updateNotify(id: String) {
-        val d = Noti(true, true, false)
+    fun changeDeviceName(id: Int, name: String) {
+        val params = ArrayMap<Any, Any>()
+        params["device_id"] = id
+        params["device_name"] = name
+        requestNoCheck({ httpService.changeDeviceName(params) }, {
+            changeDeviceNameEvent.post()
+        })
+    }
+
+    fun updateNotify(id: Int, door_bell: Boolean, door_open: Boolean, door_alert: Boolean) {
+        val d = Noti(door_bell, door_open, door_alert)
         val bean = Dd(id, d)
-        //val json = Gson().toJson(bean)
-        //val requestBody: RequestBody = RequestBody.create(MediaType.parse("application/json"), json)
         requestNoCheck({ httpService.updateNotify(bean) }, {
-
+            setNoticeEvent.post()
         })
     }
-    
+
 }

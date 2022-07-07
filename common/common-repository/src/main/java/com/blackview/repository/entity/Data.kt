@@ -78,7 +78,8 @@ data class Device(
     val id: Int,
     val notifications: Notifications,
     val power: Int,
-    val wifi: Int
+    val wifi: Int,
+    val img_url:String
 ) : Parcelable
 
 @Parcelize
@@ -89,7 +90,7 @@ data class Notifications(
 ) : Parcelable
 
 data class Dd(
-    val device_id: String,
+    val device_id: Int,
     val notifications: Noti
 )
 

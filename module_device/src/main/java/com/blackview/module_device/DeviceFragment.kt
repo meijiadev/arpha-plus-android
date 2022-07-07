@@ -1,5 +1,6 @@
 package com.blackview.module_device
 
+import android.content.DialogInterface
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import com.blackview.module_device.dialog.DeviceBottomDialog
 import com.blackview.repository.entity.Device
 import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.SizeUtils
+
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -42,6 +44,7 @@ import com.blankj.utilcode.util.SizeUtils
 class DeviceFragment : BaseMVFragment<FragmentDeviceBinding, DeviceModel>() {
 
     private val devicesAdapter by lazy { DevicesAdapter() }
+    private var dialog: DeviceBottomDialog? = null
 
     override fun createViewModel(fragment: Fragment): DeviceModel {
         return ViewModelProvider(this).get(DeviceModel::class.java)
@@ -71,23 +74,32 @@ class DeviceFragment : BaseMVFragment<FragmentDeviceBinding, DeviceModel>() {
 
         devicesAdapter.setOnItemChildClickListener { adapter, view, position ->
             val device = adapter.getItem(position) as Device
-            val dialog = DeviceBottomDialog().newInstance(device)
-            dialog.show(requireActivity().supportFragmentManager, "")
+            if (dialog == null) {
+                dialog = DeviceBottomDialog()
+            }
+            dialog?.setDismissListener(object : DeviceBottomDialog.DismissListener {
+                override fun onDismiss() {
+                    viewModel.devices()
+                }
+            })
+            dialog?.show(requireActivity().supportFragmentManager, "")
+
         }
 
         devicesAdapter.setOnItemClickListener { adapter, view, position ->
             val device = adapter.getItem(position) as Device
-            activity?.gotoAct<DeviceInfoAty>(Bundle().apply { 
-                putParcelable("deviceTitle",device)
+            activity?.gotoAct<DeviceInfoAty>(Bundle().apply {
+                putParcelable("deviceTitle", device)
             })
         }
+
     }
 
     override fun initViewObservable() {
         super.initViewObservable()
         viewModel.liveDevices.observe(this) {
             if (it.isNotEmpty()) {
-                devicesAdapter.addData(it)
+                devicesAdapter.setList(it)
             } else {
                 devicesAdapter.setEmptyView(R.layout.layout_device_empty)
             }

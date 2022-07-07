@@ -40,7 +40,7 @@ interface HttpService {
     /**获取产品类型*/
     @GET("/api/product-types")
     suspend fun produceTypes(): BaseResponse<ProductList>
-    
+
     @GET("/api/products/{product_type}")
     suspend fun products(@Path("product_type") product_type:String): BaseResponse<Products>
 

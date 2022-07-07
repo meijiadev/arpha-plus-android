@@ -58,7 +58,7 @@ class NetworkApi : BaseNetworkApi() {
             //示例：添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
             addInterceptor(MyHeadInterceptor())
             //添加缓存拦截器 可传入缓存天数，不传默认7天
-            addInterceptor(CacheInterceptor())
+            //addInterceptor(CacheInterceptor())
             // 日志拦截器
             addInterceptor(LoggerInterceptor())
             //超时时间 连接、读、写

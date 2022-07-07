@@ -10,13 +10,17 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
+import com.blackview.util.toastShort
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class DeviceDialog : DialogFragment() {
 
     private var device: Device? = null
+    lateinit var viewModel: DeviceModel
 
     fun newInstance(device: Device, title: String): DeviceDialog {
         val args = Bundle()
@@ -31,6 +35,7 @@ class DeviceDialog : DialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, com.blackview.base.R.style.BottomSheetDialog)
         device = arguments?.getParcelable("device")
+        viewModel = ViewModelProvider(this).get(DeviceModel::class.java)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -47,21 +52,39 @@ class DeviceDialog : DialogFragment() {
         val tvCancel = rootView.findViewById<TextView>(R.id.btn_device_go1)
         val tvNext = rootView.findViewById<TextView>(R.id.btn_device_go2)
         val title = arguments?.getString("title")
+        tvTitle.text = title
+
+
         if (getString(com.blackview.common_res.R.string.button_tips3) == title) {
             editText.hint = getString(com.blackview.common_res.R.string.input_phone)
             editText.inputType = InputType.TYPE_CLASS_PHONE
+
+            tvNext.setOnClickListener {
+                if (editText.text.toString().trim().isEmpty()) {
+                    toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_phone))
+                } else {
+
+                }
+            }
+
         } else {
-            editText.hint = title
+            editText.hint = getString(com.blackview.common_res.R.string.input_device_name)
             editText.inputType = InputType.TYPE_CLASS_TEXT
+            tvNext.setOnClickListener {
+                if (editText.text.toString().trim().isEmpty()) {
+                    toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_device_name))
+                } else {
+                    viewModel.changeDeviceName(device?.id!!, editText.text.toString().trim())
+                }
+            }
+
         }
-        tvTitle.text = title
 
         tvCancel.setOnClickListener { dismiss() }
 
-        tvNext.setOnClickListener {
-
+        viewModel.changeDeviceNameEvent.observe(this) {
+            toastShort(requireActivity(), getString(com.blackview.common_res.R.string.success))
+            dismiss()
         }
-
-
     }
 }
