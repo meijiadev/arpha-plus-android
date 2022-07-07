@@ -66,12 +66,17 @@ interface HttpService {
     @DELETE("/api/devices/delete")
     suspend fun deleteDevices(@Body params: ArrayMap<Any, Any>): ResponseBody
 
-
+    /**获取通知设定*/
+    @GET("/api/devices/notify-setting")
+    suspend fun getNotifySetting(@Query("device_id") device_id: String)
+    
     /**
      * 获取会员信息
      */
     @GET("api/member")
-    suspend fun vipMember(): BaseResponse<VipMemberInfo>
+    suspend
+
+    fun vipMember(): BaseResponse<VipMemberInfo>
 
     /**
      * 获取用户拥有的设备

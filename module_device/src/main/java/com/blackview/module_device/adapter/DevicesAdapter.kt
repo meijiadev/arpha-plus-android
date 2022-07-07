@@ -1,7 +1,10 @@
 package com.blackview.module_device.adapter
 
+import android.widget.ImageView
+import coil.load
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
+import com.blackview.repository.showImgRound
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
@@ -33,7 +36,7 @@ class DevicesAdapter : BaseQuickAdapter<Device, BaseViewHolder>(R.layout.item_de
     init {
         addChildClickViewIds(R.id.tv_device_more_info)
     }
-    
+
     override fun convert(holder: BaseViewHolder, item: Device) {
         holder.setText(R.id.tv_device_title, item.device_name)
         if (item.wifi == 0) {
@@ -57,7 +60,8 @@ class DevicesAdapter : BaseQuickAdapter<Device, BaseViewHolder>(R.layout.item_de
             s.append("开门通知 ")
         }
         holder.setText(R.id.iv_device_status1, s.toString())
-        
+
+        holder.getView<ImageView>(R.id.iv_device_img).showImgRound(item.img_url)
 
     }
 }

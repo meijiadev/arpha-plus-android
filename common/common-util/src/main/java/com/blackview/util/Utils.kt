@@ -4,10 +4,13 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.icu.util.TimeUnit
 import android.os.Bundle
+import android.view.Gravity
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.ToastUtils
 
 
 inline fun <reified T : Activity> Context.gotoAct() {
@@ -40,4 +43,13 @@ fun gotoAct(path: String, func: Postcard.() -> Unit) = run {
 private fun Postcard.with(func: Postcard.() -> Unit): Postcard = run {
     this.func()
     return this
+}
+
+fun toastShort(activity: Activity, msg: String) {
+    ToastUtils.make().apply {
+        setGravity(Gravity.CENTER, 0, 0)
+        setBgColor(ContextCompat.getColor(activity, android.R.color.black))
+        setTextColor(ContextCompat.getColor(activity, android.R.color.white))
+        show(msg)
+    }
 }

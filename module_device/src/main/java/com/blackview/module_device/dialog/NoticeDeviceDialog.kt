@@ -10,14 +10,22 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
+import com.blackview.util.toastShort
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class NoticeDeviceDialog : DialogFragment() {
 
     private var device: Device? = null
     var isSelect = true
+    lateinit var viewModel: DeviceModel
+    lateinit var switchCompat1: SwitchCompat
+    lateinit var switchCompat2: SwitchCompat
+    lateinit var switchCompat3: SwitchCompat
 
     fun newInstance(device: Device): NoticeDeviceDialog {
         val args = Bundle()
@@ -27,11 +35,18 @@ class NoticeDeviceDialog : DialogFragment() {
         return fragment
     }
 
+    fun setDevice(device: Device) {
+        this.device = device
+        switchCompat1.isChecked = device.notifications.door_bell
+        switchCompat2.isChecked = device.notifications.door_open
+        switchCompat3.isChecked = device.notifications.door_alert
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, com.blackview.base.R.style.BottomSheetDialog)
         device = arguments?.getParcelable("device")
-
+        viewModel = ViewModelProvider(this).get(DeviceModel::class.java)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -48,9 +63,9 @@ class NoticeDeviceDialog : DialogFragment() {
         val tvNext = rootView.findViewById<TextView>(R.id.btn_notice_device_go2)
         val selectAll = rootView.findViewById<TextView>(R.id.tv_notice_select_all)
 
-        val switchCompat1 = rootView.findViewById<SwitchCompat>(R.id.notice_switch1)
-        val switchCompat2 = rootView.findViewById<SwitchCompat>(R.id.notice_switch2)
-        val switchCompat3 = rootView.findViewById<SwitchCompat>(R.id.notice_switch3)
+        switchCompat1 = rootView.findViewById<SwitchCompat>(R.id.notice_switch1)
+        switchCompat2 = rootView.findViewById<SwitchCompat>(R.id.notice_switch2)
+        switchCompat3 = rootView.findViewById<SwitchCompat>(R.id.notice_switch3)
         val switchCompat4 = rootView.findViewById<SwitchCompat>(R.id.notice_switch4)
         val switchCompat5 = rootView.findViewById<SwitchCompat>(R.id.notice_switch5)
         val switchCompat6 = rootView.findViewById<SwitchCompat>(R.id.notice_switch6)
@@ -70,10 +85,17 @@ class NoticeDeviceDialog : DialogFragment() {
             switchCompat13, switchCompat14
         )
 
+        switchCompat1.isChecked = device?.notifications?.door_bell ?: true
+        switchCompat2.isChecked = device?.notifications?.door_open ?: true
+        switchCompat3.isChecked = device?.notifications?.door_alert ?: true
+
         tvCancel.setOnClickListener { dismiss() }
 
         tvNext.setOnClickListener {
-
+            viewModel.updateNotify(
+                device!!.id,
+                switchCompat1.isChecked, switchCompat2.isChecked, switchCompat3.isChecked
+            )
         }
 
         selectAll.setOnClickListener {
@@ -93,5 +115,9 @@ class NoticeDeviceDialog : DialogFragment() {
 
         }
 
+        viewModel.setNoticeEvent.observe(this) {
+            toastShort(requireActivity(), getString(com.blackview.common_res.R.string.success))
+            dismiss()
+        }
     }
 }
