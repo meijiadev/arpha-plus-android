@@ -1,8 +1,6 @@
-package com.blackview.module_device.add.adapter
+package com.blackview.module_device.adapter
 
-import com.blackview.base.base.BaseViewModel
 import com.blackview.module_device.R
-import com.blackview.repository.entity.ProductList
 import com.blackview.repository.entity.ProductType
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder

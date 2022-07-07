@@ -5,6 +5,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
@@ -116,7 +117,11 @@ abstract class BaseMVFragment<V : ViewBinding, VM : BaseViewModel> : Fragment(),
     }
 
     private fun toastShort(msg: String) {
-        ToastUtils.make().setGravity(Gravity.CENTER, 0, 0)
-        ToastUtils.showShort(msg)
+        ToastUtils.make().apply {
+            setGravity(Gravity.CENTER, 0, 0)
+            setBgColor(ContextCompat.getColor(requireContext(), com.blackview.common_res.R.color.black))
+            setTextColor(ContextCompat.getColor(requireContext(), com.blackview.common_res.R.color.white))
+            show(msg)
+        }
     }
 }

@@ -18,22 +18,12 @@ public class PageHead implements View.OnClickListener {
 	private TextView mTvTitle;
 	private TextView mTvRight;
 
-	public interface OnPageHeadClickListener {
+	public interface OnRightClickListener {
 		void onRightClick();
 	}
 
-	private OnPageHeadClickListener mOnPageHeadClickListener;
+	private OnRightClickListener onRightClick;
 
-	public PageHead(Activity activity, OnPageHeadClickListener listener) {
-		mActivity = activity;
-		mOnPageHeadClickListener = listener;
-
-		mIvBack = activity.findViewById(R.id.ivBack);
-		mIvBack.setOnClickListener(this);
-		mTvTitle = activity.findViewById(R.id.tvTitle);
-		mTvRight = activity.findViewById(R.id.tvRight);
-
-	}
 
 	public PageHead(Activity activity) {
 		mActivity = activity;
@@ -42,6 +32,7 @@ public class PageHead implements View.OnClickListener {
 		mIvBack.setOnClickListener(this);
 		mTvTitle = activity.findViewById(R.id.tvTitle);
 		mTvRight = activity.findViewById(R.id.tvRight);
+		mTvRight.setOnClickListener(this);
 
 	}
 
@@ -55,9 +46,13 @@ public class PageHead implements View.OnClickListener {
 			L.logV(TAG, "the value is empty!");
 		}
 	}
-
 	public void setTitleText(int value) {
 		mTvTitle.setText(value);
+	}
+
+	public void setRightTitleText(String value) {
+		mTvRight.setVisibility(View.VISIBLE);
+		mTvRight.setText(value);
 	}
 
 	public void hideIvBack(boolean isShow) {
@@ -79,6 +74,9 @@ public class PageHead implements View.OnClickListener {
 		mBackListener = listener;
 	}
 
+	public void setOnRightClick(OnRightClickListener onRightClick) {
+		this.onRightClick = onRightClick;
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -92,8 +90,8 @@ public class PageHead implements View.OnClickListener {
 				}
 			}
 		} else if (id == R.id.tvRight) {
-			if (mOnPageHeadClickListener != null) {
-				mOnPageHeadClickListener.onRightClick();
+			if (onRightClick != null) {
+				onRightClick.onRightClick();
 			}
 		}
 	}

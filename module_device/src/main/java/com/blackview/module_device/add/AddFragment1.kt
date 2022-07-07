@@ -5,20 +5,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackview.base.base.BaseMVFragment
-import com.blackview.module_device.DeviceModel
-import com.blackview.module_device.add.adapter.AddLeftAdapter
-import com.blackview.module_device.add.adapter.AddRightAdapter
+import com.blackview.module_device.adapter.AddLeftAdapter
+import com.blackview.module_device.adapter.AddRightAdapter
 import com.blackview.module_device.databinding.FragmentAddOneBinding
 import com.blackview.repository.entity.ProductType
-import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.SizeUtils
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
 
 /**
  * ━━━━━━神兽出没━━━━━━

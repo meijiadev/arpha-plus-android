@@ -14,12 +14,12 @@ android {
             applicationId "com.blackview.module_device"
         }
         minSdk 21
-        targetSdk 32
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        
+
         kapt {
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
@@ -63,8 +63,15 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    
 
+    
     implementation project(":common:common-repository")
+    //路由
     kapt 'com.alibaba:arouter-compiler:1.5.2'
+    //运行时权限
+    kapt "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.2"
+    
+    //zxing二维码生成扫描
+    implementation 'com.google.zxing:core:3.4.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
 }

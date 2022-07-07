@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_sheet_dialog_bg1">
+
+
+    <TextView
+        android:id="@+id/tv_del_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/notice_tips"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/v_notice_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/text_BC9E70"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_del_dialog_title"
+        app:layout_constraintRight_toRightOf="@+id/tv_del_dialog_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_del_dialog_title" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/layout_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="390dp"
+        android:layout_marginTop="30dp"
+
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_del_dialog_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top|right"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch1"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch2"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch3"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch4"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch5"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch6"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch7"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch8"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch9"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch10"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch11"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch12"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch13"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notice_switch14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/notice_switch14"
+                app:switchMinWidth="52dp"
+                app:switchPadding="100dp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.caldremch.widget.round.RoundButton
+        android:id="@+id/btn_notice_device_go1"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_notice_device_go2"
+        app:layout_constraintTop_toBottomOf="@+id/layout_switch"
+        app:rl_backgroundColor="@color/grey_4F4C4B"
+        app:rl_radius="30dp" />
+
+    <com.caldremch.widget.round.RoundButton
+        android:id="@+id/btn_notice_device_go2"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="@string/change"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/btn_notice_device_go1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_switch"
+        app:rl_backgroundColor="@color/grey_4F4C4B"
+        app:rl_radius="30dp" />
+
+    <TextView
+        android:id="@+id/tv_notice_select_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:text="@string/all_select"
+        android:textColor="@color/text_BC9E70"
+        android:textSize="12dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/v_notice_line"
+        app:layout_constraintRight_toRightOf="@+id/layout_switch" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_notice_device_go2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

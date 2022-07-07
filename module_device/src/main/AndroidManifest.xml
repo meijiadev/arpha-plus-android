@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.blackview.module_device">
 
+    <!--自定义WiFi列表用到的权限-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    
     <application
         android:name="com.blackview.base.App"
         android:allowBackup="true"
@@ -22,6 +28,8 @@
         </activity>
         
         <activity android:name=".add.AddAty"/>
+        <activity android:name=".SelectWifiActivity"/>
+        <activity android:name=".DeviceInfoAty"/>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.blackview.module_device.add
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.blackview.base.base.BaseMVActivity
 import com.blackview.module_device.DeviceModel
@@ -39,6 +40,7 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
     private val fragment2 by lazy { AddFragment2().newInstance() }
     private val fragment3 by lazy { AddFragment3().newInstance() }
     private val fragment4 by lazy { AddFragment4().newInstance() }
+    var member_token=""
 
     override fun getViewBinding(): ActivityAddBinding {
         return ActivityAddBinding.inflate(layoutInflater)
@@ -46,6 +48,7 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
 
     override fun initView() {
         super.initView()
+        isEnableHideSoftInputFromWindow=true
         getPageHead(this).apply {
             setBackClick {
                 if (fragment2.isAdded) {
@@ -72,10 +75,12 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
     }
 
     fun showFragment1() {
+        switchSteps(1)
         switchContent(fragment1)
     }
 
     fun showFragment2() {
+        switchSteps(2)
         binding.tvAddSelectName.text = getString(com.blackview.common_res.R.string.add_device2)
         switchContent(fragment2)
         if (fragment2.isAdded) {
@@ -84,10 +89,13 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
     }
 
     fun showFragment3() {
+        switchSteps(3)
+        binding.tvAddSelectName.text = getString(com.blackview.common_res.R.string.add_device3)
         switchContent(fragment3)
     }
 
     fun showFragment4() {
+        switchSteps(4)
         binding.tvAddSelectName.text = getString(com.blackview.common_res.R.string.add_device4)
         switchContent(fragment4)
     }
@@ -121,6 +129,52 @@ class AddAty : BaseMVActivity<ActivityAddBinding, AddModel>() {
                 transaction.hide(mFragment).show(to).commitAllowingStateLoss()
             }
             mFragment = to
+        }
+    }
+    
+    fun switchSteps(int: Int){
+        when(int){
+            1->{
+                binding.tvSteps1.isVisible=true
+                binding.tvSteps2.isVisible=true
+                binding.tvSteps3.isVisible=true
+                binding.tvSteps4.isVisible=true
+                binding.tvSteps11.isVisible=false
+                binding.tvSteps22.isVisible=false
+                binding.tvSteps33.isVisible=false
+                binding.tvSteps44.isVisible=false
+            }
+            2->{
+                binding.tvSteps1.isVisible=false
+                binding.tvSteps2.isVisible=false
+                binding.tvSteps3.isVisible=true
+                binding.tvSteps4.isVisible=true
+                binding.tvSteps11.isVisible=true
+                binding.tvSteps22.isVisible=true
+                binding.tvSteps33.isVisible=false
+                binding.tvSteps44.isVisible=false
+            }
+            3->{
+                binding.tvSteps1.isVisible=false
+                binding.tvSteps2.isVisible=true
+                binding.tvSteps3.isVisible=false
+                binding.tvSteps4.isVisible=true
+                binding.tvSteps11.isVisible=true
+                binding.tvSteps22.isVisible=false
+                binding.tvSteps33.isVisible=true
+                binding.tvSteps44.isVisible=false
+                
+            }
+            4->{
+                binding.tvSteps1.isVisible=false
+                binding.tvSteps2.isVisible=true
+                binding.tvSteps3.isVisible=true
+                binding.tvSteps4.isVisible=false
+                binding.tvSteps11.isVisible=true
+                binding.tvSteps22.isVisible=false
+                binding.tvSteps33.isVisible=false
+                binding.tvSteps44.isVisible=true
+            }
         }
     }
 

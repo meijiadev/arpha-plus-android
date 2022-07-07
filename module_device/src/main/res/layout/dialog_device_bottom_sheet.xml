@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_sheet_dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_setting_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="45dp"
+        android:drawableLeft="@drawable/icon_setting_1"
+        android:drawablePadding="10dp"
+        android:text="@string/button_tips1"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tv_setting_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/icon_setting_2"
+        android:drawablePadding="10dp"
+        android:text="@string/button_tips2"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tv_setting_all_permissions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/icon_setting_3"
+        android:drawablePadding="10dp"
+        android:text="@string/button_tips3"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tv_setting_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/icon_setting_5"
+        android:drawablePadding="10dp"
+        android:text="@string/button_tips4"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tv_setting_check_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/icon_setting_6"
+        android:drawablePadding="10dp"
+        android:text="@string/button_tips5"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tv_setting_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/icon_setting_7"
+        android:drawablePadding="10dp"
+        android:text="@string/button_tips6"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</LinearLayout>

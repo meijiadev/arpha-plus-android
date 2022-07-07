@@ -1,10 +1,8 @@
-package com.blackview.module_device.add.adapter
+package com.blackview.module_device
 
-import com.blackview.base.base.BaseViewModel
-import com.blackview.module_device.R
-import com.blackview.repository.entity.Product
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.blackview.base.base.BaseMVActivity
+import com.blackview.module_device.databinding.ActivityDeviceInfoBinding
+import com.blackview.repository.entity.Device
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -27,13 +25,20 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * Created by home on 2022/6/28.
+ * Created by home on 2022/7/6.
  */
-class AddRightAdapter : BaseQuickAdapter<Product, BaseViewHolder>(R.layout.item_add_right) {
+class DeviceInfoAty : BaseMVActivity<ActivityDeviceInfoBinding, DeviceModel>() {
 
-    override fun convert(holder: BaseViewHolder, item: Product) {
-        holder.setText(R.id.tv_right_title, item.product_name)
+    var device: Device? = null
+
+    override fun getViewBinding(): ActivityDeviceInfoBinding {
+        return ActivityDeviceInfoBinding.inflate(layoutInflater)
     }
 
+    override fun initView() {
+        super.initView()
+        device = intent?.getParcelableExtra("deviceTitle")
+        getPageHead(this).setTitleText(device?.device_name)
+    }
 
 }
