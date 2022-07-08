@@ -126,11 +126,24 @@
     <string name="button_text_share_device">共享權限給親友</string>
     <string name="button_text_delete_device">刪除裝置權限</string>
     <string name="please_select_device">请先勾選需共享的裝置</string>
+    <string name="please_select_delete">请先勾選需需要删除的裝置</string>
     <string name="dialog_title_share_device">輸入對象手機號碼共享裝置</string>
     <string name="dialog_phone_input_hint">請輸入手機號碼</string>
     <string name="dialog_join">加入</string>
     <string name="please_add_member">请添加共享的朋友</string>
     <string name="text_change_success">變更成功</string>
+    <string name="text_delete_success">刪除成功</string>
+    <string name="message_dialog_title">確定刪除選取的接收裝置嗎？</string>
+    <string name="message_dialog_title_1">確定刪除%1$s嗎？</string>
+    <string name="message_no">否</string>
+    <string name="message_yes">是</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_change">變更</string>
+    <string name="door_bell">門鈴通知</string>
+    <string name="door_open">開門通知</string>
+    <string name="door_alert">告警通知</string>
+
+
     
     <string name="pairing_finish">120 秒後完成配對...</string>
     <string name="pairing_finish1">配對完成...</string>

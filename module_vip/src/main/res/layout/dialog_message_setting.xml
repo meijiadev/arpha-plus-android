@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.caldremch.widget.round.RoundRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="272dp"
+    android:layout_height="wrap_content"
+    android:maxHeight="534dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:rl_radius="28dp"
+    app:rl_backgroundColor="@color/white"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:drawableBottom="@drawable/yellow_line_l"
+        android:gravity="center"
+        android:maxWidth="100dp"
+        android:text="Sandy的門鎖"
+        android:textColor="@color/black_333333"
+        android:textSize="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAllSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="28dp"
+        android:gravity="center"
+        android:text="@string/all_select"
+        android:textColor="@color/line_yellow"
+        android:textSize="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAllSelect"
+        android:layout_marginTop="36dp"
+        android:maxHeight="250dp"
+        android:minHeight="100dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btCancel"
+        android:layout_width="84dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/recyclerSettings"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/gray_b5b6b6_shape"
+        android:text="@string/common_cancel"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btConfirm"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@id/btCancel"
+        android:layout_marginStart="8dp"
+        android:layout_toRightOf="@id/btCancel"
+        android:background="@drawable/gray_button_bg_shape"
+        android:text="@string/common_change"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+
+
+</com.caldremch.widget.round.RoundRelativeLayout>

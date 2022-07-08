@@ -6,6 +6,7 @@
     android:background="@drawable/vip_card_shape">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

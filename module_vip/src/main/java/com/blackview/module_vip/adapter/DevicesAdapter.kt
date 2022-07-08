@@ -21,15 +21,27 @@ class DevicesAdapter : BaseQuickAdapter<DeviceData, BaseViewHolder>(R.layout.ite
      */
     private var selectedState = false
 
+    /**
+     * 是否是单选 默认单选
+     */
+    private var singleSelection=true
+
     override fun convert(holder: BaseViewHolder, item: DeviceData) {
         holder.getView<AppCompatTextView>(R.id.tvDeviceName).text = item.nick_name
         if (selectedState) {
             holder.getView<AppCompatImageView>(R.id.ivSelect).let {
                 it.visibility = View.VISIBLE
-                it.setImageResource(
-                    if (item.selected) com.blackview.common_res.R.drawable.radio_active
-                    else com.blackview.common_res.R.drawable.radio_input
-                )
+                if (singleSelection){
+                    it.setImageResource(
+                        if (item.selected) com.blackview.common_res.R.drawable.radio_active
+                        else com.blackview.common_res.R.drawable.radio_input
+                    )
+                }else{
+                    it.setImageResource(
+                        if (item.selected) com.blackview.common_res.R.drawable.checkbox_active
+                        else com.blackview.common_res.R.drawable.checkbox_input
+                    )
+                }
             }
         } else {
             holder.getView<AppCompatImageView>(R.id.ivSelect).visibility = View.GONE
@@ -50,5 +62,11 @@ class DevicesAdapter : BaseQuickAdapter<DeviceData, BaseViewHolder>(R.layout.ite
         return selectedState
     }
 
+    /**
+     * 设置是否单选
+     */
+    fun setSingle(single:Boolean) {
+        singleSelection=single
+    }
 
 }

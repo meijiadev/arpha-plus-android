@@ -5,10 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.blackview.base.base.BaseViewModel
 import com.blackview.base.base.SingleLiveEvent
 import com.blackview.base.http.request
-import com.blackview.base.http.requestNoCheck
 import com.blackview.base.http.requestNoCheckAndError
+import com.blackview.repository.entity.Notifications
 import com.blackview.repository.entity.ShareMember
-import com.blackview.repository.httpService
 import com.blackview.repository.vipService
 import com.orhanobut.logger.Logger
 
@@ -26,6 +25,11 @@ class MyDevicesModel : BaseViewModel() {
      * 设备分享是否成功
      */
     val sharDevicesSuccess =SingleLiveEvent<Boolean>()
+
+    /**
+     * 测试数据
+     */
+    val notifyEvent =MutableLiveData<Notifications>()
 
     /**
      * 获取装置共享者列表
@@ -86,5 +90,26 @@ class MyDevicesModel : BaseViewModel() {
                 Logger.i("请求错误：${it.toString()}")
             }
         )
+    }
+
+    /**
+     * 获取设备的设置项配置
+     */
+    fun getDevicesSettings(deviceId:String){
+        requestNoCheckAndError(
+            {
+                vipService.getNotifySettings(deviceId)
+            },{
+                Logger.i("-----${it.data?.notifications}")
+            },{
+                // 测试数据
+                notifyEvent.value=Notifications(false,false,false)
+            }
+        )
+
+    }
+
+    fun updateDevices(deviceId:Int,notify:Notifications){
+
     }
 }

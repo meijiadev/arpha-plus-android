@@ -11,11 +11,8 @@ import com.blackview.module_vip.BR
 import com.blackview.module_vip.R
 import com.blackview.module_vip.adapter.SettingsAdapter
 import com.blackview.module_vip.databinding.FragmentVipBinding
-import com.blackview.module_vip.device.JUMP_FORM_DEVICE_SHARE
-import com.blackview.module_vip.device.JUMP_FORM_MESSAGE_SETTINGS
 import com.blackview.module_vip.device.VipDeviceActivity
 import com.blackview.module_vip.device.WHERE_TO_JUMP_FROM
-import com.blackview.util.L
 import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.ToastUtils
 import com.bumptech.glide.Glide
@@ -92,14 +89,14 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
         fun onMessage(){
             ToastUtils.showShort("点击通知设定")
             val bundle=Bundle()
-            bundle.putString(WHERE_TO_JUMP_FROM, JUMP_FORM_MESSAGE_SETTINGS)
+            bundle.putString(WHERE_TO_JUMP_FROM, getString(com.blackview.common_res.R.string.message_settings))
             context?.gotoAct<VipDeviceActivity>(bundle)
         }
 
         fun onShare(){
             ToastUtils.showShort("点击装置共享")
             val bundle=Bundle()
-            bundle.putString(WHERE_TO_JUMP_FROM, JUMP_FORM_DEVICE_SHARE)
+            bundle.putString(WHERE_TO_JUMP_FROM, getString(com.blackview.common_res.R.string.device_share))
             context?.gotoAct<VipDeviceActivity>(bundle)
         }
 

@@ -17,8 +17,6 @@ import com.orhanobut.logger.Logger
  *    desc   : 会员页面中的设备相关设置页
  */
 const val WHERE_TO_JUMP_FROM = "where to jump from"
-const val JUMP_FORM_DEVICE_SHARE = "device share"
-const val JUMP_FORM_MESSAGE_SETTINGS = "notification settings"
 
 class VipDeviceActivity : BaseMVActivity<ActivityVipDeviceBinding, VipDeviceModel>() {
     private val myDevicesFragment: MyDevicesFragment by lazy { MyDevicesFragment.newInstance() }
@@ -36,11 +34,9 @@ class VipDeviceActivity : BaseMVActivity<ActivityVipDeviceBinding, VipDeviceMode
     override fun initData() {
         super.initData()
         val msg = intent.extras?.getString(WHERE_TO_JUMP_FROM)
-        ToastUtils.showLong(msg)
-        when (msg) {
-            JUMP_FORM_DEVICE_SHARE -> setTitle(getString(com.blackview.common_res.R.string.device_share))
-            JUMP_FORM_MESSAGE_SETTINGS -> setTitle(getString(com.blackview.common_res.R.string.message_settings))
-        }
+        setTitle(msg ?: getString(com.blackview.common_res.R.string.device_share))
+        viewModel.pageIsMessageSetting =
+            (getString(com.blackview.common_res.R.string.message_settings) == msg)
         setLeftBottomLine()
         // 获取自身拥有的设备
         viewModel.getOwnDevices()
@@ -118,7 +114,7 @@ class VipDeviceActivity : BaseMVActivity<ActivityVipDeviceBinding, VipDeviceMode
     /**
      * 当前的fragment
      */
-    private var mFragment= Fragment()
+    private var mFragment = Fragment()
 
     /**
      * 切换fragment
@@ -126,25 +122,26 @@ class VipDeviceActivity : BaseMVActivity<ActivityVipDeviceBinding, VipDeviceMode
     private fun switchFragment(target: Fragment) {
         if (target != null && target != mFragment) {
             val transaction = supportFragmentManager.beginTransaction()
-            if (target is MyDevicesFragment){
+            if (target is MyDevicesFragment) {
                 transaction.setCustomAnimations(
                     com.blackview.common_res.R.anim.action_left_enter,
                     com.blackview.common_res.R.anim.action_left_exit
                 )
-            }else{
+            } else {
                 transaction.setCustomAnimations(
                     com.blackview.common_res.R.anim.action_rigth_enter,
                     com.blackview.common_res.R.anim.action_rigth_exit
                 )
             }
             // 先判断该fragment 是否已经被添加到管理器
-            if (!target.isAdded){
-                transaction.hide(mFragment).add(R.id.fragmentContainer,target).commitAllowingStateLoss()
-            }else{
+            if (!target.isAdded) {
+                transaction.hide(mFragment).add(R.id.fragmentContainer, target)
+                    .commitAllowingStateLoss()
+            } else {
                 // 添加的fragment 直接显示
                 transaction.hide(mFragment).show(target).commitAllowingStateLoss()
             }
-            mFragment=target
+            mFragment = target
 
         }
 

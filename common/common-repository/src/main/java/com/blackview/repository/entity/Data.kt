@@ -45,6 +45,15 @@ data class ShareMember(
     val name:String
 )
 
+/**
+ * author : MJ
+ * time   : 2022/07/08
+ * desc   : 装置通知设定配置
+ */
+data class SettingsData(
+    val notifications: Notifications
+)
+
 
 
 data class ProductList(

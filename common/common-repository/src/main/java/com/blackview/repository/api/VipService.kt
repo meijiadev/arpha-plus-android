@@ -4,12 +4,11 @@ import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
 import com.blackview.base.request.BaseResponseNotData
 import com.blackview.repository.entity.DeviceData
+import com.blackview.repository.entity.SettingsData
 import com.blackview.repository.entity.ShareMember
 import com.blackview.repository.entity.VipMemberInfo
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import okhttp3.ResponseBody
+import retrofit2.http.*
 
 
 /**
@@ -61,6 +60,26 @@ interface VipService {
     ):BaseResponseNotData
 
 
+    /**
+     * 获取他人共享给自己的设备
+     */
     @GET("api/share/accepted-device")
     suspend fun getAcceptedDevices():BaseResponse<MutableList<DeviceData>>
+
+    /**
+     * 删除别人共享的设备
+     * 当使用delete时写法
+     */
+    @HTTP(method = "DELETE", path = "api/share/delete-accepted-device",hasBody = true)
+    suspend fun deleteAcceptedDevices(@Body params: ArrayMap<Any, Any>):ResponseBody
+
+
+    /**
+     * 获取指定装置的通知设定项
+     */
+    @GET("api/devices/notify-setting")
+    suspend fun getNotifySettings(
+        @Query ("device_id")
+        deviceId:String
+    ):BaseResponse<SettingsData>
 }
