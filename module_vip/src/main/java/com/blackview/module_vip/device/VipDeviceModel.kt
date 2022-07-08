@@ -5,6 +5,7 @@ import com.blackview.base.base.BaseViewModel
 import com.blackview.base.http.request
 import com.blackview.repository.entity.DeviceData
 import com.blackview.repository.httpService
+import com.blackview.repository.vipService
 import com.blackview.util.L
 import com.orhanobut.logger.Logger
 
@@ -31,7 +32,7 @@ class VipDeviceModel:BaseViewModel() {
      */
     fun getOwnDevices(){
         request({
-            httpService.getOwnDevices()
+            vipService.getOwnDevices()
         },{
             Logger.i("设备数量：${it.size}")
             ownDevicesList.value=it
@@ -43,7 +44,7 @@ class VipDeviceModel:BaseViewModel() {
      */
     fun getShareDevices(){
         request({
-            httpService.getShareDevices()
+            vipService.getShareDevices()
         },{
             Logger.i("分享的设备数量：${it.size}")
             shareDevicesList.value=it

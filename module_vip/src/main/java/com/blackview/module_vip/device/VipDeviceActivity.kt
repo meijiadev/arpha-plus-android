@@ -1,13 +1,12 @@
 package com.blackview.module_vip.device
 
 import android.graphics.drawable.Drawable
-import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.blackview.base.base.BaseMVActivity
 import com.blackview.module_vip.R
 import com.blackview.module_vip.databinding.ActivityVipDeviceBinding
-import com.blackview.util.L
+import com.blackview.module_vip.device.mydevice.MyDevicesFragment
+import com.blackview.module_vip.device.share.AcceptDevicesFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 
@@ -24,7 +23,7 @@ const val JUMP_FORM_MESSAGE_SETTINGS = "notification settings"
 class VipDeviceActivity : BaseMVActivity<ActivityVipDeviceBinding, VipDeviceModel>() {
     private val myDevicesFragment: MyDevicesFragment by lazy { MyDevicesFragment.newInstance() }
 
-    private val shareFragment: ShareFragment by lazy { ShareFragment.newInstance() }
+    private val acceptDevicesFragment: AcceptDevicesFragment by lazy { AcceptDevicesFragment.newInstance() }
 
     override fun getViewBinding(): ActivityVipDeviceBinding {
         return ActivityVipDeviceBinding.inflate(layoutInflater)
@@ -82,7 +81,7 @@ class VipDeviceActivity : BaseMVActivity<ActivityVipDeviceBinding, VipDeviceMode
                 if (it.size == 0) {
                     //binding.llEmpty.visibility = View.VISIBLE
                 }
-                switchFragment(shareFragment)
+                switchFragment(acceptDevicesFragment)
             }
         }
     }

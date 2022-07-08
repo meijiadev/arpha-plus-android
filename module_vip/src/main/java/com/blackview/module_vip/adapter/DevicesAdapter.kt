@@ -20,6 +20,7 @@ class DevicesAdapter : BaseQuickAdapter<DeviceData, BaseViewHolder>(R.layout.ite
      * 是否处于选择设备的状态
      */
     private var selectedState = false
+
     override fun convert(holder: BaseViewHolder, item: DeviceData) {
         holder.getView<AppCompatTextView>(R.id.tvDeviceName).text = item.nick_name
         if (selectedState) {

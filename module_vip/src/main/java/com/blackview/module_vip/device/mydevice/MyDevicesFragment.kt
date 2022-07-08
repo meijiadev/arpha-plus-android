@@ -1,4 +1,4 @@
-package com.blackview.module_vip.device
+package com.blackview.module_vip.device.mydevice
 
 import android.os.Bundle
 import android.view.View

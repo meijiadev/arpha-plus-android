@@ -4,10 +4,7 @@ import com.blackview.base.App
 import com.blackview.base.http.BaseNetworkApi
 import com.blackview.base.http.CacheInterceptor
 import com.blackview.base.http.LoggerInterceptor
-import com.blackview.repository.api.ApiService
-import com.blackview.repository.api.ApiService2
-import com.blackview.repository.api.HttpService
-import com.blackview.repository.api.LoginService
+import com.blackview.repository.api.*
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -35,6 +32,9 @@ val loginService: LoginService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED)
 }
 val httpService: HttpService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(HttpService::class.java, LoginService.HTTP_URL)
+}
+val vipService:VipService by lazy ( mode=LazyThreadSafetyMode.SYNCHRONIZED ){
+    NetworkApi.INSTANCE.getApi(VipService::class.java, LoginService.HTTP_URL)
 }
 
 class NetworkApi : BaseNetworkApi() {

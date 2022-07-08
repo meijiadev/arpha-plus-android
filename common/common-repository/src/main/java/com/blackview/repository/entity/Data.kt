@@ -46,6 +46,7 @@ data class ShareMember(
 )
 
 
+
 data class ProductList(
     var product_types: List<ProductType>
 )

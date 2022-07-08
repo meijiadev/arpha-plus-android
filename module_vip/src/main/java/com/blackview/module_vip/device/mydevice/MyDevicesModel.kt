@@ -1,4 +1,4 @@
-package com.blackview.module_vip.device
+package com.blackview.module_vip.device.mydevice
 
 import android.util.ArrayMap
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +9,7 @@ import com.blackview.base.http.requestNoCheck
 import com.blackview.base.http.requestNoCheckAndError
 import com.blackview.repository.entity.ShareMember
 import com.blackview.repository.httpService
+import com.blackview.repository.vipService
 import com.orhanobut.logger.Logger
 
 
@@ -32,7 +33,7 @@ class MyDevicesModel : BaseViewModel() {
     fun getShareList(deviceId: String) {
         request(
             {
-                httpService.getShareList(deviceId)
+                vipService.getShareList(deviceId)
             },
             {
                 shareMemberEvent.value = it
@@ -48,9 +49,9 @@ class MyDevicesModel : BaseViewModel() {
         val params = ArrayMap<Any, Any>()
         params["account"] = account
         params["manufacturer"] = "Arpha"
-        requestNoCheck(
+        requestNoCheckAndError(
             {
-                httpService.checkMember(params)
+                vipService.checkMember(params)
             }, {
                 when (it.code) {
                     20000 -> Logger.i("该用户存在")
@@ -70,7 +71,7 @@ class MyDevicesModel : BaseViewModel() {
         params["member_ids"] = member
         requestNoCheckAndError(
             {
-                httpService.shareDevices(params)
+                vipService.shareDevices(params)
             }, {
                 sharDevicesSuccess.value=false
                 when (it.code) {

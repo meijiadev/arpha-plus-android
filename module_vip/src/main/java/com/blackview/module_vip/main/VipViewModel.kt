@@ -6,6 +6,7 @@ import com.blackview.base.http.request
 import com.blackview.base.http.requestNoCheck
 import com.blackview.repository.entity.VipMemberInfo
 import com.blackview.repository.httpService
+import com.blackview.repository.vipService
 import com.orhanobut.logger.Logger
 
 
@@ -22,7 +23,7 @@ class VipViewModel:BaseViewModel() {
 
     fun getVipMemberInfo(){
         request({
-            httpService.vipMember()
+            vipService.vipMember()
         },{
             Logger.i("会员信息：$it")
             vipMemberEvent.value=it
