@@ -111,7 +111,6 @@ class MyDevicesModel : BaseViewModel() {
                 notifyEvent.value = Notifications(false, false, false)
             }
         )
-
     }
 
     /**
