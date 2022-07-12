@@ -156,6 +156,13 @@ class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, MyDevicesModel>
             }
         }
 
+        // 更新通知设定的结果
+        viewModel.updateEvent.observe(viewLifecycleOwner){
+            it?.let {
+                Logger.i("更新通知设定result:$it")
+            }
+        }
+
 
     }
 
@@ -191,7 +198,8 @@ class MyDevicesFragment : BaseMVFragment<FragmentDevicesBinding, MyDevicesModel>
             .onCancel {
 
             }.onConfirm {
-
+                // 更新通知设定
+                viewModel.updateDevices(currentShareDev.device_id,it)
             }
         XPopup.Builder(requireContext())
             .isViewMode(true)

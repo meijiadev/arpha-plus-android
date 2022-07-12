@@ -82,4 +82,13 @@ interface VipService {
         @Query ("device_id")
         deviceId:String
     ):BaseResponse<SettingsData>
+
+
+    /**
+     *  更新通知设定
+     */
+    @PUT("api/devices/update-notify")
+    suspend fun updateNotify(@Body params:ArrayMap<Any,Any>):ResponseBody
+
+
 }

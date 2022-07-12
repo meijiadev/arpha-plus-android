@@ -94,9 +94,9 @@ data class Device(
 
 @Parcelize
 data class Notifications(
-    val door_alert: Boolean,
-    val door_bell: Boolean,
-    val door_open: Boolean
+    var door_alert: Boolean,
+    var door_bell: Boolean,
+    var door_open: Boolean
 ) : Parcelable
 
 data class Dd(

@@ -38,7 +38,7 @@ class MessageSettingDialog(context: Context) : CenterPopupView(context), OnItemC
 
     private var onCancelAction: (() -> Unit)? = null
 
-    private var onConfirmAction: (() -> Unit)? = null
+    private var onConfirmAction: ((Notifications?) -> Unit)? = null
 
     private var notify: Notifications? = null
 
@@ -60,7 +60,7 @@ class MessageSettingDialog(context: Context) : CenterPopupView(context), OnItemC
         }
 
         btConfirm.setOnClickListener {
-            onConfirmAction?.invoke()
+            onConfirmAction?.invoke(notify)
             dismiss()
         }
 
@@ -78,7 +78,7 @@ class MessageSettingDialog(context: Context) : CenterPopupView(context), OnItemC
         onCancelAction = action
     }
 
-    fun onConfirm(action: () -> Unit): MessageSettingDialog = apply {
+    fun onConfirm(action: (Notifications?) -> Unit): MessageSettingDialog = apply {
         onConfirmAction = action
     }
 
@@ -113,6 +113,11 @@ class MessageSettingDialog(context: Context) : CenterPopupView(context), OnItemC
         val switch = settings[position].open
         settings[position].open = !switch
         notifyAdapter?.notifyDataSetChanged()
+        when(position){
+            0-> notify?.door_bell=settings[0].open
+            1-> notify?.door_open=settings[1].open
+            2-> notify?.door_alert=settings[2].open
+        }
     }
 
     fun getDevNotify(): Notifications? {
