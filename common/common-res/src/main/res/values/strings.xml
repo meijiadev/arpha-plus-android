@@ -142,7 +142,11 @@
     <string name="door_bell">門鈴通知</string>
     <string name="door_open">開門通知</string>
     <string name="door_alert">告警通知</string>
-
+    
+    <string name="modify_nick_name">修改暱稱</string>
+    <string name="replace_head_image">更換頭像</string>
+    <string name="modify_password">變更密碼</string>
+    <string name="delete_account">刪除帳號</string>
 
     
     <string name="pairing_finish">120 秒後完成配對...</string>

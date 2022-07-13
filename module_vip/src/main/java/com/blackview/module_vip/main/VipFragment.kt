@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackview.base.base.BaseMVVMFragment
+import com.blackview.contant.VIP_ACCOUNT_MANAGER
 import com.blackview.module_vip.BR
 import com.blackview.module_vip.R
 import com.blackview.module_vip.adapter.SettingsAdapter
@@ -160,6 +161,11 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
         Logger.i("点击：$position,${settingsList[position].itemName}")
         ToastUtils.showShort("点击：$position,${settingsList[position].itemName}")
+        when(position){
+            0-> {
+                gotoAct(VIP_ACCOUNT_MANAGER)
+            }
+        }
     }
 
 

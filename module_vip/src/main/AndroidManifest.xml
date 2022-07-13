@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".device.VipDeviceActivity"/>
+        <activity android:name=".account.AccountActivity"/>
     </application>
 
 </manifest>

@@ -30,6 +30,11 @@ const val notice = "/notice/main"
 
 const val vip = "/vip/main"
 
+/**
+ * 账号管理的路径
+ */
+const val VIP_ACCOUNT_MANAGER="/vip/account"
+
 const val USER = "username"
 
 const val PASSWORD = "password"

@@ -4,6 +4,8 @@
 
     <application>
         <activity android:name=".main.VipActivity" />
+        <activity android:name=".device.VipDeviceActivity"/>
+        <activity android:name=".account.AccountActivity"/>
     </application>
 
 </manifest>

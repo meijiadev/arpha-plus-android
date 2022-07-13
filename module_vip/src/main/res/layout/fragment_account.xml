@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="accountModel"
+            type="com.blackview.module_vip.account.AccountModel" />
+
+        <variable
+            name="click"
+            type="com.blackview.module_vip.account.AccountFragment.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:gravity="center"
+                android:text="@string/modify_nick_name"
+                android:textColor="@color/grey_4F4C4B"
+                android:textSize="14dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_toLeftOf="@id/ivEnter"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/gray_83817C"
+                android:textSize="14dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEnter"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28dp"
+                android:onClick="@{()->click.onModifyNick()}"
+                android:src="@drawable/icon_arrow_right_16" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:gravity="center"
+                android:text="@string/replace_head_image"
+                android:textColor="@color/grey_4F4C4B"
+                android:textSize="14dp" />
+
+            <com.caldremch.widget.round.RoundFrameLayout
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_toLeftOf="@id/ivEnterI"
+                app:rl_radius="8dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivHeadImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/empty_head" />
+
+            </com.caldremch.widget.round.RoundFrameLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEnterI"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28dp"
+                android:src="@drawable/icon_arrow_right_16"
+                android:onClick="@{()->click.onHeadImage()}"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:gravity="center"
+                android:text="@string/modify_password"
+                android:textColor="@color/grey_4F4C4B"
+                android:textSize="14dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28dp"
+                android:src="@drawable/icon_arrow_right_16"
+                android:onClick="@{()->click.onPassword()}"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:gravity="center"
+                android:text="@string/delete_account"
+                android:textColor="@color/grey_4F4C4B"
+                android:textSize="14dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28dp"
+                android:src="@drawable/icon_arrow_right_16"
+                android:onClick="@{()->click.onDeleteAccount()}"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

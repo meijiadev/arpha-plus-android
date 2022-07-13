@@ -3,14 +3,12 @@ package com.blackview.base.base
 import android.app.ActionBar
 import android.app.Activity
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
+import android.view.*
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -59,6 +57,24 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
         viewGroup.addView(contentLayout)
         LayoutInflater.from(this).inflate(R.layout.layout_title, contentLayout, true)
     }
+
+    fun hideTitleBar() {
+        contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible = false
+    }
+
+    fun showTitleBar() {
+        contentLayout.findViewById<RelativeLayout>(R.id.layoutTitleBar)?.isVisible = true
+    }
+
+
+    fun setTitle(title:String){
+        contentLayout.findViewById<TextView>(R.id.tvTitle).text=title
+    }
+
+    fun getBackButton(): ImageView {
+        return contentLayout.findViewById(R.id.ivBack)
+    }
+
 
     override fun setContentView(view: View) {
         contentLayout.addView(view)
@@ -145,5 +161,39 @@ abstract class BaseMVVMActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCo
     private fun toastShort(msg: String) {
         ToastUtils.make().setGravity(Gravity.CENTER, 0, 0)
         ToastUtils.showShort(msg)
+    }
+
+    var isEnableHideSoftInputFromWindow = false
+
+    /**
+     * 触摸空白区域自动隐藏键盘
+     *
+     * @param ev
+     * @return
+     */
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (ev.action == MotionEvent.ACTION_DOWN && isEnableHideSoftInputFromWindow) {
+            currentFocus?.apply {
+                if (isShouldHideKeyboard(this, ev)) {
+                    val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+                    imm?.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
+    // 根据EditText所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘
+    private fun isShouldHideKeyboard(v: View, event: MotionEvent): Boolean {
+        if (v is EditText) {
+            val l = intArrayOf(0, 0)
+            v.getLocationInWindow(l)
+            val left = l[0]
+            val top = l[1]
+            val bottom = top + v.getHeight()
+            val right = left + v.getWidth()
+            return !(event.x > left && event.x < right && event.y > top && event.y < bottom)
+        }
+        return false
     }
 }
