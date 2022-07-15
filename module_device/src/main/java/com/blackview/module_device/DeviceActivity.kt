@@ -45,6 +45,7 @@ class DeviceActivity : BaseMVActivity<ActivityDeviceBinding, DeviceModel>() {
 
     override fun initView() {
         super.initView()
+        hideTitleBar()
         SpUtil.decodeString(USER)?.apply {
             L.e("user:$this")
         }

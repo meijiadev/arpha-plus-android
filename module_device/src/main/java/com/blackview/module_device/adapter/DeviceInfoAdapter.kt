@@ -1,8 +1,9 @@
-package com.blackview.module_device
+package com.blackview.module_device.adapter
 
-import androidx.lifecycle.MutableLiveData
-import com.blackview.repository.base.BaseRepository
-import com.blackview.repository.entity.Device
+import com.blackview.module_device.DeviceInfoAty
+import com.blackview.module_device.R
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 /**
  * ━━━━━━神兽出没━━━━━━
@@ -25,16 +26,11 @@ import com.blackview.repository.entity.Device
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * Created by home on 2022/7/7.
+ * Created by home on 2022/7/12.
  */
-class DeviceRepository:BaseRepository() {
-
-    
-    
-    var liveDevices = MutableLiveData<List<Device>>()
-
-
-    override fun onClean() {
-        
+class DeviceInfoAdapter : BaseQuickAdapter<DeviceInfoAty.DeviceEntity, BaseViewHolder>(R.layout.item_device_info) {
+    override fun convert(holder: BaseViewHolder, item: DeviceInfoAty.DeviceEntity) {
+        holder.setImageResource(R.id.iv_device_info_img, item.res)
+        holder.setText(R.id.tv_device_info_text, item.text)
     }
 }

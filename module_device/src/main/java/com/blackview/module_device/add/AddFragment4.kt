@@ -1,5 +1,7 @@
 package com.blackview.module_device.add
 
+import android.app.Activity.RESULT_OK
+import android.icu.text.DateTimePatternGenerator.PatternInfo.OK
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -54,6 +56,7 @@ class AddFragment4 : BaseMVFragment<FragmentAddFourBinding, AddModel>() {
     override fun initListener() {
         super.initListener()
         binding.tvGoToDeviceList.setOnClickListener {
+            activity?.setResult(RESULT_OK)
             activity?.finish()
         }
     }

@@ -6,22 +6,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import androidx.lifecycle.ViewModel
 import com.blackview.contant.device
 import com.blackview.module_device.DeviceActivity
 import com.blackview.module_device.DeviceFragment
+import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
 import com.blackview.util.L
 import com.blackview.util.toastShort
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DeviceBottomDialog : BottomSheetDialogFragment() {
+class DeviceBottomDialog(private val model: DeviceModel, var device: Device, var pos: Int) :
+    BottomSheetDialogFragment() {
 
-    var delDeviceDialog: DelDeviceDialog? = null
-    var noticeDeviceDialog: NoticeDeviceDialog? = null
-    var deviceDialog1: DeviceDialog? = null
-    var deviceDialog2: DeviceDialog? = null
-    var infoDeviceDialog: InfoDeviceDialog? = null
+    private var delDeviceDialog: DelDeviceDialog? = null
+    private var noticeDeviceDialog: NoticeDeviceDialog? = null
+    private var deviceDialog1: DeviceDialog? = null
+    private var deviceDialog2: DeviceDialog? = null
+    private var infoDeviceDialog: InfoDeviceDialog? = null
+
 
     interface DismissListener {
         fun onDismiss()
@@ -54,6 +58,7 @@ class DeviceBottomDialog : BottomSheetDialogFragment() {
     }
 
     private fun initView(rootView: View) {
+
         val tvNotice = rootView.findViewById<TextView>(R.id.tv_setting_notice)
         val tvName = rootView.findViewById<TextView>(R.id.tv_setting_name)
         val tvAllPermissions = rootView.findViewById<TextView>(R.id.tv_setting_all_permissions)
@@ -61,44 +66,40 @@ class DeviceBottomDialog : BottomSheetDialogFragment() {
         val tvCheckNews = rootView.findViewById<TextView>(R.id.tv_setting_check_news)
         val tvDelete = rootView.findViewById<TextView>(R.id.tv_setting_delete)
 
-
-        /*tvDelete.setOnClickListener {
+        tvDelete.setOnClickListener {
             if (delDeviceDialog == null) {
-                delDeviceDialog = DelDeviceDialog().newInstance(device!!)
+                delDeviceDialog = DelDeviceDialog(model,device)
             }
             delDeviceDialog?.show(requireActivity().supportFragmentManager, "del")
         }
 
         tvNotice.setOnClickListener {
             if (noticeDeviceDialog == null) {
-                noticeDeviceDialog = NoticeDeviceDialog().newInstance(device!!)
-            } else {
-                L.e(device.toString())
-                noticeDeviceDialog!!.setDevice(device!!)
+                noticeDeviceDialog = NoticeDeviceDialog(model, device, pos)
             }
             noticeDeviceDialog?.show(requireActivity().supportFragmentManager, "notice")
         }
 
         tvName.setOnClickListener {
             if (deviceDialog1 == null) {
-                deviceDialog1 = DeviceDialog().newInstance(device!!, getString(com.blackview.common_res.R.string.button_tips2))
+                deviceDialog1 = DeviceDialog(1, device, model, pos)
             }
             deviceDialog1?.show(requireActivity().supportFragmentManager, "name1")
         }
 
         tvAllPermissions.setOnClickListener {
             if (deviceDialog2 == null) {
-                deviceDialog2 = DeviceDialog().newInstance(device!!, getString(com.blackview.common_res.R.string.button_tips3))
+                deviceDialog2 = DeviceDialog(2, device, model, pos)
             }
             deviceDialog2?.show(requireActivity().supportFragmentManager, "name2")
         }
 
         tvCheckNews.setOnClickListener {
             if (infoDeviceDialog == null) {
-                infoDeviceDialog = InfoDeviceDialog().newInstance(device!!)
+                infoDeviceDialog = InfoDeviceDialog()
             }
             infoDeviceDialog?.show(requireActivity().supportFragmentManager, "info1")
-        }*/
+        }
 
     }
 }

@@ -1,21 +1,24 @@
 package com.blackview.module_device
 
-import android.content.DialogInterface
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Rect
-import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackview.base.base.BaseMVFragment
+import com.blackview.contant.*
 import com.blackview.module_device.adapter.DevicesAdapter
 import com.blackview.module_device.add.AddAty
 import com.blackview.module_device.databinding.FragmentDeviceBinding
 import com.blackview.module_device.dialog.DeviceBottomDialog
 import com.blackview.repository.entity.Device
-import com.blackview.util.gotoAct
 import com.blankj.utilcode.util.SizeUtils
+import com.shangyun.p2ptester.Model.DIDModel
 
 
 /**
@@ -53,7 +56,8 @@ class DeviceFragment : BaseMVFragment<FragmentDeviceBinding, DeviceModel>() {
     override fun initView() {
         super.initView()
         binding.ivDeviceAdd.setOnClickListener {
-            activity?.gotoAct<AddAty>()
+            //activity?.gotoAct<AddAty>()
+            startActivityLauncher.launch(Intent(requireContext(), AddAty::class.java))
         }
         binding.deviceRecyclerView.apply {
             setHasFixedSize(true)
@@ -62,6 +66,7 @@ class DeviceFragment : BaseMVFragment<FragmentDeviceBinding, DeviceModel>() {
                 override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
                     super.getItemOffsets(outRect, view, parent, state)
                     outRect.top = SizeUtils.dp2px(20f)
+
                 }
             })
             adapter = devicesAdapter
@@ -75,22 +80,26 @@ class DeviceFragment : BaseMVFragment<FragmentDeviceBinding, DeviceModel>() {
         devicesAdapter.setOnItemChildClickListener { adapter, view, position ->
             val device = adapter.getItem(position) as Device
             if (dialog == null) {
-                dialog = DeviceBottomDialog()
+                dialog = DeviceBottomDialog(viewModel, device, position)
             }
-            dialog?.setDismissListener(object : DeviceBottomDialog.DismissListener {
-                override fun onDismiss() {
-                    viewModel.devices()
-                }
-            })
             dialog?.show(requireActivity().supportFragmentManager, "")
 
         }
 
         devicesAdapter.setOnItemClickListener { adapter, view, position ->
             val device = adapter.getItem(position) as Device
-            activity?.gotoAct<DeviceInfoAty>(Bundle().apply {
-                putParcelable("deviceTitle", device)
-            })
+            //activity?.gotoAct<DeviceInfoAty>(Bundle().apply {
+            //    putParcelable("deviceTitle", device)
+            //})
+            val model = DIDModel(device.did, InitString)
+            model.wakeupKey = WakeupKey
+            model.ip1 = ServerIp1
+            model.ip2 = ServerIp2
+            model.ip3 = ServerIp3
+            model.mode = 5
+            model.repeat=1
+            DeviceController().startModel(model)
+
         }
 
     }
@@ -101,10 +110,21 @@ class DeviceFragment : BaseMVFragment<FragmentDeviceBinding, DeviceModel>() {
             if (it.isNotEmpty()) {
                 devicesAdapter.setList(it)
             } else {
+                devicesAdapter.setNewInstance(null)
                 devicesAdapter.setEmptyView(R.layout.layout_device_empty)
             }
         }
     }
 
+    private val startActivityLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            when (it.resultCode) {
+                Activity.RESULT_OK -> {
+                    viewModel.devices()
+                }
+                Activity.RESULT_CANCELED -> {
+                }
+            }
+        }
 
 }

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/gray_e2e2e2">
+
+    <com.caldremch.widget.round.RoundLinearLayout
+        android:id="@+id/layout_device_info_img"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rl_backgroundColor="@color/white"
+        app:rl_radius="20dp">
+
+    </com.caldremch.widget.round.RoundLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_device_wifi_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_wifi_16"
+        android:drawablePadding="10dp"
+        android:text="status"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_device_battery_status"
+        app:layout_constraintTop_toBottomOf="@+id/layout_device_info_img" />
+
+    <TextView
+        android:id="@+id/tv_device_battery_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_battery100_16"
+        android:drawablePadding="10dp"
+        android:text="status"
+        android:textColor="@color/black_4F4C4B"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_device_wifi_status"
+        app:layout_constraintLeft_toRightOf="@+id/tv_device_wifi_status"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_device_wifi_status" />
+
+    <View
+        android:id="@+id/v_line_d"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_device_battery_status" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_device_info_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="@+id/layout_device_info_img"
+        app:layout_constraintRight_toRightOf="@+id/layout_device_info_img"
+        app:layout_constraintTop_toBottomOf="@+id/v_line_d">
+
+        <TextView
+            android:id="@+id/tv_device_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open_door_bell"
+            android:textColor="@color/black_333333"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_llll"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="@+id/slide_bar"
+            app:layout_constraintLeft_toLeftOf="@+id/slide_bar"
+            app:layout_constraintRight_toRightOf="@+id/slide_bar"
+            app:layout_constraintTop_toTopOf="@+id/slide_bar" />
+
+        <com.caldremch.widget.round.RoundLinearLayout
+            android:id="@+id/layout_info_right"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/v_llll"
+            app:layout_constraintLeft_toRightOf="@+id/v_llll"
+            app:layout_constraintRight_toLeftOf="@+id/tv_device_info_agree"
+            app:layout_constraintTop_toTopOf="@+id/v_llll"
+            app:rl_endColor="#C9A063"
+            app:rl_gradient_orientation="right_left"
+            app:rl_radius_right_bottom="30dp"
+            app:rl_radius_right_top="30dp"
+            app:rl_startColor="#F5D6A6">
+
+        </com.caldremch.widget.round.RoundLinearLayout>
+
+
+        <com.caldremch.widget.round.RoundLinearLayout
+            android:id="@+id/layout_info_left"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/v_llll"
+            app:layout_constraintLeft_toRightOf="@+id/tv_device_info_refused"
+            app:layout_constraintRight_toLeftOf="@+id/v_llll"
+            app:layout_constraintTop_toTopOf="@+id/v_llll"
+            app:rl_backgroundColor="@color/white"
+            app:rl_radius_left_bottom="30dp"
+            app:rl_radius_left_top="30dp">
+
+        </com.caldremch.widget.round.RoundLinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_left"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_info_left"
+            app:layout_constraintLeft_toLeftOf="@+id/layout_info_left"
+            app:layout_constraintRight_toRightOf="@+id/layout_info_left"
+            app:layout_constraintTop_toTopOf="@+id/layout_info_left" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_info_right"
+            app:layout_constraintLeft_toLeftOf="@+id/layout_info_right"
+            app:layout_constraintRight_toRightOf="@+id/layout_info_right"
+            app:layout_constraintTop_toTopOf="@+id/layout_info_right" />
+
+        <com.blackview.common_res.SlideBar
+            android:id="@+id/slide_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_device_info_title" />
+
+        <TextView
+            android:id="@+id/tv_device_info_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agree"
+            android:textColor="@color/text_BC9E70"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/slide_bar"
+            app:layout_constraintLeft_toRightOf="@+id/slide_bar"
+            app:layout_constraintTop_toTopOf="@+id/slide_bar" />
+
+        <TextView
+            android:id="@+id/tv_device_info_refused"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refused"
+            android:textColor="@color/gray_979797"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/slide_bar"
+            app:layout_constraintRight_toLeftOf="@+id/slide_bar"
+            app:layout_constraintTop_toTopOf="@+id/slide_bar" />
+
+
+        <TextView
+            android:id="@+id/tv_device_info_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/during_time"
+            android:textSize="11dp"
+            app:layout_constraintLeft_toLeftOf="@+id/slide_bar"
+            app:layout_constraintRight_toRightOf="@+id/slide_bar"
+            app:layout_constraintTop_toBottomOf="@+id/slide_bar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

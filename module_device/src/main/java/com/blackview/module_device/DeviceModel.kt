@@ -41,19 +41,16 @@ import okhttp3.RequestBody
  */
 class DeviceModel : BaseViewModel() {
 
-    val repository = RepositoryFactory.createByAccountSession(DeviceRepository::class.java)
-    
+
     var liveDevices = MutableLiveData<List<Device>>()
     var changeDeviceNameEvent = SingleLiveEvent<Void>()
-    var setNoticeEvent=SingleLiveEvent<Void>()
+    var setNoticeEvent = SingleLiveEvent<Void>()
+    var deleteDeviceEvent = SingleLiveEvent<Void>()
 
-    
 
-    
     fun devices() {
         request({ httpService.devices() }, {
             liveDevices.postValue(it.devices)
-            repository.liveDevices.value=it.devices
         })
     }
 
@@ -71,6 +68,15 @@ class DeviceModel : BaseViewModel() {
         val bean = Dd(id, d)
         requestNoCheck({ httpService.updateNotify(bean) }, {
             setNoticeEvent.post()
+        })
+    }
+
+    fun deleteDevice(id: Int, pwd: String) {
+        val params = ArrayMap<Any, Any>()
+        params["device_id"] = id
+        params["password"] = pwd
+        requestNoCheck({ httpService.deleteDevices(params) }, {
+            deleteDeviceEvent.post()
         })
     }
 

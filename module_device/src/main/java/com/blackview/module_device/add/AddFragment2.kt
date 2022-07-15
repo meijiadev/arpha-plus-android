@@ -94,6 +94,9 @@ class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
             binding.layoutAddHotdotQrcode.isVisible = false
             binding.layoutInputNumber.isVisible = true
             isShowInputLayout = false
+
+            setWifiName()
+
         }
 
         binding.tvAddSelectNext.setOnClickListener {
@@ -101,6 +104,8 @@ class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
             pwd = binding.tvLoginPwd.text.toString().trim()
             if (ssid.isEmpty()) {
                 viewModel.showToast(getString(com.blackview.common_res.R.string.select_wifi))
+            } else if (ssid.contains("5g")||ssid.contains("5G")) {
+                viewModel.showToast(getString(com.blackview.common_res.R.string.add_device22))
             } else if (pwd.isEmpty()) {
                 viewModel.showToast(getString(com.blackview.common_res.R.string.input_pwd))
             } else {
@@ -143,7 +148,7 @@ class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
                 binding.tvLoginPwd.transformationMethod = PasswordTransformationMethod.getInstance()
             }
         }
-        
+
         binding.tvAddSelectNext22.setOnClickListener {
             (activity as AddAty).showFragment3()
         }
@@ -158,6 +163,10 @@ class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
 
     @NeedsPermission(ACCESS_FINE_LOCATION)
     fun selectWifi1() {
+        setWifiName()
+    }
+
+    private fun setWifiName() {
         val wifiManager: WifiManager? = activity?.applicationContext?.getSystemService(WIFI_SERVICE) as WifiManager?
         val wifiInfo: WifiInfo? = wifiManager?.connectionInfo
         if (wifiInfo?.ssid?.isNotEmpty() == true) {
@@ -193,12 +202,12 @@ class AddFragment2 : BaseMVFragment<FragmentAddTwoBinding, AddModel>() {
             binding.layoutAddHotdotQrcode.isVisible = false
             binding.layoutInputNumber.isVisible = false
             isShowInputLayout = true
-            val bean = Qrcode(ssid, pwd, it)
+            val bean = Qrcode(ssid.replace("\"",""), pwd, it)
             val qrcode = Gson().toJson(bean)
             L.e(qrcode)
             binding.ivAddDeviceQrCode.setImageBitmap(ZxingUtils.createQRCode(qrcode))
             binding.layoutQrcodeImg.isVisible = true
-            (activity as AddAty).member_token=it
+            (activity as AddAty).member_token = it
         }
     }
 

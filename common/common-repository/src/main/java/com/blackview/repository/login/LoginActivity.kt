@@ -10,6 +10,7 @@ import com.blackview.base.base.BaseMVActivity
 import com.blackview.base.databinding.ActivityLoginBinding
 import com.blackview.contant.PASSWORD
 import com.blackview.contant.USER
+import com.blackview.contant.main
 import com.blackview.util.L
 import com.blackview.util.SpUtil
 import com.blackview.util.gotoAct
@@ -137,7 +138,7 @@ class LoginActivity : BaseMVActivity<ActivityLoginBinding, LoginModel>() {
                 SpUtil.encode(USER, "")
                 SpUtil.encode(PASSWORD, "")
             }
-            //gotoAct<MainActivity>()
+            gotoAct(main)
             finish()
         }
     }

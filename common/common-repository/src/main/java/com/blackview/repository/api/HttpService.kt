@@ -58,7 +58,7 @@ interface HttpService {
     suspend fun changeDeviceName(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     /**删除装置*/
-    @DELETE("/api/devices/delete")
+    @HTTP(method = "DELETE", path = "/api/devices/delete", hasBody = true)
     suspend fun deleteDevices(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     /**获取通知设定*/
