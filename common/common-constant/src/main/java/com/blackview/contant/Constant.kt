@@ -42,3 +42,5 @@ const val PASSWORD = "password"
 const val USER_TOKEN="token"
 
 const val WIFI_SSID="wifi_ssid"
+
+

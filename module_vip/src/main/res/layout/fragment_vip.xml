@@ -42,12 +42,11 @@
                 android:id="@+id/tvVipName"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:text="Sandy Wang"
+                android:gravity="center"
+                android:text=""
                 android:textColor="@color/black_333333"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                />
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvVipAccount"
@@ -55,29 +54,29 @@
                 android:layout_height="22dp"
                 android:layout_below="@id/tvVipName"
                 android:layout_marginTop="5dp"
-                android:text="+886 919-888-888"
                 android:gravity="center"
+                android:text=""
                 android:textColor="@color/gray_83817C"
                 android:textSize="14dp" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/icon_location_16"
                 android:layout_below="@id/tvVipAccount"
                 android:layout_marginTop="10dp"
-                android:text="台湾"
+                android:drawableLeft="@drawable/icon_location_16"
                 android:drawablePadding="6dp"
+                android:text=""
                 android:textColor="@color/gray_898A8B"
-                android:textSize="12dp"
-                />
+                android:textSize="12dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivVipHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/empty_head" />
+                 />
             <View
                 android:id="@+id/line1"
                 android:layout_width="match_parent"

@@ -6,11 +6,11 @@
 
         <variable
             name="accountModel"
-            type="com.blackview.module_vip.account.AccountModel" />
+            type="com.blackview.module_vip.account.model.AccountModel" />
 
         <variable
             name="click"
-            type="com.blackview.module_vip.account.AccountFragment.ProxyClick" />
+            type="com.blackview.module_vip.account.fragment.AccountFragment.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -72,7 +72,7 @@
                 android:layout_toLeftOf="@id/ivEnterI"
                 app:rl_radius="8dp">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <ImageView
                     android:id="@+id/ivHeadImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

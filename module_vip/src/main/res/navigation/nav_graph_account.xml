@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_account"
     app:startDestination="@id/accountFragment">
 
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.blackview.module_vip.account.AccountFragment"
-        android:label="AccountFragment" />
+        android:name="com.blackview.module_vip.account.fragment.AccountFragment"
+        android:label="AccountFragment"
+        tools:layout="@layout/fragment_account"
+        >
+        <action
+            android:id="@+id/action_accountFragment_to_modifyNickFragment"
+            app:destination="@id/modifyNickFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_accountFragment_to_headFragment"
+            app:destination="@id/headFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyNickFragment"
+        android:name="com.blackview.module_vip.account.fragment.ModifyNickFragment"
+        android:label="ModifyNickFragment"
+        tools:layout="@layout/fragment_modify_nick"
+        />
+    <fragment
+        android:id="@+id/headFragment"
+        android:name="com.blackview.module_vip.account.fragment.HeadFragment"
+        android:label="HeadFragment"
+        tools:layout="@layout/fragment_head"
+        />
 </navigation>

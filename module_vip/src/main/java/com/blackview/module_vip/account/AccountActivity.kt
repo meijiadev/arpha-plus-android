@@ -7,6 +7,7 @@ import com.blackview.base.base.BaseMVActivity
 import com.blackview.base.base.BaseViewModel
 import com.blackview.contant.VIP_ACCOUNT_MANAGER
 import com.blackview.module_vip.R
+import com.blackview.module_vip.account.model.AccountModel
 import com.blackview.module_vip.databinding.ActivityAccountBinding
 
 
@@ -17,7 +18,7 @@ import com.blackview.module_vip.databinding.ActivityAccountBinding
  *    desc   : 账号管理页面
  */
 @Route(path = VIP_ACCOUNT_MANAGER)
-class AccountActivity : BaseMVActivity<ActivityAccountBinding, BaseViewModel>() {
+class AccountActivity : BaseMVActivity<ActivityAccountBinding, AccountModel>() {
 
     private lateinit var navHostFragment:NavHostFragment
 
@@ -38,6 +39,16 @@ class AccountActivity : BaseMVActivity<ActivityAccountBinding, BaseViewModel>() 
                 finish()
             }else{
                 navController.popBackStack()
+            }
+        }
+    }
+
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        viewModel.titleEvent().observe(this){
+            it?.let {
+                setTitle(it)
             }
         }
     }

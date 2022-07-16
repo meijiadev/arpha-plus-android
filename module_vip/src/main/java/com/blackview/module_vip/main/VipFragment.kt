@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.blackview.base.base.BaseMVVMFragment
 import com.blackview.contant.VIP_ACCOUNT_MANAGER
 import com.blackview.module_vip.BR
@@ -63,26 +65,33 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
 
     override fun initParam() {
         super.initParam()
-        Glide.with(this)
-            .load(com.blackview.common_res.R.drawable.empty_head)
-            .transform(MultiTransformation(CenterCrop(), RoundedCorners(30)))
-            .into(binding.ivVipHead)
     }
 
     override fun initData() {
         super.initData()
         // 请求会员信息
-        viewModel.getVipMemberInfo()
         viewModel.vipMemberEvent.observe(viewLifecycleOwner){
             binding.tvVipName.text=it?.name
             binding.tvVipAccount.text= it?.account
             binding.tvLocation.text=it?.location
-            Glide.with(this)
-                .load(it?.img_url ?: com.blackview.common_res.R.drawable.empty_head)
-                .transform(MultiTransformation(CenterCrop(), RoundedCorners(15)))
-                .into(binding.ivVipHead)
+            binding.ivVipHead.load(
+                it?.img_url ?: com.blackview.common_res.R.drawable.empty_head
+            ){
+                transformations(
+                    RoundedCornersTransformation(20f)
+                )
+            }
+            AccountInfo.nickName=it?.name
+            AccountInfo.headImage=it?.img_url
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Logger.i("------onResume")
+        // 请求会员信息
+        viewModel.getVipMemberInfo()
     }
 
 
@@ -155,9 +164,6 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
 
     }
 
-
-    data class SettingItem (val iconRes:Int,val itemName:String,var rightMsg:String="")
-
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
         Logger.i("点击：$position,${settingsList[position].itemName}")
         ToastUtils.showShort("点击：$position,${settingsList[position].itemName}")
@@ -167,6 +173,8 @@ class VipFragment : BaseMVVMFragment<FragmentVipBinding, VipViewModel>() ,OnItem
             }
         }
     }
+
+    data class SettingItem (val iconRes:Int,val itemName:String,var rightMsg:String="")
 
 
 }

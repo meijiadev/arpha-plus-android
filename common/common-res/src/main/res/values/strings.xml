@@ -147,6 +147,14 @@
     <string name="replace_head_image">更換頭像</string>
     <string name="modify_password">變更密碼</string>
     <string name="delete_account">刪除帳號</string>
+    <string name="current_nick">目前暱稱</string>
+    <string name="new_nick">新暱稱</string>
+    <string name="please_enter_nick">請輸入新暱稱</string>
+    <string name="please_update_head_image">請上傳更換的照片</string>
+    <string name="add_head_image">新增照片</string>
+    <string name="current_head_tips">目前頭像（預覽）</string>
+    <string name="common_save">儲存</string>
+
 
     
     <string name="pairing_finish">120 秒後完成配對...</string>

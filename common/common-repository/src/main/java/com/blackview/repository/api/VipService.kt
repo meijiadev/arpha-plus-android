@@ -3,10 +3,8 @@ package com.blackview.repository.api
 import android.util.ArrayMap
 import com.blackview.base.request.BaseResponse
 import com.blackview.base.request.BaseResponseNotData
-import com.blackview.repository.entity.DeviceData
-import com.blackview.repository.entity.SettingsData
-import com.blackview.repository.entity.ShareMember
-import com.blackview.repository.entity.VipMemberInfo
+import com.blackview.repository.entity.*
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.http.*
 
@@ -89,6 +87,19 @@ interface VipService {
      */
     @PUT("api/devices/update-notify")
     suspend fun updateNotify(@Body params:ArrayMap<Any,Any>):ResponseBody
+
+    /**
+     * 更新会员昵称
+     */
+    @PUT("api/member/change-name")
+    suspend fun changeName(@Body params: ArrayMap<Any, Any>):BaseResponseNotData
+
+    /**
+     * 更新头像
+     */
+    @Multipart
+    @POST("api/member/change-headimage")
+    suspend fun changeHead(@Part part: MultipartBody.Part):BaseResponse<HeadImageData>
 
 
 }

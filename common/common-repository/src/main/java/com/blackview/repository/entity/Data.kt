@@ -54,6 +54,13 @@ data class SettingsData(
     val notifications: Notifications
 )
 
+/**
+ * 头像连接
+ */
+data class HeadImageData(
+    val img_url:String
+)
+
 
 
 data class ProductList(

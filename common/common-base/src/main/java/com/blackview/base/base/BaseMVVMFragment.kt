@@ -1,10 +1,13 @@
 package com.blackview.base.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -24,6 +27,10 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
     private var progressDialog: ProgressDialog? = null
 
     private var mFragmentProvider: ViewModelProvider? = null
+
+    private var mActivityProvider: ViewModelProvider? = null
+
+    private lateinit var mActivity: AppCompatActivity
 
 
     override fun onCreateView(
@@ -60,9 +67,22 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
         return mFragmentProvider?.get(modelClass)
     }
 
+
+    protected fun <T : ViewModel> getActivityViewModel(modelClass: Class<T>): T? {
+        if (mActivityProvider == null) {
+            mActivityProvider = ViewModelProvider(mActivity)
+        }
+        return mActivityProvider?.get(modelClass)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         progressDialog = ProgressDialog.Builder(requireContext()).noClose().get()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivity = context as AppCompatActivity
     }
 
     /**
@@ -131,8 +151,18 @@ abstract class BaseMVVMFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragm
     private fun toastShort(msg: String) {
         ToastUtils.make().apply {
             setGravity(Gravity.CENTER, 0, 0)
-            setBgColor(ContextCompat.getColor(requireContext(), com.blackview.common_res.R.color.black))
-            setTextColor(ContextCompat.getColor(requireContext(), com.blackview.common_res.R.color.white))
+            setBgColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    com.blackview.common_res.R.color.black
+                )
+            )
+            setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    com.blackview.common_res.R.color.white
+                )
+            )
             show(msg)
         }
     }
