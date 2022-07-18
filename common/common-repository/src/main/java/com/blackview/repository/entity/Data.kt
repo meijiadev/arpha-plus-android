@@ -90,7 +90,7 @@ data class Devices(
 
 @Parcelize
 data class Device(
-    val device_name: String,
+    var device_name: String,
     val did: String,
     val id: Int,
     val notifications: Notifications,

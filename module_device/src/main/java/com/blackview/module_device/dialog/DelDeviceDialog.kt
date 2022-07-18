@@ -9,27 +9,18 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
+import com.blackview.util.toastShort
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DelDeviceDialog : DialogFragment() {
+class DelDeviceDialog(var model: DeviceModel, var device: Device) : DialogFragment() {
 
-    private var device: Device? = null
-
-    fun newInstance(device: Device): DelDeviceDialog {
-        val args = Bundle()
-        args.putParcelable("device", device)
-        val fragment = DelDeviceDialog()
-        fragment.arguments = args
-        return fragment
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, com.blackview.base.R.style.BottomSheetDialog)
-        device = arguments?.getParcelable("device")
-
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -55,11 +46,25 @@ class DelDeviceDialog : DialogFragment() {
         }
 
         tvCancel.setOnClickListener { dismiss() }
-        
-        tvNext.setOnClickListener { 
-            
+
+        tvNext.setOnClickListener {
+            if (pwd.text.toString().trim().isEmpty()) {
+                toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_pwd))
+            } else {
+                model.deleteDevice(device.id, pwd.text.toString().trim())
+            }
         }
 
-
+        var list = ArrayList<Device>()
+        model.liveDevices.observe(this) {
+            list = it as ArrayList<Device>
+        }
+        model.deleteDeviceEvent.observe(this) {
+            toastShort(requireActivity(), getString(com.blackview.common_res.R.string.success))
+            dismiss()
+            list.remove(device)
+            model.liveDevices.postValue(list)
+        }
+        
     }
 }

@@ -74,4 +74,7 @@ dependencies {
     //zxing二维码生成扫描
     implementation 'com.google.zxing:core:3.4.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+
+    implementation project(':p2p:p2plibrary')
+
 }

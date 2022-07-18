@@ -11,30 +11,20 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.blackview.contant.device
 import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
 import com.blackview.util.toastShort
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DeviceDialog : DialogFragment() {
+class DeviceDialog(var type: Int, var device: Device, var model: DeviceModel,var pos:Int) : DialogFragment() {
 
-    private var device: Device? = null
     lateinit var viewModel: DeviceModel
-
-    fun newInstance(device: Device, title: String): DeviceDialog {
-        val args = Bundle()
-        args.putParcelable("device", device)
-        args.putString("title", title)
-        val fragment = DeviceDialog()
-        fragment.arguments = args
-        return fragment
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, com.blackview.base.R.style.BottomSheetDialog)
-        device = arguments?.getParcelable("device")
         viewModel = ViewModelProvider(this).get(DeviceModel::class.java)
     }
 
@@ -51,40 +41,47 @@ class DeviceDialog : DialogFragment() {
         val editText = rootView.findViewById<TextView>(R.id.et_device_name)
         val tvCancel = rootView.findViewById<TextView>(R.id.btn_device_go1)
         val tvNext = rootView.findViewById<TextView>(R.id.btn_device_go2)
-        val title = arguments?.getString("title")
-        tvTitle.text = title
 
-
-        if (getString(com.blackview.common_res.R.string.button_tips3) == title) {
-            editText.hint = getString(com.blackview.common_res.R.string.input_phone)
-            editText.inputType = InputType.TYPE_CLASS_PHONE
-
-            tvNext.setOnClickListener {
-                if (editText.text.toString().trim().isEmpty()) {
-                    toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_phone))
-                } else {
-
+        when (type) {
+            1 -> {
+                tvTitle.text = getString(com.blackview.common_res.R.string.button_tips2)
+                editText.hint = getString(com.blackview.common_res.R.string.input_device_name)
+                editText.inputType = InputType.TYPE_CLASS_TEXT
+                tvNext.setOnClickListener {
+                    if (editText.text.toString().trim().isEmpty()) {
+                        toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_device_name))
+                    } else {
+                        viewModel.changeDeviceName(device.id, editText.text.toString().trim())
+                    }
                 }
             }
+            2 -> {
+                tvTitle.text = getString(com.blackview.common_res.R.string.button_tips3)
+                editText.hint = getString(com.blackview.common_res.R.string.input_phone)
+                editText.inputType = InputType.TYPE_CLASS_PHONE
+                tvNext.setOnClickListener {
+                    if (editText.text.toString().trim().isEmpty()) {
+                        toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_phone))
+                    } else {
 
-        } else {
-            editText.hint = getString(com.blackview.common_res.R.string.input_device_name)
-            editText.inputType = InputType.TYPE_CLASS_TEXT
-            tvNext.setOnClickListener {
-                if (editText.text.toString().trim().isEmpty()) {
-                    toastShort(requireActivity(), getString(com.blackview.common_res.R.string.input_device_name))
-                } else {
-                    viewModel.changeDeviceName(device?.id!!, editText.text.toString().trim())
+                    }
                 }
             }
-
         }
 
         tvCancel.setOnClickListener { dismiss() }
 
+        var list = ArrayList<Device>()
+        model.liveDevices.observe(this) {
+            list = it as ArrayList<Device>
+        }
+        
         viewModel.changeDeviceNameEvent.observe(this) {
             toastShort(requireActivity(), getString(com.blackview.common_res.R.string.success))
             dismiss()
+            device.device_name=editText.text.toString().trim()
+            list[pos] = device
+            model.liveDevices.postValue(list)
         }
     }
 }

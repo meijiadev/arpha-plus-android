@@ -27,6 +27,7 @@ include ':common:common-util'
 include ':common:common-widget'
 include ':common:common-repository'
 include ':common:common-constant'
+include ':p2p:p2plibrary'
 
 include ':notification:aipn'
 

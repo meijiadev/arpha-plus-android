@@ -2,51 +2,27 @@ package com.blackview.module_device.dialog
 
 import android.app.Dialog
 import android.os.Bundle
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.blackview.module_device.DeviceModel
 import com.blackview.module_device.R
 import com.blackview.repository.entity.Device
 import com.blackview.util.toastShort
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class NoticeDeviceDialog : DialogFragment() {
+class NoticeDeviceDialog(var model: DeviceModel, var device: Device, var pos: Int) : DialogFragment() {
 
-    private var device: Device? = null
-    var isSelect = true
-    lateinit var viewModel: DeviceModel
-    lateinit var switchCompat1: SwitchCompat
+    private var isSelect = true
+    private lateinit var switchCompat1: SwitchCompat
     lateinit var switchCompat2: SwitchCompat
     lateinit var switchCompat3: SwitchCompat
 
-    fun newInstance(device: Device): NoticeDeviceDialog {
-        val args = Bundle()
-        args.putParcelable("device", device)
-        val fragment = NoticeDeviceDialog()
-        fragment.arguments = args
-        return fragment
-    }
-
-    fun setDevice(device: Device) {
-        this.device = device
-        switchCompat1.isChecked = device.notifications.door_bell
-        switchCompat2.isChecked = device.notifications.door_open
-        switchCompat3.isChecked = device.notifications.door_alert
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, com.blackview.base.R.style.BottomSheetDialog)
-        device = arguments?.getParcelable("device")
-        viewModel = ViewModelProvider(this).get(DeviceModel::class.java)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -63,9 +39,9 @@ class NoticeDeviceDialog : DialogFragment() {
         val tvNext = rootView.findViewById<TextView>(R.id.btn_notice_device_go2)
         val selectAll = rootView.findViewById<TextView>(R.id.tv_notice_select_all)
 
-        switchCompat1 = rootView.findViewById<SwitchCompat>(R.id.notice_switch1)
-        switchCompat2 = rootView.findViewById<SwitchCompat>(R.id.notice_switch2)
-        switchCompat3 = rootView.findViewById<SwitchCompat>(R.id.notice_switch3)
+        switchCompat1 = rootView.findViewById(R.id.notice_switch1)
+        switchCompat2 = rootView.findViewById(R.id.notice_switch2)
+        switchCompat3 = rootView.findViewById(R.id.notice_switch3)
         val switchCompat4 = rootView.findViewById<SwitchCompat>(R.id.notice_switch4)
         val switchCompat5 = rootView.findViewById<SwitchCompat>(R.id.notice_switch5)
         val switchCompat6 = rootView.findViewById<SwitchCompat>(R.id.notice_switch6)
@@ -85,16 +61,16 @@ class NoticeDeviceDialog : DialogFragment() {
             switchCompat13, switchCompat14
         )
 
-        switchCompat1.isChecked = device?.notifications?.door_bell ?: true
-        switchCompat2.isChecked = device?.notifications?.door_open ?: true
-        switchCompat3.isChecked = device?.notifications?.door_alert ?: true
+        switchCompat1.isChecked = device.notifications.door_bell
+        switchCompat2.isChecked = device.notifications.door_open
+        switchCompat3.isChecked = device.notifications.door_alert
 
         tvCancel.setOnClickListener { dismiss() }
 
         tvNext.setOnClickListener {
-            viewModel.updateNotify(
-                device!!.id,
-                switchCompat1.isChecked, switchCompat2.isChecked, switchCompat3.isChecked
+            model.updateNotify(
+                device.id, switchCompat1.isChecked, switchCompat2.isChecked,
+                switchCompat3.isChecked
             )
         }
 
@@ -114,10 +90,20 @@ class NoticeDeviceDialog : DialogFragment() {
             }
 
         }
+        var list = ArrayList<Device>()
+        model.liveDevices.observe(this) {
+            list = it as ArrayList<Device>
+        }
 
-        viewModel.setNoticeEvent.observe(this) {
+        model.setNoticeEvent.observe(this) {
             toastShort(requireActivity(), getString(com.blackview.common_res.R.string.success))
             dismiss()
+            device.notifications.door_bell = switchCompat1.isChecked
+            device.notifications.door_open = switchCompat2.isChecked
+            device.notifications.door_alert = switchCompat3.isChecked
+            list[pos] = device
+            model.liveDevices.postValue(list)
         }
+
     }
 }

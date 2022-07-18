@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blackview.contant.USER_TOKEN
 import com.blackview.util.L
 import com.blackview.util.SpUtil
+import com.blankj.utilcode.util.NetworkUtils
 import com.orhanobut.logger.*
 import com.tencent.mmkv.MMKV
 
@@ -50,15 +51,17 @@ class App : Application() {
         MMKV.initialize(instance)
         token = SpUtil.decodeString(USER_TOKEN) ?: ""
         L.e("token:$token")
-        AiPNDataCenter.getInstance().configAiPNSDK(instance)
+        if (NetworkUtils.isConnected()) {
+            AiPNDataCenter.getInstance().configAiPNSDK(instance)
+        }
         initLog()
 
     }
 
-    private fun initLog(){
+    private fun initLog() {
         // 初始化日志打印
         if (BuildConfig.DEBUG) {
-            val formatStrategy= PrettyFormatStrategy
+            val formatStrategy = PrettyFormatStrategy
                 .newBuilder()
                 .showThreadInfo(false)
                 .methodCount(2)

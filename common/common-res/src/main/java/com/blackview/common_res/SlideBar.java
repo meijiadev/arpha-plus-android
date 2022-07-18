@@ -138,4 +138,11 @@ public class SlideBar extends RelativeLayout {
 	public interface OnUnlockListener {
 		void onUnlock();
 	}
+
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		//父层ViewGroup不要拦截点击事件 
+		getParent().requestDisallowInterceptTouchEvent(true);
+		return super.dispatchTouchEvent(ev);
+	}
 }

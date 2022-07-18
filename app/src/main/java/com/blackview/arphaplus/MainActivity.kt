@@ -1,9 +1,10 @@
 package com.blackview.arphaplus
 
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.blackview.arphaplus.databinding.ActivityMainBinding
 import com.blackview.base.base.BaseMVActivity
+import com.blackview.contant.main
 import com.blackview.module_device.DeviceFragment
 
 /**
@@ -29,6 +30,7 @@ import com.blackview.module_device.DeviceFragment
  *
  * Created by home on 2022/6/25.
  */
+@Route(path = main)
 class MainActivity : BaseMVActivity<ActivityMainBinding, MainModel>() {
 
     private val deviceFragment by lazy { DeviceFragment() }

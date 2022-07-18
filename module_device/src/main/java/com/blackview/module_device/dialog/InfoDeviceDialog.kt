@@ -17,14 +17,6 @@ class InfoDeviceDialog : DialogFragment() {
 
     private var device: Device? = null
 
-    fun newInstance(device: Device): InfoDeviceDialog {
-        val args = Bundle()
-        args.putParcelable("device", device)
-        val fragment = InfoDeviceDialog()
-        fragment.arguments = args
-        return fragment
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, com.blackview.base.R.style.BottomSheetDialog)
