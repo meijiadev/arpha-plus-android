@@ -76,7 +76,7 @@ class HeadFragment : BaseMVFragment<FragmentHeadBinding, BaseViewModel>() {
         binding.btAddImage.setOnClickListener {
             Logger.i("新增用户")
             toPictureSelector()
-
+           // write failure:gatt writeCharacteristic fail
 
         }
         // 保存头像

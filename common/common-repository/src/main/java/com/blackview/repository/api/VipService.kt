@@ -25,7 +25,7 @@ interface VipService {
      * 获取用户拥有的设备
      */
     @GET("api/share/owner-device")
-    suspend fun  getOwnDevices(): BaseResponse<MutableList<DeviceData>>
+    suspend fun getOwnDevices(): BaseResponse<MutableList<DeviceData>>
 
 
     /**
@@ -46,7 +46,7 @@ interface VipService {
     @GET("api/share/share-list")
     suspend fun getShareList(
         @Query("device_id")
-        deviceId:String
+        deviceId: String
     ): BaseResponse<MutableList<ShareMember>>
 
     /**
@@ -55,21 +55,21 @@ interface VipService {
     @POST("api/share/device-share")
     suspend fun shareDevices(
         @Body params: ArrayMap<Any, Any>
-    ):BaseResponseNotData
+    ): BaseResponseNotData
 
 
     /**
      * 获取他人共享给自己的设备
      */
     @GET("api/share/accepted-device")
-    suspend fun getAcceptedDevices():BaseResponse<MutableList<DeviceData>>
+    suspend fun getAcceptedDevices(): BaseResponse<MutableList<DeviceData>>
 
     /**
      * 删除别人共享的设备
      * 当使用delete时写法
      */
-    @HTTP(method = "DELETE", path = "api/share/delete-accepted-device",hasBody = true)
-    suspend fun deleteAcceptedDevices(@Body params: ArrayMap<Any, Any>):ResponseBody
+    @HTTP(method = "DELETE", path = "api/share/delete-accepted-device", hasBody = true)
+    suspend fun deleteAcceptedDevices(@Body params: ArrayMap<Any, Any>): ResponseBody
 
 
     /**
@@ -77,29 +77,35 @@ interface VipService {
      */
     @GET("api/devices/notify-setting")
     suspend fun getNotifySettings(
-        @Query ("device_id")
-        deviceId:String
-    ):BaseResponse<SettingsData>
+        @Query("device_id")
+        deviceId: String
+    ): BaseResponse<SettingsData>
 
 
     /**
      *  更新通知设定
      */
     @PUT("api/devices/update-notify")
-    suspend fun updateNotify(@Body params:ArrayMap<Any,Any>):ResponseBody
+    suspend fun updateNotify(@Body params: ArrayMap<Any, Any>): ResponseBody
 
     /**
      * 更新会员昵称
      */
     @PUT("api/member/change-name")
-    suspend fun changeName(@Body params: ArrayMap<Any, Any>):BaseResponseNotData
+    suspend fun changeName(@Body params: ArrayMap<Any, Any>): BaseResponseNotData
 
     /**
      * 更新头像
      */
     @Multipart
     @POST("api/member/change-headimage")
-    suspend fun changeHead(@Part part: MultipartBody.Part):BaseResponse<HeadImageData>
+    suspend fun changeHead(@Part part: MultipartBody.Part): BaseResponse<HeadImageData>
+
+    /**
+     * 更改密码
+     */
+    @PUT("api/member/change-password")
+    suspend fun changePassword(@Body params: ArrayMap<Any, Any>): BaseResponseNotData
 
 
 }

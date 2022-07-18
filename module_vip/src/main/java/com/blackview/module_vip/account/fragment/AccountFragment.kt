@@ -71,6 +71,7 @@ class AccountFragment : BaseMVVMFragment<FragmentAccountBinding, AccountModel>()
         }
 
         fun onPassword() {
+            findNavController().navigate(R.id.action_accountFragment_to_passwordFragment)
             Logger.i("去修改密码")
         }
 

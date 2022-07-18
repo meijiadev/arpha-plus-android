@@ -146,10 +146,17 @@
     <string name="modify_nick_name">修改暱稱</string>
     <string name="replace_head_image">更換頭像</string>
     <string name="modify_password">變更密碼</string>
+    <string name="current_password">原有密碼</string>
+    <string name="new_password">新密碼</string>
     <string name="delete_account">刪除帳號</string>
     <string name="current_nick">目前暱稱</string>
     <string name="new_nick">新暱稱</string>
     <string name="please_enter_nick">請輸入新暱稱</string>
+    <string name="please_enter_password">請輸入新密碼</string>
+    <string name="password_tips">密碼需為 8 碼以上的英文、數字</string>
+    <string name="password_is_diff">两次输入的密码不一致</string>
+    <string name="please_retry_enter_password">請再次輸入新密碼</string>
+    <string name="password_modify_success">變更密碼成功</string>
     <string name="please_update_head_image">請上傳更換的照片</string>
     <string name="add_head_image">新增照片</string>
     <string name="current_head_tips">目前頭像（預覽）</string>
