@@ -76,6 +76,7 @@ class AccountFragment : BaseMVVMFragment<FragmentAccountBinding, AccountModel>()
         }
 
         fun onDeleteAccount() {
+            findNavController().navigate(R.id.action_accountFragment_to_deleteAccFragment)
             Logger.i("删除账号")
         }
     }

@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import com.blackview.base.base.BaseMVFragment
 import com.blackview.base.base.BaseViewModel
 import com.blackview.contant.PASSWORD
@@ -17,6 +18,10 @@ import com.blackview.module_vip.databinding.FragmentPasswordBinding
 import com.blackview.module_vip.dialog.showSuccessTips
 import com.blackview.util.SpUtil
 import com.blankj.utilcode.util.ToastUtils
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.util.logging.Handler
 import java.util.regex.Pattern
 
 
@@ -33,11 +38,6 @@ class PasswordFragment : BaseMVFragment<FragmentPasswordBinding, BaseViewModel>(
      * 只允许输入字母和数字
      */
     private val regex: String = "[[a-zA-Z]|\\d]*"
-
-    /**
-     * 当前的密码
-     */
-    private var curPsw: String? = null
 
     /**
      * 新建密码
@@ -58,7 +58,6 @@ class PasswordFragment : BaseMVFragment<FragmentPasswordBinding, BaseViewModel>(
         binding.etPsw.transformationMethod = PasswordTransformationMethod.getInstance()
         binding.etRetryPsw.transformationMethod = PasswordTransformationMethod.getInstance()
         SpUtil.decodeString(PASSWORD)?.let {
-            curPsw = it
             binding.tvCurrentPassword.text = it
         }
     }
@@ -72,6 +71,10 @@ class PasswordFragment : BaseMVFragment<FragmentPasswordBinding, BaseViewModel>(
                 if (it) {
                     SpUtil.encode(PASSWORD, retryPsw)
                     showSuccessTips(getString(com.blackview.common_res.R.string.password_modify_success))
+                    MainScope().launch {
+                        delay(3000)
+                        findNavController().popBackStack()
+                    }
                 }
             }
         }

@@ -17,7 +17,7 @@
     <string name="email">邮箱</string>
     <string name="success">success</string>
     <string name="input_device_name">请输入设备名称</string>
-    <string name="input_phone">请输入手机号码</string>
+    <string name="input_phone">請輸入手機號碼</string>
     <string name="input_email">请输入E-mail</string>
     <string name="input_pwd">请输入密码</string>
     <string name="input_pwd_again">请再次输入密码</string>
@@ -26,7 +26,8 @@
     <string name="login">登入</string>
     <string name="login3">或第三方账号登入</string>
     <string name="submit">送出</string>
-    <string name="reset_send">重新发送</string>
+    <string name="send_code">發送驗證碼</string>
+    <string name="reset_send">重新發送</string>
     <string name="quick_login">立即登入</string>
     <string name="no_account">还没有账号？</string>
     <string name="had_account">已经有账号了吗？</string>
@@ -161,9 +162,11 @@
     <string name="add_head_image">新增照片</string>
     <string name="current_head_tips">目前頭像（預覽）</string>
     <string name="common_save">儲存</string>
+    <string name="password">密碼</string>
+    <string name="verification_code">簡訊驗證碼</string>
+    <string name="text_delete">删除</string>
 
-
-    
+    <string name="delete_account_tips">尊敬的用戶\n如果您確定提交“刪除帳號”申請，帳號註銷於%1$s \n鑑於此，我們將刪除您帳戶中的個人數據如撤銷“註銷帳號”申請，請在上述時間前登錄應用程序即可撤銷\n感謝您的使用</string>
     <string name="pairing_finish">120 秒後完成配對...</string>
     <string name="pairing_finish1">配對完成...</string>
     <string name="goto_device_list">前往装置清单</string>
