@@ -42,6 +42,8 @@ class AccountModel : BaseViewModel() {
      */
     var pswUpdateEvent = SingleLiveEvent<Boolean>()
 
+    var deleteAccountEvent = SingleLiveEvent<Boolean>()
+
     /**
      * 修改会员昵称
      */
@@ -91,5 +93,33 @@ class AccountModel : BaseViewModel() {
         }, {
             pswUpdateEvent.value = it.code == 20000
         })
+    }
+
+    /**
+     * 发送验证码
+     */
+    fun sendCode() {
+        requestNoCheckAndError({
+            vipService.sendCode()
+        }, {
+            Logger.i("验证码发送：${it.code}")
+        })
+    }
+
+    /**
+     * 删除账号
+     */
+    fun deleteAccount(password: String, code: String) {
+        val params = ArrayMap<Any, Any>()
+        params["password"] = password
+        params["validate_code"] = code
+        requestNoCheckAndError({
+            vipService.deleteAccount(params)
+        }, {
+            deleteAccountEvent.value = true
+        }, {
+            deleteAccountEvent.value = false
+        }
+        )
     }
 }

@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         >
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="60dp"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
+        android:visibility="visible"
         >
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -80,10 +80,11 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:background="@color/white"
-            android:hint="@string/please_enter_password"
+            android:hint="@string/please_enter_password_1"
             android:textColorHint="@color/gray_979797"
             android:textSize="14dp" />
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPswVisible"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_above="@id/line1"
@@ -115,14 +116,14 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etPhone"
+            android:id="@+id/etCode"
             android:layout_width="170dp"
             android:layout_height="20dp"
             android:layout_below="@id/textView2"
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:background="@color/white"
-            android:hint="@string/input_phone"
+            android:hint="@string/input_code"
             android:textColor="@color/black_333333"
             android:textColorHint="@color/gray_979797"
             android:textSize="14dp" />
@@ -138,7 +139,6 @@
             android:textColor="@color/text_BC9E70"
             android:textSize="12dp"
             android:textStyle="bold"
-
             />
         <View
             android:id="@+id/line2"
@@ -146,7 +146,7 @@
             android:layout_height="1dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_below="@id/etPhone"
+            android:layout_below="@id/etCode"
             android:layout_marginTop="10dp"
             android:background="@color/gray_e2e2e2"
             />

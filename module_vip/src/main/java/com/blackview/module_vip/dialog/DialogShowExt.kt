@@ -13,19 +13,22 @@ import com.lxj.xpopup.enums.PopupAnimation
  *    desc   : 通用弹窗
  */
 
- fun Fragment.showSuccessTips(msg:String=getString(com.blackview.common_res.R.string.text_change_success)){
+fun Fragment.showSuccessTips(
+    msg: String = getString(com.blackview.common_res.R.string.text_change_success),
+    delayTime: Long = 3000
+) {
     XPopup.Builder(requireContext())
         .isViewMode(true)
         .dismissOnTouchOutside(false)
         .popupAnimation(PopupAnimation.TranslateFromBottom)
         .asCustom(TipsDialog(requireContext()).setMessage(msg))
         .show()
-        .delayDismiss(3000)
+        .delayDismiss(delayTime)
 
 }
 
-fun Activity.showSuccessTips(msg:String=getString(com.blackview.common_res.R.string.text_change_success)){
-    com.lxj.xpopup.XPopup.Builder(this)
+fun Activity.showSuccessTips(msg: String = getString(com.blackview.common_res.R.string.text_change_success)) {
+    XPopup.Builder(this)
         .isViewMode(true)
         .dismissOnTouchOutside(false)
         .popupAnimation(com.lxj.xpopup.enums.PopupAnimation.TranslateFromBottom)

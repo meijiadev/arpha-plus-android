@@ -1,6 +1,7 @@
 package com.blackview.module_vip.dialog
 
 import android.content.Context
+import android.opengl.Visibility
 import androidx.appcompat.widget.AppCompatTextView
 import com.blackview.module_vip.R
 import com.lxj.xpopup.core.CenterPopupView
@@ -17,6 +18,9 @@ class TipsDialog(context: Context) : CenterPopupView(context) {
 
     private var message: String? = null
 
+    // draw 图标是否显示
+    private var drawIsShow: Boolean = true
+
 
     override fun getImplLayoutId(): Int = R.layout.dialog_tips
 
@@ -25,14 +29,28 @@ class TipsDialog(context: Context) : CenterPopupView(context) {
     }
 
 
-    fun setMessage(msg:String):TipsDialog=apply {
-        this.message=msg
+    fun setMessage(msg: String): TipsDialog = apply {
+        this.message = msg
+    }
+
+    fun setDrawVisible(visibility: Boolean): TipsDialog = apply {
+        drawIsShow = visibility
     }
 
     override fun init() {
         super.init()
         message?.let {
-            tvMessage.text=it
+            tvMessage.text = it
         }
+        tvMessage.setCompoundDrawablesWithIntrinsicBounds(
+            0,
+            0,
+            0,
+            if (drawIsShow)
+                com.blackview.common_res.R.drawable.image_success_60
+            else
+                0
+        )
+
     }
 }

@@ -4,8 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import com.blackview.base.base.BaseViewModel
 import com.blackview.base.http.request
 import com.blackview.base.http.requestNoCheck
+import com.blackview.base.http.requestNoCheckAndError
 import com.blackview.repository.entity.VipMemberInfo
 import com.blackview.repository.httpService
+import com.blackview.repository.loginService
 import com.blackview.repository.vipService
 import com.orhanobut.logger.Logger
 
@@ -27,6 +29,19 @@ class VipViewModel:BaseViewModel() {
         },{
             Logger.i("会员信息：$it")
             vipMemberEvent.value=it
+        })
+    }
+
+    /**
+     * 退出登陸
+     */
+    fun logout(){
+        requestNoCheckAndError({
+            loginService.logout()
+        },{
+
+        },{
+
         })
     }
 

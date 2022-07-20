@@ -133,6 +133,7 @@
     <string name="dialog_join">加入</string>
     <string name="please_add_member">请添加共享的朋友</string>
     <string name="text_change_success">變更成功</string>
+    <string name="text_change_failed">變更失敗</string>
     <string name="text_delete_success">刪除成功</string>
     <string name="message_dialog_title">確定刪除選取的接收裝置嗎？</string>
     <string name="message_dialog_title_1">確定刪除%1$s嗎？</string>
@@ -154,6 +155,7 @@
     <string name="new_nick">新暱稱</string>
     <string name="please_enter_nick">請輸入新暱稱</string>
     <string name="please_enter_password">請輸入新密碼</string>
+    <string name="please_enter_password_1">請輸入密碼</string>
     <string name="password_tips">密碼需為 8 碼以上的英文、數字</string>
     <string name="password_is_diff">两次输入的密码不一致</string>
     <string name="please_retry_enter_password">請再次輸入新密碼</string>
@@ -165,6 +167,7 @@
     <string name="password">密碼</string>
     <string name="verification_code">簡訊驗證碼</string>
     <string name="text_delete">删除</string>
+    <string name="current_delete_tips">處理中，正在刪除帳號...</string>
 
     <string name="delete_account_tips">尊敬的用戶\n如果您確定提交“刪除帳號”申請，帳號註銷於%1$s \n鑑於此，我們將刪除您帳戶中的個人數據如撤銷“註銷帳號”申請，請在上述時間前登錄應用程序即可撤銷\n感謝您的使用</string>
     <string name="pairing_finish">120 秒後完成配對...</string>

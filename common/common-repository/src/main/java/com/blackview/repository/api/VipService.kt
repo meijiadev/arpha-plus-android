@@ -107,5 +107,14 @@ interface VipService {
     @PUT("api/member/change-password")
     suspend fun changePassword(@Body params: ArrayMap<Any, Any>): BaseResponseNotData
 
+    /**
+     * 发送验证码
+     */
+    @GET("api/member/send-validate")
+    suspend fun sendCode():BaseResponseNotData
+
+    @HTTP(method = "DELETE", path = "api/member/delete",hasBody = true)
+    suspend fun deleteAccount(@Body params:ArrayMap<Any,Any>):ResponseBody
+
 
 }
