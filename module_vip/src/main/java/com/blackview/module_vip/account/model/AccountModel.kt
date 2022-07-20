@@ -44,6 +44,8 @@ class AccountModel : BaseViewModel() {
 
     var deleteAccountEvent = SingleLiveEvent<Boolean>()
 
+    var pictureCodeEvent = SingleLiveEvent<String>()
+
     /**
      * 修改会员昵称
      */
@@ -122,4 +124,17 @@ class AccountModel : BaseViewModel() {
         }
         )
     }
+
+    /**
+     * 获取图形验证码
+     */
+    fun getPictureCode() {
+        request({
+            vipService.getPictureCode()
+        }, {
+            pictureCodeEvent.value = it.picture_code
+        })
+    }
+
+
 }

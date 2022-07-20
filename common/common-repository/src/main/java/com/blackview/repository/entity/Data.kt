@@ -61,6 +61,13 @@ data class HeadImageData(
     val img_url:String
 )
 
+/**
+ * 图形验证码
+ */
+data class PictureCodeData(
+    val picture_code:String
+)
+
 
 
 data class ProductList(

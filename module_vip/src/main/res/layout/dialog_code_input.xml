@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="272dp"
+    android:layout_height="274dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/vip_card_shape">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:drawableBottom="@drawable/yellow_line_l"
+        android:gravity="center_horizontal"
+        android:text="@string/title_picture_code"
+        android:textColor="@color/black_333333"
+        android:textSize="16sp"
+         />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCode"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/white"
+        android:hint="@string/input_code"
+        android:text=""
+        android:textColor="@color/black_333333"
+        android:textColorHint="@color/gray_979797"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="124dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/etCode"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/line_E2E2E2" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCode"
+        android:layout_width="108dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="106dp"
+        android:layout_alignParentEnd="true"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNextCode"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:text="@string/next_picture_code"
+        android:textSize="12sp"
+        android:textColor="@color/line_yellow"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/ivCode"
+        android:layout_marginEnd="16dp"
+        />
+    <com.caldremch.widget.round.RoundButton
+        android:id="@+id/btCancel"
+        android:layout_width="84dp"
+        android:layout_height="36dp"
+        app:rl_radius="20dp"
+        app:rl_backgroundColor="@color/gray_B5B5B6"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/cancel"
+        android:gravity="center"
+        android:textColor="@color/white"
+        />
+    <com.caldremch.widget.round.RoundButton
+        android:id="@+id/btConfirm"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:text="@string/lgDBtn_NextStep"
+        android:textColor="@color/white"
+        app:rl_radius="20dp"
+        app:rl_backgroundColor="@color/grey_4F4C4B"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        />
+
+</RelativeLayout>

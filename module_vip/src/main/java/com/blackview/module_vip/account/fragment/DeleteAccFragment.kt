@@ -11,6 +11,7 @@ import com.blackview.base.base.BaseMVFragment
 import com.blackview.base.base.BaseViewModel
 import com.blackview.module_vip.account.model.AccountModel
 import com.blackview.module_vip.databinding.FragmentDeleteAccountBinding
+import com.blackview.module_vip.dialog.CodeInputDialog
 import com.blackview.module_vip.dialog.TipsDialog
 import com.blackview.module_vip.dialog.showSuccessTips
 import com.blackview.repository.login.LoginActivity
@@ -36,6 +37,11 @@ class DeleteAccFragment : BaseMVFragment<FragmentDeleteAccountBinding, BaseViewM
 
     private var countDownTimber: CountDownTimer? = null
 
+    /**
+     * 是否是微信登录
+     */
+    private var getWechatLogin = true
+
     override fun createViewModel(fragment: Fragment): BaseViewModel {
         return ViewModelProvider(this).get(BaseViewModel::class.java)
     }
@@ -58,8 +64,12 @@ class DeleteAccFragment : BaseMVFragment<FragmentDeleteAccountBinding, BaseViewM
         super.initListener()
         // 下一步按钮
         binding.btNextStep.setOnClickListener {
-            binding.llFirstStep.visibility = View.GONE
-            binding.rlSecond.visibility = View.VISIBLE
+            if (!getWechatLogin) {
+                binding.llFirstStep.visibility = View.GONE
+                binding.rlSecond.visibility = View.VISIBLE
+            } else {
+                showCodeInput()
+            }
         }
 
         // 密码是否可见的按钮
@@ -150,6 +160,18 @@ class DeleteAccFragment : BaseMVFragment<FragmentDeleteAccountBinding, BaseViewM
             .dismissOnTouchOutside(false)
             .popupAnimation(PopupAnimation.TranslateFromBottom)
             .asCustom(tipsDialog)
+            .show()
+    }
+
+    /**
+     * 显示图形验证码弹窗
+     */
+    private fun showCodeInput() {
+        val codeInputDialog = CodeInputDialog(requireContext(),accountModel)
+        XPopup.Builder(requireContext())
+            .isViewMode(true)
+            .popupAnimation(PopupAnimation.TranslateFromBottom)
+            .asCustom(codeInputDialog)
             .show()
     }
 

@@ -113,8 +113,30 @@ interface VipService {
     @GET("api/member/send-validate")
     suspend fun sendCode():BaseResponseNotData
 
+    /**
+     * 删除用户账号
+     */
     @HTTP(method = "DELETE", path = "api/member/delete",hasBody = true)
     suspend fun deleteAccount(@Body params:ArrayMap<Any,Any>):ResponseBody
+
+    /**
+     * 获取app最新版的版本号和更新说明
+     */
+    @GET("api/version")
+    suspend fun getAppVersion():ResponseBody
+
+    /**
+     * 第三方删除账号-请求图形验证码
+     *
+     */
+    @GET("api/member/oauth-get-code")
+    suspend fun getPictureCode():BaseResponse<PictureCodeData>
+
+    /**
+     * 删除第三方登录账号
+     */
+    @HTTP(method = "DELETE", path = "api/member/oauth-delete",hasBody = true)
+    suspend fun deleteWechat(@Body params:ArrayMap<Any,Any>):ResponseBody
 
 
 }

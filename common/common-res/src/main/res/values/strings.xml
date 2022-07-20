@@ -33,7 +33,7 @@
     <string name="had_account">已经有账号了吗？</string>
     <string name="register">立即注册</string>
     <string name="create_account">建立账号</string>
-    <string name="input_code">输入验证码</string>
+    <string name="input_code">請輸入驗證碼</string>
     <string name="pwd_hint">密碼需為 8 碼以上的英文、數字</string>
     <string name="policy1">已阅读并同意</string>
     <string name="policy2">《用户协议》</string>
@@ -166,6 +166,8 @@
     <string name="common_save">儲存</string>
     <string name="password">密碼</string>
     <string name="verification_code">簡訊驗證碼</string>
+    <string name="title_picture_code">輸入圖形驗證碼</string>
+    <string name="next_picture_code">點擊換一張</string>
     <string name="text_delete">删除</string>
     <string name="current_delete_tips">處理中，正在刪除帳號...</string>
 
